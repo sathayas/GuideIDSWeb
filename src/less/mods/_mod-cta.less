@@ -1,0 +1,20 @@
+.mod-cta {
+	padding-top: 2.4rem;
+	padding-bottom: 2.4rem;
+	.mod__body {
+		.row--justify-center;
+		.row--align-items-center;
+	}
+	.mod__item {
+		flex: 1 0 100%;
+		@media (min-width: @screen-sm-min) {
+			flex: 0 0 auto;
+		}
+		&--btn {
+			margin: 1rem 0 0 0;
+			@media (min-width: @screen-sm-min) {
+				margin: 0 0 0 3rem;
+			}
+		}
+	}
+}

@@ -1,0 +1,24 @@
+/*	================================================== 
+	svg
+	================================================== */
+svg,
+.svg {
+	.trans--all;
+}
+img.svg {
+	opacity: 0;
+}
+svg.svg {
+	opacity: 1;
+	width: 100%;
+	stroke-width: 1.5px;
+}
+svg.svg--animate-scroll {
+	opacity: 0;
+	&.svg--initiated {
+		.-scrolling &,
+		.-scrolled & {
+			opacity: 1;
+		}
+	}
+}

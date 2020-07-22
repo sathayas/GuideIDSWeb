@@ -1,0 +1,41 @@
+.mod-blocks {
+	.dist--semi-pad;
+	.mod__item {
+		position: relative;
+		flex: 1 0 100%;
+		margin-top: 3rem;
+		@media (min-width: @screen-xs-min) {
+			flex: 1 0 50%;
+			max-width: 50%;
+		}
+		@media (min-width: @screen-md-min) {
+			flex: 1 0 25%;
+			max-width: 25%;
+		}
+		&:first-child {
+			margin-top: 0;
+		}
+		&:nth-child(-n+2) {
+			@media (min-width: @screen-xs-min) {
+				margin-top: 0;
+			}
+		}
+		&:nth-child(-n+4) {
+			@media (min-width: @screen-md-min) {
+				margin-top: 0;
+			}
+		}
+		&:before {
+			content: '';
+			position: relative;
+			display: block;
+			width: 100%;
+			height: @line-width;
+			margin-bottom: 1.5rem;
+			.bg--purple;
+			@media (min-width: @screen-md-min) {
+				margin-bottom: 3rem;
+			}
+		}
+	}
+}

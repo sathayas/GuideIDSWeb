@@ -1,0 +1,114 @@
+.mod.mod-stage {
+	padding-top: var(--dist);
+	@media (min-width: @screen-sm-min) {
+		padding-top: calc(var(--dist) + 4rem);
+	}
+	.mod__body {
+		position: relative;
+		.row--align-items-center;
+		height: 100%;
+	}
+	.mod__item {
+		position: relative;
+		flex: 1 0 100%;
+		max-height: 100%;
+		&--text {
+			@media (min-width: @screen-sm-min) {
+				flex: 1 0 45%;
+				max-width: 45%;
+			}
+			@media (min-width: @screen-md-min) {
+				flex: 1 0 50%;
+				max-width: 50%;
+			}
+			h1 {
+				.style--stage-title;
+			}
+			p {
+				@media (min-width: @screen-md-min) {
+					padding-right: calc( 100% / 6 );
+				}
+			}
+		}
+		&--pic {
+			margin-top: 4rem;
+			height: 50vh;
+			@media (min-width: @screen-sm-min) {
+				flex: 1 0 55%;
+				max-width: 55%;
+				height: 100%;
+				margin-top: 0;
+			}
+			@media (min-width: @screen-md-min) {
+				flex: 1 0 50%;
+				max-width: 50%;
+			}
+			.pic {
+				height: 100%;
+				transform: translate( -20%, 0 );
+				@media (min-width: @screen-xs-min) {
+					transform: none;
+				}
+			}
+		}
+		&--batch {
+			position: absolute;
+			bottom: 0;
+			right: 50%;
+			@media (min-width: @screen-sm-min) {
+				top: 0;
+				right: 0;
+				bottom: unset;
+			}
+			.batch {
+				.row;
+				.row--align-items-center;
+				.row--align-content-center;
+				.row--justify-center;
+				width: 19rem;
+				height: 19rem;
+				padding: 2rem;
+				border-radius: 100%;
+				.bg--purple;
+				overflow: hidden;
+				transform: translate( 120%, 0 );
+				@media (min-width: @screen-sm-min) {
+					transform: translate( 20%, -3rem );
+				}
+				@media (min-width: @screen-md-min) {
+					width: 22rem;
+					height: 22rem;
+				}
+				@media (min-width: @screen-lg-min) {
+					transform: translate( 20%, -4rem );
+				}
+				@media (min-width: @screen-xl-min) {
+					transform: translate( 40%, -4rem );
+				}
+			}
+			.batch__title {
+				display: block;
+				.sans--bold;
+				font-size: 1.4rem;
+				line-height: 1.2222222222222;
+				.white;
+				@media (min-width: @screen-md-min) {
+					font-size: 1.8rem;
+					line-height: 1.2222222222222;
+				}
+				// @media (min-width: @screen-xl-min) {
+				// 	font-size: 2.6rem;
+				// 	line-height: 1.230769230769231;
+				// }
+			}
+			.batch__btn {
+				margin-top: 1rem;
+				font-size: 1.4rem;
+				// @media (min-width: @screen-xl-min) {
+				// 	margin-top: 2rem;
+				// 	font-size: 1.8rem;
+				// }
+			}
+ 		}
+	}
+}
