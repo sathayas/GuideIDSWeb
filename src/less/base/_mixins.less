@@ -1,0 +1,14 @@
+/*	================================================== 
+	Mixins
+	================================================== */
+.bg--rgba(@color, @alpha) {
+	@rgba: rgba(red(@color), green(@color), blue(@color), @alpha);
+	@alphaColor: hsla(hue(@color), saturation(@color), lightness(@color), @alpha);
+	@argb: argb(@alphaColor);
+	background-color: transparent;
+	background-color: @rgba;
+}
+.border--rgba(@color, @alpha) {
+	@rgba: rgba(red(@color), green(@color), blue(@color), @alpha);
+	border-color: @rgba;
+}

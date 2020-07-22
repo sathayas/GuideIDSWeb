@@ -1,0 +1,172 @@
+/*	================================================  
+	Basics
+	================================================  */
+:root {
+	--grid-max-w 		: 128rem;
+	--header-h 			: 6rem;
+	--dist 				: 7rem;
+	--dist-semi 		: 3.5rem;
+	--edge 				: 1rem;
+	--gutter 			: 1rem;
+	--dist-first 		: var(--header-h);
+	--link-color 		: @color-darkblue;
+	--link-color-active : @color-purple;
+	@media (min-width: @screen-xxxs-min) {
+		--edge 			: 0.5rem;
+	}
+	@media (min-width: @screen-xs-min) {
+		--edge 		 	: 1rem;
+		--dist-first 	: calc( 3rem + var(--header-h));
+	}
+	@media (min-width: @screen-sm-min) {
+		--header-h 		: 10rem;
+		--edge 		 	: 2rem;
+		--dist 			: 10rem;
+		--dist-semi 	: 5rem;
+		--dist-first 	: calc( 10rem + var(--header-h));
+	}
+	@media (min-width: @screen-md-min) {
+		--header-h 		: 15rem;
+		--gutter		: 1.5rem;
+	}
+	@media (min-width: @screen-lg-min) {
+		--dist 			: 14rem;
+		--dist-semi 	: 7rem;
+		--edge 			: 4rem;
+		--gutter		: 1.5rem;
+	}
+}
+body,
+.page {
+	position: relative;
+	margin: 0;
+	padding: 0;
+	min-width: 320px;
+	overflow-x: hidden;
+	overscroll-behavior: contain;
+	.-offcanvas-active & {
+		overflow-y: scroll;
+		overflow-x: hidden;
+		height: 100vh;
+	}
+}
+.page__body {
+	position: relative;
+	width: 100%;
+	.bg--alabaster;
+	.-offcanvas-active & {
+		overflow: hidden;
+	}
+}
+.layout {
+	.grid;
+	&.layout--contents {
+		.layout__aside {
+			position: sticky;
+			z-index: 7000;
+			top: 0;
+			padding-top: var(--header-h);
+			left: 0;
+			grid-column: 1 / span 14;
+			grid-row: 1 / span 1;
+			// padding-top: var(--header-h);
+			@media (min-width: @screen-sm-min) {
+				position: relative;
+				top: unset;
+				left: unset;
+				grid-column: 2 / span 4;
+				grid-row: 1 / span 1;
+				padding-top: var(--dist-first);
+			}
+		}
+		.layout__body {
+			grid-row: 2 / span 1;
+			@media (min-width: @screen-sm-min) {
+				grid-column: 6 / span 8;
+				grid-row: 1 / span 1;
+				padding-top: var(--dist-first);
+			}
+		}
+		.mod {
+			@media (min-width: @screen-sm-min) {
+				display: block;
+			}
+			&:first-of-type {
+				padding-top: 0;
+			}
+		}
+	}
+	.layout__body {
+		grid-column: 1 / span 14;
+	}
+}
+.mod {
+	position: relative;
+	z-index: 10;
+	width: 100%;
+	.grid;
+	grid-column: 1 / span 14;
+	.dist--pad;
+	&:first-of-type {
+		padding-top: var(--dist-first);
+	}
+	.mod__bg {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		&--particles {
+			opacity: 0.1;
+		}
+	}
+	.mod__head,
+	.mod__body,
+	.mod__foot {
+		grid-column: 2 / span 12;
+		.row;
+	}
+	.mod__item {
+		.col;
+		flex: 1 0 100%;
+		max-width: 100%;
+	}
+}
+.simplebar-track {
+	right: 0.5rem;
+	overflow: visible;
+	@media (min-width: @screen-xs-min) {
+		right: 1rem;
+	}
+	&.simplebar-vertical {
+		width: .1rem;
+		.bg--rgba( @color-darkblue, 0.4 );
+		top: 8rem;
+		bottom: 4rem;
+		@media (min-width: @screen-sm-min) {
+			top: 10rem;
+			bottom: 6rem;
+		}
+		.page__offcanvas & {
+			.bg--rgba( @color-white, 0.4 );
+		}
+	}
+	.simplebar-scrollbar {
+		width: .1rem;
+		right: 0rem;
+		&:before {
+			top: 0;
+			bottom: 0;
+			width: 0.3rem;
+			left: 50%;
+			right: unset;
+			transform: translateX( -50% );
+			border-radius: 0;
+			.bg--darkblue;
+			opacity: 1;
+			.page__offcanvas & {
+				.bg--white;
+			}
+		}
+	}
+}

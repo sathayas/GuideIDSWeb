@@ -1,0 +1,46 @@
+/*	================================================  
+	Off-Canvas
+	================================================  */
+.page__offcanvas {
+	.grid;
+	position: fixed;
+	z-index: 7000;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	visibility: hidden;
+	.bg--darkblue;
+	&.offcanvas--l {
+		left: -100%;
+		&.-active {
+			transform: translateX( 100% );
+		}
+	}
+	&.offcanvas--r {
+		right: -100%;
+		&.-active {
+			transform: translate( -100% );
+		}
+	}
+	&.-initiated {
+		.trans--all;
+	}
+	&.-active {
+		visibility: visible;
+	}
+	.offcanvas__body {
+		grid-column: 2 / span 12;
+		height: 100%;
+		.row;
+		padding-top: 11.8rem;
+		padding-bottom: 11.8rem;
+		overflow-x: hidden;
+		.-active& {
+			overflow-y: auto;
+			-webkit-overflow---scrolling: touch;
+		}
+		> nav {
+			.gutter;
+		}
+	}
+}

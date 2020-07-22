@@ -1,0 +1,81 @@
+/*	================================================  
+	IE FIXES
+	================================================  */
+.-ie9,
+.-ie10,
+.-ie11,
+.-iedge {
+	.btn {
+		display: inline-block;
+	}
+	::-ms-input-placeholder {
+		color: @color-pos;
+		opacity: 1;
+	}
+	::-ms-clear {
+		display: none;
+	}
+}
+.-ie11__grid {
+	grid-template-columns: minmax( 0, 1fr ) repeat( 12, minmax( 0, calc( 1280px / 12 ) ) ) minmax( 0, 1fr );
+	@media (min-width: @screen-xxxs-min) {
+		grid-template-columns: minmax( calc(0.5*@base), 1fr ) repeat( 12, minmax( 0, calc( 1280px / 12 ) ) ) minmax( calc(0.5*@base), 1fr );
+	}
+	@media (min-width: @screen-xs-min) {
+		grid-template-columns: minmax( calc(1*@base), 1fr ) repeat( 12, minmax( 0, calc( 1280px / 12 ) ) ) minmax( calc(1*@base), 1fr );
+	}
+	@media (min-width: @screen-sm-min) {
+		grid-template-columns: minmax( calc(2*@base), 1fr ) repeat( 12, minmax( 0, calc( 1280px / 12 ) ) ) minmax( calc(2*@base), 1fr );
+	}
+	@media (min-width: @screen-lg-min) {
+		grid-template-columns: minmax( calc(4*@base), 1fr ) repeat( 12, minmax( 0, calc( 1280px / 12 ) ) ) minmax( calc(4*@base), 1fr );
+	}
+}
+.-ie11 {
+	.mod.mod-nav-contents {
+		position: absolute;
+		top: 0;
+	}
+	.page__header {
+		.-ie11__grid;
+		height: 6rem;
+		@media (min-width: @screen-sm-min) {
+			height: 10rem;
+		}
+		@media (min-width: @screen-md-min) {
+			height: 15rem;
+		}
+		.-sticky& {
+			@media (min-width : @screen-sm-min) {
+				height: 10rem;
+			}
+		}
+		.header__body {
+			height: inherit;
+		}
+	}
+	.page__footer {
+		.footer__item {
+			&--data {
+				li {
+					flex: 1 0 40%;
+					@media (min-width: @screen-sm-min) {
+						flex: 1 0 100%;
+					}
+					@media (min-width: @screen-md-min) {
+						flex: 1 0 40%;
+					}
+				}
+			}
+		}
+	}
+	.page__offcanvas {
+		.-ie11__grid;
+	}
+	.layout {
+		.-ie11__grid;
+	}
+	.mod {
+		.-ie11__grid;
+	}
+}

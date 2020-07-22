@@ -1,0 +1,311 @@
+/*	================================================== 
+	Media
+	================================================== */
+[class*="aspect--"] {
+	height: 0;
+	video,
+	img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+}
+.aspect--16-9 {
+	padding-bottom: 56.25%;
+}
+.aspect--4-3 {
+	padding-bottom: 75%;
+}
+.aspect--3-2 {
+	padding-bottom: 66.666%;
+}
+.aspect--3-1 {
+	padding-bottom: 33.333%;
+}
+.aspect--2-1 {
+	padding-bottom: 50%;
+}
+.aspect--1-1 {
+	padding-bottom: 100%;
+}
+.aspect--1-2 {
+	padding-bottom: 200%;
+}
+.aspect--2-3 {
+	padding-bottom: 150%;
+}
+.aspect--3-4 {
+	padding-bottom: 133.333333%;
+}
+.aspect--landscape {
+	padding-bottom: 66.666%;
+}
+.aspect--portrait {
+	padding-bottom: 140%;
+}
+.pic,
+.map,
+.video,
+.embed {
+	position: relative;
+	object,
+	embed,
+	iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: 0;
+	}
+	video {
+		width: 100% !important;
+		height: auto !important;
+	}
+}
+.video,
+.pic {
+	text-align: center;
+	video,
+	img {
+		display: block;
+		max-width: 100%;
+		height: auto;
+		.media--cover& {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+			object-position: center center;
+			font-family: 'object-fit: cover; object-position: center center;';
+			.media-pos--top& {
+				object-position: top center;
+				font-family: 'object-fit: cover; object-position: top center;';
+			}
+			.media-pos--bottom& {
+				object-position: bottom center;
+				font-family: 'object-fit: cover; object-position: bottom center;';
+			}
+			.media-pos--left& {
+				object-position: left center;
+				font-family: 'object-fit: cover; object-position: left center;';
+			}
+			.media-pos--right& {
+				object-position: right center;
+				font-family: 'object-fit: cover; object-position: right center;';
+			}
+			.media-pos--top-left& {
+				object-position: top left;
+				font-family: 'object-fit: cover; object-position: top left;';
+			}
+			.media-pos--top-center& {
+				object-position: top center;
+				font-family: 'object-fit: cover; object-position: top center;';
+			}
+			.media-pos--top-right& {
+				object-position: top right;
+				font-family: 'object-fit: cover; object-position: top right;';
+			}
+			.media-pos--bottom-left& {
+				object-position: bottom left;
+				font-family: 'object-fit: cover; object-position: bottom left;';
+			}
+			.media-pos--bottom-center& {
+				object-position: bottom center;
+				font-family: 'object-fit: cover; object-position: bottom center;';
+			}
+			.media-pos--bottom-right& {
+				object-position: bottom right;
+				font-family: 'object-fit: cover; object-position: bottom right;';
+			}
+			.media-pos--center-left& {
+				object-position: center left;
+				font-family: 'object-fit: cover; object-position: center left;';
+			}
+			.media-pos--center-center& {
+				object-position: center center;
+				font-family: 'object-fit: cover; object-position: center center;';
+			}
+			.media-pos--center-right& {
+				object-position: center right;
+				font-family: 'object-fit: cover; object-position: center right;';
+			}
+		}
+		.media--contain& {
+			width: 100%;
+			height: 100%;
+			object-fit: contain;
+			object-position: center center;
+			font-family: 'object-fit: contain; object-position: center center;';
+			.media-pos--top& {
+				object-position: top center;
+				font-family: 'object-fit: contain; object-position: top center;';
+			}
+			.media-pos--bottom& {
+				object-position: bottom center;
+				font-family: 'object-fit: contain; object-position: bottom center;';
+			}
+			.media-pos--left& {
+				object-position: left center;
+				font-family: 'object-fit: contain; object-position: left center;';
+			}
+			.media-pos--right& {
+				object-position: right center;
+				font-family: 'object-fit: contain; object-position: right center;';
+			}
+			.media-pos--top-left& {
+				object-position: top left;
+				font-family: 'object-fit: contain; object-position: top left;';
+			}
+			.media-pos--top-center& {
+				object-position: top center;
+				font-family: 'object-fit: contain; object-position: top center;';
+			}
+			.media-pos--top-right& {
+				object-position: top right;
+				font-family: 'object-fit: contain; object-position: top right;';
+			}
+			.media-pos--bottom-left& {
+				object-position: bottom left;
+				font-family: 'object-fit: contain; object-position: bottom left;';
+			}
+			.media-pos--bottom-center& {
+				object-position: bottom center;
+				font-family: 'object-fit: contain; object-position: bottom center;';
+			}
+			.media-pos--bottom-right& {
+				object-position: bottom right;
+				font-family: 'object-fit: contain; object-position: bottom right;';
+			}
+			.media-pos--center-left& {
+				object-position: center left;
+				font-family: 'object-fit: contain; object-position: center left;';
+			}
+			.media-pos--center-center& {
+				object-position: center center;
+				font-family: 'object-fit: contain; object-position: center center;';
+			}
+			.media-pos--center-right& {
+				object-position: center right;
+				font-family: 'object-fit: contain; object-position: center right;';
+			}
+		}
+	}
+}
+[class*="media-pos-"]{
+	&[class*="media-pos--left"]{
+		background-position: left;
+	}
+	&[class*="media-pos--right"]{
+		background-position: right;
+	}
+	&[class*="media-pos--center"]{
+		background-position: center;
+	}
+}
+[class*="media-pos--xxs"]{
+	@media (min-width: @screen-xxs-min) {
+		&[class*="media-pos--xxs-left"]{
+			background-position: left;
+		}
+		&[class*="media-pos--xxs-right"]{
+			background-position: right;
+		}
+		&[class*="media-pos--xxs-center"]{
+			background-position: center;
+		}
+	}
+}
+[class*="media-pos--xs"]{
+	@media (min-width: @screen-xs-min) {
+		&[class*="media-pos--xs-left"]{
+			background-position: left;
+		}
+		&[class*="media-pos--xs-right"]{
+			background-position: right;
+		}
+		&[class*="media-pos--xs-center"]{
+			background-position: center;
+		}
+	}
+}
+[class*="media-pos--sm"]{
+	@media (min-width: @screen-sm-min) {
+		&[class*="media-pos--sm-left"]{
+			background-position: left;
+		}
+		&[class*="media-pos--sm-right"]{
+			background-position: right;
+		}
+		&[class*="media-pos--sm-center"]{
+			background-position: center;
+		}
+	}
+}
+[class*="media-pos--md"]{
+	@media (min-width: @screen-md-min) {
+		&[class*="media-pos--md-left"]{
+			background-position: left;
+		}
+		&[class*="media-pos--md-right"]{
+			background-position: right;
+		}
+		&[class*="media-pos--md-center"]{
+			background-position: center;
+		}
+	}
+}
+[class*="media-pos--lg"]{
+	@media (min-width: @screen-lg-min) {
+		&[class*="media-pos--lg-left"]{
+			background-position: left;
+		}
+		&[class*="media-pos--lg-right"]{
+			background-position: right;
+		}
+		&[class*="media-pos--lg-center"]{
+			background-position: center;
+		}
+	}
+}
+[class*="media-pos--xl"]{
+	@media (min-width: @screen-xl-min) {
+		&[class*="media-pos--xl-left"]{
+			background-position: left;
+		}
+		&[class*="media-pos--xl-right"]{
+			background-position: right;
+		}
+		&[class*="media-pos--xl-center"]{
+			background-position: center;
+		}
+	}
+}
+.media--bg {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 100%;
+	video,
+	img {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		min-width: 100%;
+		min-height: 100%;
+	}
+	&.video {
+		overflow: hidden;
+		background-size: cover;
+		background-position: center;
+		video {
+			display: inline-block;
+			vertical-align: baseline;
+			max-width: unset;
+			min-width: 100%;
+			min-height: 100%;
+		}
+	}
+}
