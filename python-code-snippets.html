@@ -1,0 +1,1040 @@
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<meta name="format-detection" content="telephone=no">
+
+		<meta name="robots" content="index follow" />
+		<meta name="description" content="A collection of Python code snippets implementing analysis methods described in the book. Also includes short descriptions of specific libraries, functions, and object classes associated with the snippets, along with example outputs. " />
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:title" content="Python Code Snippets" />
+		<meta property="og:site_name" content="Guide to Intelligent Data Science" />
+		<meta property="og:description" content="A collection of Python code snippets implementing analysis methods described in the book. Also includes short descriptions of specific libraries, functions, and object classes associated with the snippets, along with example outputs. 
+" />
+		<meta property="og:url" content="datascienceguide.org" />  
+		<meta property="og:type" content="book" />
+		<meta property="og:image" content="" />
+		<meta property="book:author" content="Michael R. Berthold, Christian Borgelt, Frank Höppner, Frank Klawonn, Rosaria Silipo" />
+		<meta property="book:isbn" content="978-3-030-45573-6" />
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="Python Code Snippets" />
+		<meta name="twitter:site" content="@datascienceguide" />
+		<meta name="twitter:description" content="A collection of Python code snippets implementing analysis methods described in the book. Also includes short descriptions of specific libraries, functions, and object classes associated with the snippets, along with example outputs. 
+" />
+		<meta name="twitter:image" content="" /> 
+
+		<title>Python Code Snippets / Guide to Intelligent Data Science</title>
+
+		<link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" href="assets/img/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="assets/img/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="mask-icon" href="assets/img/favicons/safari-pinned-tab.svg" color="#e53736">
+		<link rel="shortcut icon" href="assets/img/favicons/favicon.ico">
+		<meta name="msapplication-TileColor" content="#e53736">
+		<meta name="theme-color" content="#ffffff">
+		<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&family=Source+Sans+Pro:wght@300;700&family=Source+Serif+Pro&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="assets/css/styles.min.css" type="text/css" />
+		<script src="assets/js/lib/modernizr-custom.min.js"></script>
+
+	</head>
+	<body class="page page--contents">
+		<noscript><div class="no-js"></div></noscript>
+		<header class="page__header" role="banner">
+			<div class="header__body">
+				<div class="header__item header__item--title">
+					<a class="header__title" href="index.html" target="_self">
+						Guide to Intelligent Data Science
+					</a>
+				</div>
+				<div class="header__item header__item--nav-primary">
+					<nav class="nav-header nav-header--primary" role="navigation">
+						<ul class="menu">
+							<li class="menu__item">
+								<a href="index.html">About the Book</a>
+							</li>
+							<li class="menu__item -active">
+								<a href="contents-and-teaching-material.html">Contents & Teaching Material</a>
+							</li>
+							<li class="menu__item">
+								<a href="https://www.springer.com/gp/book/9783030455736" target="_blank">Buy Book</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+				<div class="header__item header__item--nav-min">
+					<nav class="nav-header nav-header--min" role="navigation">
+						<button class="menu-toggle">
+							<span class="icon"></span>
+						</button>
+					</nav>
+				</div>
+			</div>
+		</header>
+
+		<div class="page__body">
+
+
+			<section class="layout layout--contents">
+
+				<aside class="layout__aside">
+					<section class="mod mod-nav-contents">
+						<div class="mod__body">
+							<div class="mod__item mod__item--back">
+								<a class="link" href="contents-and-teaching-material.html"><span class="link__icon"><img class="svg" src="assets/img/arrow-back.svg" /></span><span class="link__label">Back</span></a>
+							</div>
+							<div class="mod__item mod__item--nav" id="nav-contents"></div>	
+						</div>
+					</section>
+				</aside>
+
+				<main class="layout__body" data-anchor-nav="#nav-contents">
+
+					<section class="mod mod-contents">
+						<div class="mod__body">
+							<div class="mod__item mod__item--chapter">
+								<div class="content -wysiwyg">
+									<h1>Python Code Snippets</h1>
+									<hr>
+									<a class="btn btn--outline content__download" href="downloads/Chapter4-DataUnderstanding-Python.zip" download title="Download Python Code - Chapter 4">Download Code</a>
+
+									<h2 id="chapter-4">Data Understanding in Python</h2>
+
+									<h3 id="chapter-4-a">Histograms</h3>
+									<p>Histograms are generated by the <code>hist</code> function in the <code>matplotlib</code> library. Here, we use the Iris data set, available as part of the Scikit-learn (<code>sklearn</code>) library, a library of machine learning functions.</p>
+									<pre><code class="language-python">import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn import datasets
+
+# loading the iris data set
+iris = datasets.load_iris()
+X = pd.DataFrame(iris.data)   # features data frame
+X.columns = ['sepal length', 'sepal width', 'petal length', 'petal width']
+y = pd.DataFrame(iris.target)  # target data frame
+y.columns = ['species']
+target_names = iris.target_names</code></pre>
+									<p>The data set has been read into a data frame object <code>X</code>, a class of object available in the <code>pandas</code> library. In addition, the target describing different species is stored in another data frame <code>y</code>. The feature names have been assigned to this data frame as column names. We generate a histogram of the petal length with the following code.</p>
+									<pre><code class="language-python"># histogram of the petal length
+plt.hist(X['petal length'])
+plt.show()</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-python-histogram_1.png" alt="histogram of the petal length" />
+									</figure>
+									<p>Note that you need to run <code>plt.show()</code> to display the figure on your screen. You may notice that the histogram includes only a small number of bars, despite the large amount of data! You can change the number of bins, or the number of bars on a histogram by the second parameter.</p>
+									<pre><code class="language-python"># histogram with 20 bins
+plt.hist(X['petal length'], 20)
+plt.show()</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-python-histogram_2.png" alt="histogram with 20 bins" />
+									</figure>
+
+									<h3 id="chapter-4-b">Boxplots</h3>
+									<p>Boxplots can be generated by the <code>boxplot</code> method associated with data frame objects in <code>pandas</code>. You can specify a particular feature with the <code>columns</code> parameter. Here is a boxplot of the the petal length from the Iris data set.</p>
+									<pre><code class="language-python"># box plot of the petal length
+X.boxplot(column='petal length')
+plt.show()</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-python-boxplot_1.png" alt="box plot of the petal length" />
+									</figure>
+									<p>Or, we can generate boxplots of the petal length and width.</p>
+									<pre><code class="language-python"># box plot of the petal length & width
+X.boxplot(column=['petal length', 'petal width'])
+plt.show()</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-python-boxplot_2.png" alt="box plot of the petal length & width" />
+									</figure>
+									<p>Or all the features in the data set.</p>
+									<pre><code class="language-python"># box plot of all the features
+X.boxplot()
+plt.show()</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-python-boxplot_3.png" alt="box plot of all the features" />
+									</figure>
+									<p>We can generate boxplots with notches by specifying the option <code>notch=True</code>.</p>
+									<pre><code class="language-python"># notched box boxplots
+X.boxplot(notch=True)
+plt.show()</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-python-boxplot_3.png" alt="notched box boxplots" />
+									</figure>
+									<p>Finally, the <code>describe</code> method, associated with a data frame objects, produces various descriptive statistics (mean, median, quartiles, etc.) for each column.</p>
+									<pre><code class="language-python"># describing various statsitics
+print(X.describe())</code></pre>
+									<pre class="output">       sepal length  sepal width  petal length  petal width
+count    150.000000   150.000000    150.000000   150.000000
+mean       5.843333     3.057333      3.758000     1.199333
+std        0.828066     0.435866      1.765298     0.762238
+min        4.300000     2.000000      1.000000     0.100000
+25%        5.100000     2.800000      1.600000     0.300000
+50%        5.800000     3.000000      4.350000     1.300000
+75%        6.400000     3.300000      5.100000     1.800000
+max        7.900000     4.400000      6.900000     2.500000</pre>
+
+									<h3 id="chapter-4-c">Scatter Plots</h3>
+									<p>Scatter plots can be generated by the <code>plot.scatter</code> method associated with data frame objects in <code>pandas</code>. You can specify the columns represented in the x- and y-axes with parameters <code>x</code> and <code>y</code>, respectively. As an example, we plot the petal width against the petal length.</p>
+									<pre><code class="language-python"># plotting petal width vs length (as a method)
+X.plot.scatter(x='petal width', y='petal length')
+plt.show()</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-python-scatterplot_1.png" alt="plotting petal width vs length (as a method)" />
+									</figure>
+									<p>Alternatively, we can produce a scatter plot using the <code>scatter</code> function as part of the <code>matplotlib.pyplot</code> library. A scatter plot of the petal width v.s. length is produced with the <code>plot</code> function.</p>
+									<pre><code class="language-python"># plotting petal width vs length (as a function)
+plt.scatter(X['petal width'], X['petal length'])
+plt.show()</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-python-scatterplot_2.png" alt="plotting petal width vs length (as a function)" />
+									</figure>
+									<p>All features can be plotted against each other with the <code>plotting.scatter_matrix</code> method associated with a data frame object. Here, all features in the Iris data are plotted in a scatter plot matrix.</p>
+									<pre><code class="language-python"># scatter plot matrix
+pd.plotting.scatter_matrix(X)
+plt.show()</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-python-scatterplot_3.png" alt="scatter plot matrix" />
+									</figure>
+									<p>Notice that all data points are plotted in the same color. However, you may want to plot data points corresponding to different species in different colors. To do so, we provide the information on species contained in the data frame column <code>y['species']</code> to the parameter <code>c</code> in the <code>plotting.scatter_matrix</code> method.</p>
+									<pre><code class="language-python"># scatter plot matrix with different colors for species
+pd.plotting.scatter_matrix(X, c=y['species'])
+plt.show()</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-python-scatterplot_4.png" alt="scatter plot matrix with different colors for species" />
+									</figure>
+
+									<h3 id="chapter-4-d">Principal Component Analysis</h3>
+									<p>In Scikit-learn, a Python library for machine learning tools, many algorithms are implemented as objects, rather than functions. In a nutshell, an object is a combination of data, a collection of functions associated with the data (referred as methods), as well as the properties of the object (referred as attributes). To demonstrate this idea, we apply a z-score transformation, or normalize, the Iris data in preparation for a principal component analysis. In particular, we create a normalization object available as a <code>StandardScaler</code> object under the <code>sklearn.preprocessing</code> library.</p>
+									<pre><code class="language-python">from sklearn.preprocessing import StandardScaler
+
+# defining an normalization object
+normData = StandardScaler()</code></pre>
+									<p>Next, we fit the feature data <code>X</code> to this newly defined normalization transformation object <code>normData</code>, with the <code>fit</code> method.</p>
+									<pre><code class="language-python"># fitting the data to the normalization object
+normData.fit(X)</code></pre>
+									<pre class="output">StandardScaler(copy=True, with_mean=True, with_std=True)</pre>						
+									<p>Now the normalization object is ready, meaning that means and standard deviations have been calculated for each feature in the provided data set. Now we apply the actual transformation by the <code>transform</code> method to transform the data set <code>X</code>. The resulting normalized features are stored in <code>X_norm</code>.</p>
+									<pre><code class="language-python"># applying the normalization transformation to the data
+X_norm = normData.transform(X)</code></pre>
+									<p>To perform these processes, you can also use the <code>fit_transform</code> method, which is a combination of the <code>fit</code> and <code>transform</code> methods performed at once.</p>
+									<pre><code class="language-python">X_norm = StandardScaler().fit_transform(X)</code></pre>
+									<p>Now we apply PCA to the normalized data <code>X_norm</code>. This is done by creating a <code>PCA</code> transformation object, available as part of the <code>sklearn.decomposition</code> library. Then performing the <code>fit_transform</code> method to calculate principal components.</p>
+									<pre><code class="language-python">from sklearn.decomposition import PCA
+
+# applying PCA
+pca = PCA()  # creating a PCA transformation ojbect
+X_pc = pca.fit_transform(X_norm) # fit the data, and get PCs</code></pre>
+									<p>This produces an array <code>X_pc</code> with 150 rows and 4 columns (corresponding to 4 PCs).</p>
+									<pre><code class="language-python">X_pc.shape</code></pre>
+									<pre class="output">(150, 4)</pre>
+									<p>The attribute <code>explained_variance_ratio_</code> stores the amount of variability in the data explained by each PC. The first PC explains 73% of variability, whereas the second PC explains 23% of variability, and so on.</p>
+									<pre><code class="language-python"># proportion of the variance explained
+print(pca.explained_variance_ratio_)</code></pre>
+									<pre class="output">[0.72962445 0.22850762 0.03668922 0.00517871]</pre>
+									<p>We plot the first 2 PCs, representing the four original features in a 2D space. The first PC (or the first column of <code>X_pc</code>, <code>X_pc[:,0]</code>) is plotted on the x-axis and the second PC (or the second column of <code>X_pc</code>, <code>X_pc[:,1]</code>) is plotted on the y-axis.</p>
+									<pre><code class="language-python"># plotting the first 2 principal compnonents
+plt.scatter(X_pc[:,0], X_pc[:,1], c=y['species'])
+plt.show()</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-python-scatterplot_5.png" alt="plotting the first 2 principal compnonents" />
+									</figure>
+
+									<h3 id="chapter-4-e">Multidimensional Scaling</h3>
+									<p>Multi-dimensional scaling is implemented as an <code>MDS</code> transformation object available in the <code>sklearn.manifold</code> library. Here, we define a transformation object <code>mds</code>, then use the <code>fit_transfrom</code> method to obtain the MDS-transformed coordinates as <code>X_mds</code>.</p>
+									<pre><code class="language-python">from sklearn.manifold import MDS
+
+# applying MDS
+mds = MDS()
+X_mds = mds.fit_transform(X_norm)</code></pre>
+									<p>By default, the MDS transformation maps a higher-dimension space to a 2D space. We plot the transformation results in 2D.</p>
+									<pre><code class="language-python"># plotting the MDS-transformed coordinates
+plt.scatter(X_mds[:,0], X_mds[:,1], c=y['species'])
+plt.show()</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-python-scatterplot_6.png" alt="plotting the MDS-transformed coordinates" />
+									</figure>
+
+									<h3 id="chapter-4-f">Parallel Coordinates, Radar, and Star Plots</h3>
+									<p>A parallel coordinates plot can be generated by the <code>plotting.parallel_coordinates</code> function available in the Pandas library. This function assumes that features and labels are stored in a same data frame. Thus, first we combine the feature data frame <code>X</code> and the target label data frame <code>y</code> with the <code>concat</code> function in Pandas. The resulting combined data frame <code>Xy</code> is then used in the parallel coordinates plot.</p>
+									<pre><code class="language-python">Xy = pd.concat([X,y], axis=1)
+pd.plotting.parallel_coordinates(Xy,'species')
+plt.show()</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-python-parallel-coords_1.png" alt="parallel coordinates plot" />
+									</figure>
+									<p>Star and radar plots are obtained by the following two commands:</p>
+									<pre><code class="language-python">stars(iris)</code></pre>
+									<pre><code class="language-python">stars(iris,locations=c(0,0))</code></pre>
+									<h3 id="chapter-4-g">Correlations</h3>
+									<p>The Pearson, Spearman, and Kendall correlations can be calculated by the <code>pearsonr</code>, <code>spearmanr</code>, and <code>kendalltau</code> function available in the SciPy (scientific Python) library, respectively. These functions return the correlation value and the associated p-value (of testing whether the correlation is zero).</p>
+									<pre><code class="language-python">import scipy as sp
+
+r_pearson, p_pearson = sp.stats.pearsonr(X['sepal length'], X['sepal width'])
+r_spearman, p_spearman = sp.stats.spearmanr(X['sepal length'], X['sepal width'])
+r_kendall, p_kendall = sp.stats.kendalltau(X['sepal length'], X['sepal width'])</code></pre>
+									<p>The resulting correlation values are:</p>
+									<pre><code class="language-python">r_pearson</code></pre>
+									<pre class="output">-0.11756978413300208</pre>
+									<pre><code class="language-python">r_spearman</code></pre>
+									<pre class="output">-0.166777658283235</pre>
+									<pre><code class="language-python">r_kendall</code></pre>
+									<pre class="output">-0.0769967881165167</pre>
+								</div>
+							</div>
+							<div class="mod__item mod__item--chapter">
+								<div class="content -wysiwyg">
+									<a class="btn btn--outline content__download" href="downloads/Chapter5-ErrorsAndValidation-Python.zip" download title="Download Python Code - Chapter 5">Download Code</a>
+									<h2 id="chapter-5">Validation in Python</h2>
+									<h3 id="chapter-5-a">Training and Testing data</h3>
+									<p>In this example, we will use the Iris data as used in the previous chapter. The features and the target are loaded into arrays named X and y, respectively.</p>
+									<pre><code class="language-python">import numpy as np
+from sklearn import datasets
+from sklearn.model_selection import train_test_split
+from sklearn.naive_bayes import GaussianNB
+from sklearn.metrics import confusion_matrix, classification_report
+
+# Loading the iris data
+iris = datasets.load_iris()
+X = iris.data  # array for the features
+y = iris.target  # array for the target
+feature_names = iris.feature_names   # feature names
+target_names = iris.target_names   # target names</code></pre>
+									<p>Here, we split the Iris data into the training data set (comprising 2/3 of all observations) and the testing data set (comprising the remaining 1/3 of all observations). This is done by the <code>train_test_split</code> function available in the <code>sklearn.model_selection</code> library. This function takes an feature array and a target array as input parameters, and split them into training and testing data sets. In this example, the input features and targets, <code>X</code> and <code>y</code> respectively, are split into the training set (<code>X_train</code> for the features, and y_train for the target) as well as the testing data (likewise <code>X_test</code> and <code>y_test</code>).</p>
+									<pre><code class="language-python"># spliting the data into training and testing data sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.333,
+                                            random_state=2020)</code></pre>
+									<p>Here, the parameter test_size specifies the proportion of the original data to be assigned to the testing data. The order of observations are randomized in both training and testing data.</p>
+									<pre><code class="language-python">y # original target labels</code></pre>
+									<pre class="output">array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+       0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+       1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2,
+       2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2])</pre>
+									<pre><code class="language-python">y_train  # training data target labels</code></pre>
+									<pre class="output">array([0, 2, 1, 0, 1, 1, 2, 1, 0, 1, 0, 0, 0, 1, 1, 1, 0, 0, 2, 1, 2, 0,
+       0, 2, 0, 2, 2, 0, 2, 0, 0, 1, 0, 0, 2, 1, 0, 2, 1, 2, 0, 2, 2, 0,
+       1, 2, 0, 2, 1, 1, 2, 1, 0, 2, 1, 0, 1, 1, 1, 2, 1, 0, 2, 0, 0, 1,
+       2, 2, 2, 1, 2, 1, 0, 2, 0, 1, 0, 0, 1, 1, 2, 1, 2, 0, 2, 1, 2, 2,
+       1, 2, 0, 0, 1, 2, 2, 1, 2, 1, 2, 1])</pre>
+									<pre><code class="language-python">y_test  # testing data target labels</code></pre>
+									<pre class="output">array([2, 0, 1, 1, 1, 2, 2, 1, 0, 0, 2, 2, 0, 2, 2, 0, 1, 1, 2, 0, 0, 2,
+       1, 0, 2, 1, 1, 1, 0, 0, 2, 0, 0, 0, 2, 0, 0, 1, 0, 2, 0, 2, 1, 0,
+       1, 2, 2, 1, 1, 1])</pre>
+									<p>The parameter <code>random_state</code> is used to seed (or initialize) the random number generator. It is not a required parameter, but if you want to re-create the same random split, they you can use the same value for the <code>random_state</code>.</p>
+									<h3 id="chapter-5-b">Classifier training and prediction</h3>
+									<p>In this example, we train a naive Bayes classifier for the Iris data, and evaluate its performance. We use a Gaussian naive Bayes classifier object GaussianNB available in the <code>sklearn.naive_bayes</code> library. We define the classifier object as <code>gnb</code>. The classifier object is trained with the training data (both features <code>X_train</code> and target <code>y_train</code>) using the <code>fit</code> method. Once the classifier <code>gnb</code> is trained, then it is used to predict target labels based on the testing data features <code>X_test</code>. The predicted labels are stored in <code>y_pred</code>.</p>
+									<pre><code class="language-python"># Gaussian naive Bayes classifier 
+gnb = GaussianNB()  # defining the classifier object
+gnb.fit(X_train, y_train)  # training the classifier with the training set
+y_pred = gnb.predict(X_test)  # generating prediction with trained classifier</code></pre>
+									<p>Now we examine the performance of the classifier by generating a <code>confusion matrix</code>. This is done by the confusion_matrix function available in the <code>sklearn.metrics</code> library. Here, we need to provide the true target labels <code>y_test</code> as well as the predicted labels <code>y_pred</code>.</p>
+									<pre><code class="language-python"># confusion matrix
+print(confusion_matrix(y_test,y_pred))</code></pre>
+									<pre class="output">[[18  0  0]
+ [ 0 14  2]
+ [ 0  3 13]]</pre>
+									<p>As you see, there are some misclassifications in the 2nd and 3rd classes (versicolors and virginicas). We can also generate other measures of model performance with the <code>classification_report</code> function under the <code>sklearn.metrics</code> library. This function also takes arrays of target labels for the truth and the predicted. We also provide the list of target class names stored in <code>target_names</code> to the parameter <code>target_names</code> so that the output table has row headings corresponding to different target classes.</p>
+									<pre><code class="language-python"># classification report
+print(classification_report(y_test, y_pred, target_names=target_names))</code></pre>
+									<pre class="output">              precision    recall  f1-score   support
+
+      setosa       1.00      1.00      1.00        18
+  versicolor       0.82      0.88      0.85        16
+   virginica       0.87      0.81      0.84        16
+
+    accuracy                           0.90        50
+   macro avg       0.90      0.90      0.90        50
+weighted avg       0.90      0.90      0.90        50</pre>
+								</div>
+							</div>
+							<div class="mod__item mod__item--chapter">
+								<div class="content -wysiwyg">
+									<a class="btn btn--outline content__download" href="downloads/Chapter6-DataPreparation-Python.zip" download title="Download Python Code - Chapter 6">Download Code</a>
+									<h2 id="chapter-6">Data Preparation in Python</h2>
+									<h3 id="chapter-6-a">Missing Values</h3>
+									<p>If we can assume that missing values occur missing completely at random (MCAR), then we can use a number of imputation strategies available in the <code>sklearn</code> library. To demonstrate, we create some toy data sets.</p>
+									<pre><code class="language-python">import numpy as np
+import pandas as pd
+from sklearn.impute import SimpleImputer
+
+# Creating toy data sets (numerical)
+X_train = pd.DataFrame()
+X_train['X'] = [3, 2, 1, 4, 5, np.nan, np.nan, 5, 2]
+X_test = pd.DataFrame()
+X_test['X'] = [3, np.nan, np.nan]</code></pre>
+									<p>Here, we created data frames <code>X_train</code> and <code>X_test</code>, both containing a numerical data column <code>X</code>. There are some missing values in these data sets, defined by <code>np.nan</code>, a missing value available in the <code>numpy</code> library. If we examine these data frames, the missing values are indicated by <code>NaN</code>.</p>
+									<pre><code class="language-python">X_train</code></pre>
+									<pre class="output">	X
+0	3.0
+1	2.0
+2	1.0
+3	4.0
+4	5.0
+5	NaN
+6	NaN
+7	5.0
+8	2.0</pre>
+									<pre><code class="language-python">X_test</code></pre>
+									<pre class="output">	X
+0	3.0
+1	NaN
+2	NaN</pre>
+									<p>We also created data frames <code>S_train</code> and <code>S_test</code> with a string column, with some missing values indicated by <code>np.nan</code>.</p>
+									<pre><code class="language-python"># Creating toy data sets (categorical)
+S_train = pd.DataFrame()
+S_train['S'] = ['Hi', 'Med', 'Med', 'Hi', 'Low', 'Med', np.nan, 'Med', 'Hi']
+S_test = pd.DataFrame()
+S_test['S'] = [np.nan, np.nan, 'Low']</code></pre>
+									<pre><code class="language-python">S_train</code></pre>
+									<pre class="output">	S
+0	Hi
+1	Med
+2	Med
+3	Hi
+4	Low
+5	Med
+6	NaN
+7	Med
+8	Hi</pre>
+									<pre><code class="language-python">S_test</code></pre>
+									<pre class="output">	S
+0	NaN
+1	NaN
+2	Low</pre>
+									<p>We impute missing values by creating a simple imputation object <code>SimpleImputer</code> available in the <code>sklearn.impute</code> library. We define a numerical imputation object <code>imp_mean</code> as</p>
+									<pre><code class="language-python">imp_mean = SimpleImputer(missing_values=np.nan, strategy='mean')</code></pre>
+									<p>Here, the parameter <code>missing_values</code> defines which value is considered as missing. The parameter strategy defines the imputation method. In this example, we use <code>'mean'</code>, meaning that the mean of all non-missing values will be imputed. We use the <code>fit_transform</code> method and provide the <code>X_train</code> data to calculate the mean to be imputed, in addition to actually imputing missing values.</p>
+									<pre><code class="language-python">X_train_imp = imp_mean.fit_transform(X_train)</code></pre>
+									<pre><code class="language-python">X_train_imp</code></pre>
+									<pre class="output">array([[3.        ],
+       [2.        ],
+       [1.        ],
+       [4.        ],
+       [5.        ],
+       [3.14285714],
+       [3.14285714],
+       [5.        ],
+       [2.        ]])</pre>
+									<p>As you can see, missing values are imputed by the mean. We can apply this imputation strategy (with the mean calculated on the training data) to the second data <code>X_test</code> by the <code>transform</code> method.</p>
+									<pre><code class="language-python">X_test_imp = imp_mean.transform(X_test)</code></pre>
+									<pre><code class="language-python">X_test_imp</code></pre>
+									<pre class="output">array([[3.        ],
+       [3.14285714],
+       [3.14285714]])</pre>
+									<p>For categorical or string data, we can impute most frequent value by specifying the parameter <code>strategy</code> to <code>'most-frequent'</code> in the <code>SimpleImputer</code> object. Here, we define the imputation object <code>imp_mode</code> imputing the most frequent category from the <code>S_train</code> data to both <code>S_train</code> and <code>S_test</code> data sets.</p>
+									<pre><code class="language-python"># Imputing categorical data with mode
+imp_mode = SimpleImputer(missing_values=np.nan, strategy='most_frequent')
+S_train_imp = imp_mode.fit_transform(S_train)
+S_test_imp = imp_mode.transform(S_test)</code></pre>
+									<pre><code class="language-python">S_train_imp</code></pre>
+									<pre class="output">array([['Hi'],
+       ['Med'],
+       ['Med'],
+       ['Hi'],
+       ['Low'],
+       ['Med'],
+       ['Med'],
+       ['Med'],
+       ['Hi']], dtype=object)</pre>
+									<pre><code class="language-python">S_test_imp</code></pre>
+									<pre class="output">array([['Med'],
+       ['Med'],
+       ['Low']], dtype=object)</pre>
+									<h3 id="chapter-6-b">Normalization and Scaling</h3>
+									<p>For this example, we shall use the Iris data set again. We load the Iris data and split to training and testing data, with the testing data comprising 1/3 of all observations.</p>
+									<pre><code class="language-python">from sklearn import datasets
+from sklearn.preprocessing import StandardScaler, MinMaxScaler
+from sklearn.model_selection import train_test_split
+
+# loading the Iris data
+iris = datasets.load_iris()
+X = iris.data  # array for the features
+y = iris.target  # array for the target
+feature_names = iris.feature_names   # feature names
+target_names = iris.target_names   # target names
+
+# spliting the data into training and testing data sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.333,
+                                                    random_state=2020)</code></pre>
+									<p>We can normalize the data to Z-scores using the StandardScaler transformation object, as we have seen in a previous chapter. The transformation object is trained with the testing data <code>X_train</code> with the <code>fit_transform</code> method. Then the trained transformation is applied to the testing data with the <code>transformation</code> method.</p>
+									<pre><code class="language-python"># z-score normalization
+normZ = StandardScaler()
+X_train_Z = normZ.fit_transform(X_train)
+X_test_Z = normZ.transform(X_test)</code></pre>
+									<p>The resulting means and standard deviations for the normalized training data set are:</p>
+									<pre><code class="language-python">X_train_Z.mean(axis=0)</code></pre>
+									<pre class="output">array([-2.17187379e-15,  1.35447209e-16,  1.24344979e-16,  2.19407825e-16])</pre>
+									<pre><code class="language-python">X_train_Z.std(axis=0)</code></pre>
+									<pre class="output">array([1., 1., 1., 1.])</pre>
+									<p>Likewise, the means and standard deviations of the normalized testing data set are:</p>
+									<pre><code class="language-python">X_test_Z.mean(axis=0)</code></pre>
+									<pre class="output">array([-0.17055031, -0.10396525, -0.10087131, -0.04575343])</pre>
+									<pre><code class="language-python">X_test_Z.std(axis=0)</code></pre>
+									<pre class="output">array([0.94189599, 0.8734677 , 1.00463184, 0.97844516])</pre>
+									<p>To apply a min-max scaling, thus scaling all features in the [0, 1] interval, we can use the <code>MinMaxScaler</code> object available in the <code>sklearn.preprocessing</code> library.</p>
+									<pre><code class="language-python"># min-max normalization
+normMinMax = MinMaxScaler()
+X_train_MinMax = normMinMax.fit_transform(X_train)
+X_test_MinMax = normMinMax.transform(X_test)</code></pre>
+									<p>Let's examine the minimum and the maximum of the normalized training data.</p>
+									<pre><code class="language-python">X_train_MinMax.min(axis=0)</code></pre>
+									<pre class="output">array([0., 0., 0., 0.])</pre>
+									<pre><code class="language-python">X_train_MinMax.max(axis=0)</code></pre>
+									<pre class="output">array([1., 1., 1., 1.])</pre>
+									<p>Likewise, the minimum and the maximum of the normalized testing data. It should be noted that the minimum and the maximum used in the transformation were determined based on the training data. Thus there is no guarantee that the minimum and the maximum fall within the interval [0, 1].</p>
+									<pre><code class="language-python">X_test_MinMax.max(axis=0)</code></pre>
+									<pre class="output">array([0.02777778, 0.08333333, 0.03389831, 0.04166667])</pre>
+									<pre><code class="language-python">X_test_MinMax.max(axis=0)</code></pre>
+									<pre class="output">array([0.94444444, 0.75      , 0.96610169, 1.        ])</pre>
+								</div>
+							</div>
+							<div class="mod__item mod__item--chapter">
+								<div class="content -wysiwyg">
+									<a class="btn btn--outline content__download" href="downloads/Chapter7-FindingPatterns-Python.zip" download title="Download Python Code - Chapter 7">Download Code</a>
+									<h2 id="chapter-7">Finding Patterns in Python</h2>
+									<h3 id="chapter-7-a">Hierarchical Clustering</h3>
+									<p>In this example, we apply hierarchical clustering to the Iris data. The data is first normalized with the <code>StandardScaler</code> object.</p>
+									<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+from sklearn import datasets
+from sklearn.preprocessing import StandardScaler
+from sklearn.cluster import AgglomerativeClustering, KMeans, DBSCAN
+
+# Loading the iris data
+iris = datasets.load_iris()
+X = iris.data  # array for the features
+y = iris.target  # array for the target
+feature_names = iris.feature_names   # feature names
+target_names = iris.target_names   # target names
+
+# z-score normalization using fit_transform method
+X_norm = StandardScaler().fit_transform(X)</code></pre>
+									<p>Then the hierarchical clustering is implemented as an <code>AgglomerativeClustering</code> object available in the <code>sklearn.cluster</code> library. We set the number of clusters to 3 by setting the <code>n_clusters</code> parameter. We use the Ward method for linkage calculation by setting the <code>linkage</code> parameter.</p>
+									<pre><code class="language-python"># Hierarchical clustering
+hc = AgglomerativeClustering(n_clusters=3, linkage='ward')</code></pre>
+									<p>Then we learn from the normalized data <code>X_norm</code> by using the <code>fit</code> method associated with the clustering object hc. The resulting cluster assignments are stored in the attribute <code>labels_</code> of the transformation object <code>hc</code>. We store this information in the array <code>y_clus</code>.</p>
+									<pre><code class="language-python">hc.fit(X_norm)  # actually fitting the data
+y_clus = hc.labels_   # clustering info resulting from hierarchical</code></pre>
+									<p>We visualize the resulting clusters with a scatter plot, plotting the sepal length on the x-axis and the petal width on the y-axis. Different clusters are indicated by different colors.</p>
+									<pre><code class="language-python"># Plotting the clusters
+plt.scatter(X_norm[:,3],X_norm[:,0],c=y_clus,marker='+')
+plt.show()</code></pre>
+									<figure class="output">
+										<img src="assets/img/c7-python-scatterplot_1.png" alt="result cluster with scatter plot" />
+									</figure>
+									<p>Next, we generate a <p>dendrogram</p> describing distances between different clusters. To do so, we use the <code>linkage</code> function to calculate distances between observations, and the <code>dendrogram</code> function to plot the actual dendrogram. Both functions are available in the <code>scipy.cluster.hierarchy</code> library. In the linkage function, we provide the normalized features <code>X_norm</code> and the linkage method <code>ward</code> (for the Ward method). The resulting distance matrix <code>D</code> is then used in the <code>dendrogram</code> function.</p>
+									<pre><code class="language-python">from scipy.cluster.hierarchy import dendrogram, linkage
+
+D = linkage(X_norm, 'ward')
+dn = dendrogram(D)
+plt.show()</code></pre>
+									<figure class="output">
+										<img src="assets/img/c7-python-dendrogram_1.png" alt="dendrogram" />
+									</figure>
+									<h3 id="chapter-7-b">K-means clustering</h3>
+									<p>K-means clustering is implemented as the <code>KMeans</code> transformation object available in the <code>sklearn.cluster</code> library. We define the clustering object <code>km</code> with the number of clusters <code>n_clusters=3</code>. We learn from the normalized data <code>X_norm</code>, and store the resulting cluster assignment information in the array <code>y_clus</code>.</p>
+									<pre><code class="language-python"># K-means clustering
+km = KMeans(n_clusters=3)  # defining the clustering object
+km.fit(X)  # actually fitting the data
+y_clus = km.labels_   # clustering info resulting from K-means</code></pre>
+									<p>As before, we plot the normalized sepal length (x-axis) vs the normalized petal width (y-axis), with different clusters indicated by different colors.</p>
+									<pre><code class="language-python"># Plotting the clusters
+plt.scatter(X_norm[:,3],X_norm[:,0],c=y_clus,marker='+')
+plt.show()</code></pre>
+									<figure class="output">
+										<img src="assets/img/c7-python-scatterplot_2.png" alt="Plotting the clusters" />
+									</figure>
+									<p>As in many clustering algorithms, you have to specify the number of clusters K in the k-means clustering method. What can we do if we do not know the number of clusters beforehand? One way we can determine the number of clusters is to plot the sum of squared distances from cluster centroids (i.e., how far observations are from the centrolids), also known as the inertia. We can get the inertia from k-means clustering by the attribute <code>inertia_</code>.</p>
+									<p>We run the K-means algorithm with different numbers of clusters, and calculate the corresponding inertiae. Then we plot the inertiae against the number of clusters. The inertia decreases as the number of clusters increases. However, there is an elbow in this plot where the rate of decrease slows down. In this particular example, we calculate the inertia up to 20 clusters.</p>
+									<pre><code class="language-python">SSE = []
+for iClus in range(1,21):
+    # K-means clustering
+    km = KMeans(n_clusters=iClus)  # K-means with a given number of clusters
+    km.fit(X_norm)  # fitting the principal components
+    SSE.append(km.inertia_) # recording the sum of square distances</code></pre>
+									<p>In brief, we use a for loop to run k-means clustering with k=1 to 20 clusters. With for each value of k, we record the corresponding inertia and store in a list <code>SSE</code>. Then we plot k (number of clusters, x-axis) against the inertiae (y-axis).</p>
+									<pre><code class="language-python"># plotting the sum of square distance (a.k.a., inertia)
+plt.plot(np.arange(1,21),SSE,marker = "o")
+plt.xlabel('Number of clusters')
+plt.ylabel('Inertia')
+plt.show()</code></pre>
+									<figure class="output">
+										<img src="assets/img/c7-python-scatterplot_3.png" alt="plotting the sum of square distance (a.k.a., inertia)" />
+									</figure>
+									<p>In the plot, the rate of decrease seems to slow down (i.e., the elbow) at k=3. It should be noted that this elbow method is somewhat subjective; someone can easily choose k=2 or k=4 as the elbow. Moreover, this method requires repeating k-means clustering many times, which may not be possible for large data.</p>
+									<h3 id="chapter-7-c">DBSCAN clustering</h3>
+									<p>DBSCAN clustering is implemented as the <code>DBSCAN</code> transformation object available in the <code>sklearn.cluster</code> library. We define the clustering object <code>dbscan</code>, and we learn from the normalized data <code>X_norm</code>, and store the resulting cluster assignment information in the array <code>y_clus</code>. In addition, the indices for core points are available as the attribute <code>core_sample_indices_</code> so we store that information in „code.</p>
+									<pre><code class="language-python"># DBSCAN clustering
+dbscan = DBSCAN()  # defining the clustering object
+dbscan.fit(X_norm)  # fitting the data
+y_clus = dbscan.labels_   # cluster labels
+indCore = dbscan.core_sample_indices_   # indices of core points</code></pre>
+									<p>As before, we plot the normalized sepal length (x-axis) vs the normalized petal width (y-axis), with different clusters indicated by different colors. A cluster index of -1 corresponds to a noise points, whereas all the other indices are integers corresponding to different clusters. In the plot, core points are plotted with larger markers, and noise points are plotted in red.</p>
+									<pre><code class="language-python"># plotting non-noise points
+plt.scatter(X_norm[y_clus>0,3],X_norm[y_clus>0,0], c=y_clus[y_clus>0],
+            marker='o', s=10)
+# plotting core points
+plt.scatter(X_norm[indCore,3], X_norm[indCore,0],c=y_clus[indCore],
+            marker='o', s=100)
+# plotting noise points
+plt.scatter(X_norm[y_clus==-1,3],X_norm[y_clus==-1,0], c='r',
+            marker='o', s=10)
+plt.show()</code></pre>
+									<figure class="output">
+										<img src="assets/img/c7-python-scatterplot_4.png" alt="plotting non-noise points" />
+									</figure>
+								</div>
+							</div>
+							<div class="mod__item mod__item--chapter">
+								<div class="content -wysiwyg">
+									<a class="btn btn--outline content__download" href="downloads/Chapter8-FindingExplanations-Python.zip" download title="Download Python Code - Chapter 8">Download Code</a>
+									<h2 id="chapter-8">Finding Explanations</h2>
+
+									<h3 id="chapter-8-a">Decision tree</h3>
+									<p>In this example, we will construct a decision tree for the Iris data. First, we load the data set as before, and split it into the training (N=100) and testing (N=50) data sets.</p>
+									<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_iris
+from sklearn.tree import DecisionTreeClassifier, plot_tree
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import confusion_matrix, classification_report
+
+# Loading data
+iris = load_iris()
+X = iris.data
+y = iris.target
+feature_names = iris.feature_names
+target_names = iris.target_names
+
+# spliting the data into training and testing data sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=50,
+                                                    random_state=2020)</code></pre>
+                                    <p>Next, we define a decision tree classification object <code>DecisionTreeClassifier</code> available under the <code>sklearn.tree</code> library. As we define the classifier object <code>dt</code>, we use the entropy criterion (<code>criterion='entropy'</code>) to describe sample inhomogeneity at each node. We also set the minimum leaf size <code>min_samples_leaf</code> to 3 and the maximum tree depth <code>max_depth</code> to 4 in order to avoid overfitting. We seed the random number generator for this algorithm with the random seed <code>random_state=0</code>.</p>
+									<pre><code class="language-python"># decision tree classifier
+dt = DecisionTreeClassifier(criterion='entropy',
+                            min_samples_leaf = 3,
+                            max_depth = 4,
+                            random_state=0)</code></pre>
+                            		<p>Then we train he classifier with the <code>fit</code> method.</p>
+									<pre><code class="language-python">dt.fit(X_train,y_train)</code></pre>
+									<pre class="output">DecisionTreeClassifier(ccp_alpha=0.0, class_weight=None, criterion='entropy',
+                       max_depth=4, max_features=None, max_leaf_nodes=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=3, min_samples_split=2,
+                       min_weight_fraction_leaf=0.0, presort='deprecated',
+                       random_state=0, splitter='best')</pre>
+                        			<p>The trained classifier is then used to generate prediction on the testing data.</p>
+									<pre><code class="language-python"># classification on the testing data set
+y_pred = dt.predict(X_test)</code></pre>
+									<p>The confusion matrix and the classification report are generated.</p>
+									<pre><code class="language-python">print(confusion_matrix(y_test,y_pred))</code></pre>
+									<pre class="output">[[18  0  0]
+ [ 0 14  2]
+ [ 0  1 15]]</pre>
+ 									<pre><code class="language-python">print(classification_report(y_test, y_pred,
+                            target_names=target_names))</code></pre>
+									<pre class="output">              precision    recall  f1-score   support
+
+      setosa       1.00      1.00      1.00        18
+  versicolor       0.93      0.88      0.90        16
+   virginica       0.88      0.94      0.91        16
+
+    accuracy                           0.94        50
+   macro avg       0.94      0.94      0.94        50
+weighted avg       0.94      0.94      0.94        50</pre>
+									<p>The resulting decision tree can be visualized by the <code>plot_tree</code> function available in the <code>sklearn.tree</code> library. The trained classifier is passed on as the required input parameter, along with the feature names and class names.</p>
+									<pre><code class="language-python"># plotting the tree
+plt.figure(figsize=[7.5,7.5])
+plot_tree(dt, feature_names=feature_names, class_names=target_names)
+plt.show()</code></pre>
+									<figure class="output">
+										<img src="assets/img/c8-python-tree_1.png" alt="Python Tree" />
+									</figure>
+
+									<h3 id="chapter-8-b">Regression</h3>
+									<p>Least square linear regression is implemented with a <code>LinearRegression</code> object available in the <code>sklearn.linear_model</code> library. In this example, we model the petal width from the Iris data as the dependent variable, and the three other features as the regressors.</p>
+									<pre><code class="language-python">from sklearn.linear_model import LinearRegression
+
+# Target is petal width
+y = iris.data[:,3]
+# All the other variables are input features
+X = iris.data[:,:3]</code></pre>
+									<p>Now we fit a regression model with the <code>fit</code> method. The resulting predictor object is referred as <code>reg</code>.</p>
+									<pre><code class="language-python"># linear regression learner
+reg = LinearRegression().fit(X,y)</code></pre>
+									<p>The information regarding the regression model can be examined with various methods and attributes, such as the R-square (with the <code>.score</code> method)</p>
+									<pre><code class="language-python">reg.score(X,y)</code></pre>
+									<pre class="output">0.9378502736046809</pre>
+									<p>as well as the regression coefficients (with the <code>coef_</code> attribute) and the intercept (with the <code>.intercept_</code> attribute).</p>
+									<pre><code class="language-python">reg.coef_</code></pre>
+									<pre class="output">array([-0.20726607,  0.22282854,  0.52408311])</pre>
+									<pre><code class="language-python">reg.intercept_</code></pre>
+									<pre class="output">-0.24030738911225824</pre>
+									<p>Finally, we are plotting the sepal length against the petal width, with the predicted regression line overlaid on observed data.</p>
+									<pre><code class="language-python"># Observed vs predicted plot
+y_pred = reg.predict(X)
+plt.plot(X[:,0], y, 'b.', label='observed')
+plt.plot([X[:,0].min(), X[:,0].max()], [y_pred.min(), y_pred.max()],
+         'r-', label='predicted')
+plt.xlabel('Sepal length')
+plt.ylabel('Petal width')
+plt.legend()
+plt.show()</code></pre>
+									<figure class="output">
+										<img src="assets/img/c8-python-boxplot_1.png" alt="Python Boxplot" />
+									</figure>
+								</div>
+							</div>
+							<div class="mod__item mod__item--chapter">
+								<div class="content -wysiwyg">
+									<a class="btn btn--outline content__download" href="downloads/Chapter9-Predictors-Python.zip" download title="Download Python Code - Chapter 9">Download Code</a>
+									<h2 id="chapter-9">Predictors </h2>
+
+									<h3 id="chapter-9-a">Nearest Neighbor Classifiers</h3>
+									<p>In this example, we will construct a nearest neighbor classifier for the Iris data. First, we load the data set as before, and split it into the training (N=100) and testing (N=50) data sets.</p>
+									<pre><code class="language-python">import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.datasets import load_iris
+from sklearn.model_selection import train_test_split
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.metrics import confusion_matrix, classification_report
+
+# Loading data
+iris = load_iris()
+X = iris.data
+y = iris.target
+feature_names = iris.feature_names
+target_names = iris.target_names
+
+# spliting the data into training and testing data sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=50,
+                                                    random_state=2020)</code></pre>
+                                    <p>Next, we define a nearest neighbor classification object <code>Then we train he classifier with the fit method.</code> available under the s<code>klearn.neighbors</code> library. As we define the classifier object <code>kNN</code>, we use the number of neighbors <code>k=5</code>. We use <code>uniform</code> weighting for the parameter <code>weights</code>.</p>
+									<pre><code class="language-python">kNN = KNeighborsClassifier(5, weights='uniform')</code></pre>
+									<p>Then we train he classifier with the <code>fit</code> method.</p>
+									<pre><code class="language-python">kNN.fit(X_train,y_train)</code></pre>
+									<pre class="output">KNeighborsClassifier(algorithm='auto', leaf_size=30, metric='minkowski',
+                     metric_params=None, n_jobs=None, n_neighbors=5, p=2,
+                     weights='uniform')</pre>
+                     				<p>The trained classifier is then used to generate prediction on the testing data.</p>
+									<pre><code class="language-python">y_pred = kNN.predict(X_test)</code></pre>
+									<p>The confusion matrix and the classification report are generated.</p>
+									<pre><code class="language-python">print(confusion_matrix(y_test,y_pred))</code></pre>
+									<pre class="output">[[18  0  0]
+ [ 0 14  2]
+ [ 0  2 14]]
+</pre>
+									<pre><code class="language-python">print(classification_report(y_test, y_pred, target_names=target_names))</code></pre>
+									<pre class="output">              precision    recall  f1-score   support
+
+      setosa       1.00      1.00      1.00        18
+  versicolor       0.88      0.88      0.88        16
+   virginica       0.88      0.88      0.88        16
+
+    accuracy                           0.92        50
+   macro avg       0.92      0.92      0.92        50
+weighted avg       0.92      0.92      0.92        50</pre>
+
+									<h3 id="chapter-9-b">Neural Networks</h3>
+									<p>We use a multilayer perceptron (MLP) to classify species in the Iris data set. We define an MLP classifier object <code>MLPClassifier</code> available under the <code>sklearn.neural_network</code> library. As we define the classifier object <code>mlp</code>, we use the stochastic gradient descent solver (<code>solver=sgd</code>). We use 2 hidden layers 4 and 2 neurons, as defined by the parameter <code>hidden_layer_sizes=(4, 2)</code>.</p>
+									<pre><code class="language-python">from sklearn.neural_network import MLPClassifier
+
+mlp = MLPClassifier(solver='sgd',
+                    hidden_layer_sizes=(4, 2), random_state=2020)</code></pre>
+                    				<p>Then we train he network with the <code>fit</code> method.</p>
+									<pre><code class="language-python">mlp.fit(X_train,y_train)</code></pre>
+									<pre class="output">/home/satoru/.local/lib/python3.6/site-packages/sklearn/neural_network/_multilayer_perceptron.py:571: ConvergenceWarning: Stochastic Optimizer: Maximum iterations (200) reached and the optimization hasn't converged yet.
+  % self.max_iter, ConvergenceWarning)</pre>
+  									<pre class="output">MLPClassifier(activation='relu', alpha=0.0001, batch_size='auto', beta_1=0.9,
+              beta_2=0.999, early_stopping=False, epsilon=1e-08,
+              hidden_layer_sizes=(4, 2), learning_rate='constant',
+              learning_rate_init=0.001, max_fun=15000, max_iter=200,
+              momentum=0.9, n_iter_no_change=10, nesterovs_momentum=True,
+              power_t=0.5, random_state=2020, shuffle=True, solver='sgd',
+              tol=0.0001, validation_fraction=0.1, verbose=False,
+              warm_start=False)</pre>
+              						<p>The trained network is then used to generate prediction on the testing data.</p>
+									<pre><code class="language-python">y_pred = mlp.predict(X_test)</code></pre>
+									<p>The confusion matrix and the classification report are generated.</p>
+									<pre><code class="language-python">print(confusion_matrix(y_test,y_pred))</code></pre>
+									<pre class="output">[[18  0  0]
+ [ 0 14  2]
+ [ 0  2 14]]</pre>
+ 									<pre><code class="language-python">print(classification_report(y_test, y_pred, target_names=target_names))</code></pre>
+									<pre class="output">              precision    recall  f1-score   support
+
+      setosa       1.00      1.00      1.00        18
+  versicolor       0.88      0.88      0.88        16
+   virginica       0.88      0.88      0.88        16
+
+    accuracy                           0.92        50
+   macro avg       0.92      0.92      0.92        50
+weighted avg       0.92      0.92      0.92        50</pre>
+
+									<h3 id="chapter-9-c">Support Vector Machines</h3>
+									<p>Support vector machine (SVM) classifier and regression models are available under the <code>sklearn.svm</code> library as <code>SVC</code> and <code>SVR</code>, respectively. For the SVM classifier, we define a classifier object <code>svc</code> with the linear kernel (<code>kernel='linear'</code>) and a somewhat soft margin (<code>C=1.0</code>).</p>
+									<pre><code class="language-python">from sklearn.svm import SVC, SVR
+
+svc = SVC(kernel='linear', C=0.1)</code></pre>
+									<p>Then we train the classifier on the training data from the Iris data set.</p>
+									<pre><code class="language-python">svc.fit(X_train,y_train)</code></pre>
+									<pre class="output">SVC(C=0.1, break_ties=False, cache_size=200, class_weight=None, coef0=0.0,
+    decision_function_shape='ovr', degree=3, gamma='scale', kernel='linear',
+    max_iter=-1, probability=False, random_state=None, shrinking=True,
+    tol=0.001, verbose=False)</pre>	
+    								<p>And we use the trained model for prediction.</p>
+									<pre><code class="language-python">y_pred = svc.predict(X_test)   # predicted class</code></pre>
+									<p>The confusion matrix and the classification report are generated.</p>
+									<pre><code class="language-python">print(confusion_matrix(y_test,y_pred))</code></pre>
+									<pre class="output">[[18  0  0]
+ [ 0 15  1]
+ [ 0  3 13]]</pre>	
+ 									<pre><code class="language-python">print(classification_report(y_test, y_pred, target_names=target_names))</code></pre>
+									<pre class="output">              precision    recall  f1-score   support
+
+      setosa       1.00      1.00      1.00        18
+  versicolor       0.83      0.94      0.88        16
+   virginica       0.93      0.81      0.87        16
+
+    accuracy                           0.92        50
+   macro avg       0.92      0.92      0.92        50
+weighted avg       0.92      0.92      0.92        50</pre>	
+									<p>For support vector regression, we try to model the petal width with all the other features. First, we define a regression model object <code>svr</code> with the linear kernel and a soft margin (<code>kernel='linear'</code> and <code>C=0.1</code>, respectively).</p>
+									<pre><code class="language-python">svr = SVR(kernel='linear', C=0.1)</code></pre>
+									<p>Then we train the regression model with the features and the target variable from the training data.</p>
+									<pre><code class="language-python">svr.fit(X_train[:,:3],X_train[:,3])</code></pre>
+									<pre class="output">SVR(C=0.1, cache_size=200, coef0=0.0, degree=3, epsilon=0.1, gamma='scale',
+    kernel='linear', max_iter=-1, shrinking=True, tol=0.001, verbose=False)</pre>	
+    								<p>Then we calculate predicted values of the petal width based on the available features in the testing data.</p>					<pre><code class="language-python">y_pred = svr.predict(X_test[:,:3])</code></pre>
+    								<p>We assess the performance of the model by calculating 𝑅<sup>2</sup> statistic with the <code>r2_score</code> function in the <code>sklearn.metrics</code> library.</p>
+									<pre><code class="language-python">from sklearn.metrics import r2_score
+
+print(r2_score(X_test[:,3], y_pred))
+</code></pre>
+									<pre class="output">0.9427223321100942</pre>
+									<p>We now visualize the observed and predicted target variables by a scatter plot of the sepal length against the petal width.</p>
+									<pre><code class="language-python"># plotting observed vs predicted (sepal length on x-axis)
+plt.plot(X_test[:,0], X_test[:,3],'b.', label='observed')
+plt.plot(X_test[:,0], y_pred, 'r.', label='predicted')
+plt.xlabel(feature_names[0])
+plt.ylabel(feature_names[3])
+plt.legend()
+plt.show()</code></pre>
+									<figure class="output">
+										<img src="assets/img/c9-python-boxplot_1.png" alt="Python Boxplot" />
+									</figure>
+
+									<h3 id="chapter-9-d">Ensemble Methods</h3>
+									<p>As an example of ensemble methods, we train a random forest classifier and use it to predict the Iris species. A random forest classifier is available as <code>RandomForestClassifier</code> in the <code>sklearn.ensemble</code> library. We define a random forest classifier object <code>rf</code>, with the following parameters:</p>
+									<ul><li>Criterion: <code>criterion = 'entropy'</code></li>
+									<li>Number of trees: <code>n_estimators = 100</code></li>
+									<li>Minimum leaf size: <code>min_samples_leaf = 3</code></li>
+									<li>Maximum tree depth: <code>max_depth = 4</code></li></ul> 
+									<pre><code class="language-python">from sklearn.ensemble import RandomForestClassifier
+
+rf = RandomForestClassifier(criterion='entropy',
+                            n_estimators = 100,
+                            min_samples_leaf = 3,
+                            max_depth = 4,
+                            random_state=2020)</code></pre>
+                            		<p>Then the model <code>rf</code> is trained with the training data.</p>
+									<pre><code class="language-python">rf.fit(X_train,y_train)</code></pre>
+									<pre class="output">RandomForestClassifier(bootstrap=True, ccp_alpha=0.0, class_weight=None,
+                       criterion='entropy', max_depth=4, max_features='auto',
+                       max_leaf_nodes=None, max_samples=None,
+                       min_impurity_decrease=0.0, min_impurity_split=None,
+                       min_samples_leaf=3, min_samples_split=2,
+                       min_weight_fraction_leaf=0.0, n_estimators=100,
+                       n_jobs=None, oob_score=False, random_state=2020,
+                       verbose=0, warm_start=False)</pre>	
+                       				<p>Predictions are made on the testing data.</p>
+									<pre><code class="language-python">y_pred = rf.predict(X_test)</code></pre>
+									<p>The confusion matrix and the classification report are generated.</p>
+									<pre><code class="language-python">print(confusion_matrix(y_test,y_pred))</code></pre>
+									<pre class="output">[[18  0  0]
+ [ 0 14  2]
+ [ 0  3 13]]</pre>	
+ 									<pre><code class="language-python">print(classification_report(y_test, y_pred,
+                            target_names=target_names))</code></pre>
+									<pre class="output">              precision    recall  f1-score   support
+
+      setosa       1.00      1.00      1.00        18
+  versicolor       0.82      0.88      0.85        16
+   virginica       0.87      0.81      0.84        16
+
+    accuracy                           0.90        50
+   macro avg       0.90      0.90      0.90        50
+weighted avg       0.90      0.90      0.90        50
+</pre>	
+								</div>
+							</div>
+						</div>
+					</section>
+
+				</main>
+			</section>
+		</div>
+
+		<footer class="page__footer">
+			<div class="footer__body">
+				<div class="footer__item footer__item--title">
+					<h2>Guide to Intelligent Data Science<br>
+						<span>How to Intelligently Make Use of Real Data</span></h2>
+					<a class="btn" href="#" target="_blank">Buy now</a>
+				</div>
+				<div class="footer__item footer__item--data">
+					<ul>
+						<li>
+							<strong>Copyright</strong>
+							<p>2020</p>
+						</li>
+						<li>
+							<strong>eBook ISBN</strong>
+							<p>978-3-030-45573-6</p>
+						</li>
+						<li>
+							<strong>Publisher</strong>
+							<p>Springer International Publishing</p>
+						</li>
+						<li>
+							<strong>DOI</strong>
+							<p>10.1007/978-3-030-45573-6</p>
+						</li>
+						<li>
+							<strong>Copyright Holder</strong>
+							<p>Springer Nature Switzerland AG</p>
+						</li>
+						<li>
+							<strong>Hardcover ISBN</strong>
+							<p>978-3-030-45573-6</p>
+						</li>
+					</ul>
+				</div>
+				<div class="footer__item footer__item--nav">
+					<nav class="nav-footer" role="navigation">
+						<ul class="menu">
+							<li class="menu__item">
+								<a href="mailto:info@datascienceguide.org">Contact</a>
+							</li>
+							<li class="menu__item">
+								<a href="imprint.html">Imprint</a>
+							</li>
+							<li class="menu__item">
+								<a href="errata.html">Errata</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</footer>
+
+		<div class="page__offcanvas" role="navigation">
+			<div class="offcanvas__body">
+				<nav class="nav-offcanvas nav-offcanvas--primary" role="navigation">
+					<ul class="menu">
+						<li class="menu__item">
+							<a href="index.html">About the Book</a>
+						</li>
+						<li class="menu__item">
+							<a href="contents-and-teaching-material.html -active">Contents & Teaching Material</a>
+						</li>
+						<li class="menu__item">
+							<a href="https://www.springer.com/gp/book/9783030455736" target="_blank">Buy Book</a>
+						</li>
+					</ul>
+				</nav>
+				<nav class="nav-offcanvas nav-offcanvas--secondary" role="navigation">
+					<ul class="menu">
+						<li class="menu__item">
+							<a href="mailto:info@datascienceguide.org">Contact</a>
+						</li>
+						<li class="menu__item">
+							<a href="imprint.html">Imprint</a>
+						</li>
+						<li class="menu__item">
+							<a href="errata.html">Errata</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+		<script src="assets/js/lib/babel-polyfill.min.js"></script>
+		<script src="assets/js/lib/conditionizr.min.js"></script>
+		<script src="assets/js/lib/jquery-3-5-1.min.js"></script>
+		<script src="assets/js/lib/svg4everybody.min.js"></script>
+		<script src="assets/js/scripts.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<script type="application/ld+json">
+			{
+				 "@context" 	: "http://schema.org",
+				 "@type" 		: "WebPage",
+				 "mainEntity" 	: {
+					"@type" 		: "Book",
+					"author" 		: [
+						{
+							"@type" 		: "Person",
+							"name" 			: "Michael R. Berthold"
+						},
+						{
+							"@type" 		: "Person",
+							"name" 			: "Christian Borgelt"
+						},
+						{
+							"@type"			: "Person",
+							"name" 			: "Frank Höppner"
+						},
+						{
+							"@type"			: "Person",
+							"name"			: "Frank Klawonn"
+						},
+						{
+							"@type"			: "Person",
+							"name"			: "Rosaria Silipo"
+						}
+					],
+					"bookEdition" 	: "2nd Edition",
+					"copyrightYear" : "2020",
+					"copyrightHolder" : "Springer Nature Switzerland AG",
+					"datePublished" : "2020-07-15",
+					"genre"			: "Data Science",
+					"image" 		: "https://images.springer.com/sgw/books/medium/9783030455736.jpg",
+					"inLanguage" 	: "en",
+					"name" 			: "Guide to Intelligent Data Science",
+					"numberOfPages" : "418",
+					"publisher" 	: {
+						"@type" 		: "Organization",
+						"name" 			: "Springer International Publishing"
+					},
+					"url" 			: "https://www.springer.com/book/9783030455736",
+					"workExample"	: [
+						{
+							"@type" 		: "Book",
+							"bookFormat" 	: "http://schema.org/EBook",
+							"isbn" 			: "978-3-030-45574-3",
+							"fileFormat" 	: "application/pdf",
+							"offers" 		: {
+								"@type" 		: "Offer",
+								"price" 		: "69.99",
+								"priceCurrency" : "USD",
+								"url" 			: "https://www.springer.com/book/9783030455736"
+							}
+						},
+						{
+							"@type" 		: "Book",
+							"bookFormat" 	: "http://schema.org/Hardcover",
+							"isbn" 			: "978-3-030-45573-6",
+							"offers" 		: {
+								"@type" 		: "Offer",
+								"price" 		: "89.99",
+								"priceCurrency" : "USD",
+								"url" 			: "https://www.springer.com/book/9783030455736"
+							}
+						}
+					]
+				 }
+			}
+		</script>
+
+	</body>
+</html>

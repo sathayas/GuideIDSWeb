@@ -1,0 +1,922 @@
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<meta name="format-detection" content="telephone=no">
+
+		<meta name="robots" content="index follow" />
+		<meta name="description" content="A collection of R code snippets implementing analysis methods described in the book. Also includes short descriptions of specific libraries and functions associated with the snippets, along with example outputs." />
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:title" content="R Code Snippets" />
+		<meta property="og:site_name" content="Guide to Intelligent Data Science" />
+		<meta property="og:description" content="A collection of R code snippets implementing analysis methods described in the book. Also includes short descriptions of specific libraries and functions associated with the snippets, along with example outputs." />
+		<meta property="og:url" content="datascienceguide.org" />  
+		<meta property="og:type" content="book" />
+		<meta property="og:image" content="" />
+		<meta property="book:author" content="Michael R. Berthold, Christian Borgelt, Frank Höppner, Frank Klawonn, Rosaria Silipo" />
+		<meta property="book:isbn" content="978-3-030-45573-6" />
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="R Code Snippets" />
+		<meta name="twitter:site" content="@datascienceguide" />
+		<meta name="twitter:description" content="A collection of R code snippets implementing analysis methods described in the book. Also includes short descriptions of specific libraries and functions associated with the snippets, along with example outputs." />
+		<meta name="twitter:image" content="" /> 
+
+		<title>R Code Snippets / Guide to Intelligent Data Science</title>
+
+		<link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" href="assets/img/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="assets/img/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="mask-icon" href="assets/img/favicons/safari-pinned-tab.svg" color="#e53736">
+		<link rel="shortcut icon" href="assets/img/favicons/favicon.ico">
+		<meta name="msapplication-TileColor" content="#e53736">
+		<meta name="theme-color" content="#ffffff">
+		<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&family=Source+Sans+Pro:wght@300;700&family=Source+Serif+Pro&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="assets/css/styles.min.css" type="text/css" />
+		<script src="assets/js/lib/modernizr-custom.min.js"></script>
+
+	</head>
+	<body class="page page--contents">
+		<noscript><div class="no-js"></div></noscript>
+		<header class="page__header" role="banner">
+			<div class="header__body">
+				<div class="header__item header__item--title">
+					<a class="header__title" href="index.html" target="_self">
+						Guide to Intelligent Data Science
+					</a>
+				</div>
+				<div class="header__item header__item--nav-primary">
+					<nav class="nav-header nav-header--primary" role="navigation">
+						<ul class="menu">
+							<li class="menu__item">
+								<a href="index.html">About the Book</a>
+							</li>
+							<li class="menu__item -active">
+								<a href="contents-and-teaching-material.html">Contents & Teaching Material</a>
+							</li>
+							<li class="menu__item">
+								<a href="https://www.springer.com/gp/book/9783030455736" target="_blank">Buy Book</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+				<div class="header__item header__item--nav-min">
+					<nav class="nav-header nav-header--min" role="navigation">
+						<button class="menu-toggle">
+							<span class="icon"></span>
+						</button>
+					</nav>
+				</div>
+			</div>
+		</header>
+
+		<div class="page__body">
+
+			<section class="layout layout--contents">
+
+				<aside class="layout__aside">
+					<section class="mod mod-nav-contents">
+						<div class="mod__body">
+							<div class="mod__item mod__item--back">
+								<a class="link" href="contents-and-teaching-material.html"><span class="link__icon"><img class="svg" src="assets/img/arrow-back.svg" /></span><span class="link__label">Back</span></a>
+							</div>
+							<div class="mod__item mod__item--nav" id="nav-contents"></div>	
+						</div>
+					</section>
+				</aside>
+
+				<main class="layout__body" data-anchor-nav="#nav-contents">
+
+					<section class="mod mod-contents">
+						<div class="mod__body">
+							<div class="mod__item mod__item--chapter">
+								<div class="content -wysiwyg">
+									<h1>R Code Snippets</h1>
+									<hr>
+									<a class="btn btn--outline content__download" href="downloads/Chapter4-DataUnderstanding-R.zip" download title="Download R Code - Chapter 4">Download Code</a>
+									<h2 id="chapter-4">Data Understanding in R</h2>
+									<h3 id="chapter-4-a">Histograms</h3>
+									<small><a href="contents-and-teaching-material.html#chapter-4">Book reference: Chapter 4.8.2.1, page XXX</a></small>
+									<p>Histograms are generated by the function <code>hist</code>. The simplest way to create a histogram is to just use the corresponding attribute as an argument of the function <code>hist</code>, and R will automatically determine the number of bins for the histogram based on Sturge’s rule. In order to generate the histogram for the petal length of the Iris data set, the following command is sufficient:</p>
+									<pre><code class="language-r">hist(iris$Petal.Length)</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-r-histogram_1.png" alt="Histogram of iris$Petal.Length" />
+									</figure>
+									<p>The partition into bins can also be specified directly. One of the parameters of <code>hist</code> is breaks. If the bins should cover the intervals <span class="math">\([a_{0},a_{1}),[a_{1},a_{2}),...,[a_{k−1},a_{k}]\)</span> , then one can simply create a vector in R containing the values <span class="math">\(a_{i}\)</span> and assign it to breaks. Note that <span class="math">\(a_{0}\)</span> and <span class="math">\(a_{k}\)</span> should be the minimum and maximum values of the corresponding attribute. If we want the boundaries for the bins at 1.0, 3.0, 4.5, 4.0, 6.1, then we would use</p>
+									<pre><code class="language-r">hist(iris$Petal.Length,breaks=c(1.0,3.0,4.5,4.0,6.9))</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-r-histogram_2.png" alt="Histogram of iris$Petal.Length" />
+									</figure>
+									<p>to generate the histogram. Note that in the case of bins with different length, the heights of the boxes in the histogram do not show the relative frequencies. The areas of the boxes are chosen in such a way that they are proportional to the relative frequencies.</p>
+									<h3 id="chapter-4-b">Boxplots</h3>
+									<small>Book reference: Chapter 4.8.2.2, page XXX</small>
+									<p>A boxplot for a single attribute is generated by</p>
+									<pre><code class="language-r">boxplot(iris$Petal.Length)</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-r-boxplot_1.png" alt="Boxplot of iris$Petal.Length" />
+									</figure>		
+									<p>yielding the boxplot for the petal length of the Iris data set. Instead of a single attribute, we can hand over more than one attribute</p>
+									<pre><code class="language-r">boxplot(iris$Petal.Length,iris$Petal.Width)</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-r-boxplot_2.png" alt="Boxplot of iris$Petal.Length">
+									</figure>
+									<p>to show the boxplots in the same plot. We can even use the whole data set as an argument to see the boxplots of all attributes in one plot:</p>
+									<pre><code class="language-r">boxplot(iris)</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-r-boxplot_3.png" alt="Boxplot of iris" />
+									</figure>
+									<p>In this case, categorical attributes will be turned into numerical attributes by coding the values of the categorical attribute as 1, 2, . . . , so that these boxplots are also shown but do not really make sense.</p>
+									<p>In order to include the notches in the boxplots, we need to set the parameter <code>notch</code> to true:</p>
+									<pre><code class="language-r">boxplot(iris,notch=TRUE)</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-r-boxplot_4.png" alt="" />
+									</figure>
+									<p>If one is interested in the precise values of the boxplot like the median, etc., one can use the print-command:</p>
+									<pre><code class="language-r">print(boxplot(iris$Sepal.Width))</code></pre>
+									<pre class="output">$stats
+     [,1]
+[1,]  2.2
+[2,]  2.8
+[3,]  3.0
+[4,]  3.3
+[5,]  4.0
+
+$n
+[1] 150
+
+$conf
+         [,1]
+[1,] 2.935497
+[2,] 3.064503
+
+$out
+[1] 4.4 4.1 4.2 2.0
+
+$group
+[1] 1 1 1 1
+
+$names
+[1] "1"</pre>
+									<figure class="output">
+										<img src="assets/img/c4-r-boxplot_5.png" alt="" />
+									</figure>
+									<p>The first five values are the minimum, the first quartile, the median, the third quartile, and the maximum value of the attribute, respectively. <span class="math">\(n\)</span> is the number of data. Then come the boundaries for the confidence interval for the notch, followed by the list of outliers. The last values <code>group</code> and <code>names</code> only make sense when more than one boxplot is included in the same plot. Then <code>group</code> is needed to identify to which attribute the outliers in the list of outliers belong. <code>names</code> just lists the names of the attributes.</p>
+									<h3 id="chapter-4-c">Scatter Plots</h3>
+									<small>Book reference: Chapter 4.8.2.3, page XXX</small>
+									<p>A scatter plot of the petal width against petal length of the Iris data is obtained by</p>
+									<pre><code class="language-r">plot(iris$Petal.Width,iris$Petal.Length)</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-r-scatterplot_1.png" alt="" />
+									</figure>
+									<p>All scatter plots of each attribute against each other in one diagram are created with</p>
+									<pre><code class="language-r">plot(iris)</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-r-scatterplot_2.png" alt="" />
+									</figure>
+									<p>If symbols representing the values for some categorical attribute should be included in a scatter plot, this can be achieved by</p>
+									<pre><code class="language-r">plot(iris$Petal.Width,iris$Petal.Length,pch=as.numeric(iris$Species))</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-r-scatterplot_3.png" alt="" />
+									</figure>
+									<p>where in this example the three types of Iris are plotted with different symbols.</p>
+									<p>If there are some interesting or suspicious points in a scatter plot and one wants to find out which data records these are, one can do this by</p>
+									<pre><code class="language-r">
+plot(iris$Petal.Width,iris$Petal.Length)
+identify(iris$Petal.Width,iris$Petal.Length)</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-r-scatterplot_4.png" alt="" />
+									</figure>
+									<p>and then clicking on the points. The index of the corresponding records will be added to the scatter plot. To finish selecting points, press the ESCAPE-key.</p>
+									<p>Jitter can be added to a scatter plot in the following way:</p>
+									<pre><code class="language-r">plot(jitter(iris$Petal.Width),jitter(iris$Petal.Length))</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-r-scatterplot_5.png" alt="" />
+									</figure>
+									<p>Intensity plots and density plots with hexagonal binning, as they are shown Fig. 4.9, can be generated by</p>
+									<pre><code class="language-r">plot(iris$Petal.Width,iris$Petal.Length,
+     col=rgb(0,0,0,50,maxColorValue=255),pch=16)</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-r-scatterplot_6.png" alt="" />
+									</figure>
+										<p>and</p>
+										<pre><code class="language-r">library(hexbin)
+bin<-hexbin(iris$Petal.Width,iris$Petal.Length,xbins=50)
+plot(bin)</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-r-scatterplot_7.png" alt="" />
+									</figure>
+									<p>respectively, where the library <code>hexbin</code> does not come along with the standard version of R and needs to be installed as described in the appendix on R. Note that such plots are not very useful for such a small data sets like the Iris data set.</p>
+									<p>For three-dimensional scatter plots, the library <code>scatterplots3d</code> is needed and has to be installed first:</p>
+									<pre><code class="language-r">library(scatterplot3d)
+scatterplot3d(iris$Sepal.Length,iris$Sepal.Width,iris$Petal.Length)</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-r-scatterplot_8.png" alt="" />
+									</figure>
+									<h3 id="chapter-4-d">Principal Component Analysis</h3>
+									<small>Book reference: Chapter 4.8.2.4, page XXX</small>
+									<p>PCA can be carried out with R in the following way:</p>
+									<pre><code class="language-r">species <- which(colnames(iris)=="Species")
+iris.pca <- prcomp(iris[,-species],center=T,scale=T)
+print(iris.pca)</code></pre>
+									<pre class="output">Standard deviations (1, .., p=4):
+[1] 1.7083611 0.9560494 0.3830886 0.1439265
+
+Rotation (n x k) = (4 x 4):
+                    PC1         PC2        PC3        PC4
+Sepal.Length  0.5210659 -0.37741762  0.7195664  0.2612863
+Sepal.Width  -0.2693474 -0.92329566 -0.2443818 -0.1235096
+Petal.Length  0.5804131 -0.02449161 -0.1421264 -0.8014492
+Petal.Width   0.5648565 -0.06694199 -0.6342727  0.5235971</pre>
+									<pre><code class="language-r">summary(iris.pca)</code></pre>
+									<pre class="output">Importance of components:
+                          PC1    PC2     PC3     PC4
+Standard deviation     1.7084 0.9560 0.38309 0.14393
+Proportion of Variance 0.7296 0.2285 0.03669 0.00518
+Cumulative Proportion  0.7296 0.9581 0.99482 1.00000</pre>
+									<pre><code class="language-r">plot(predict(iris.pca))</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-r-scatterplot_9.png" alt="" />
+									</figure>
+									<p>For the Iris data set, it is necessary to exclude the categorical attribute <code>Species</code> from PCA. This is achieved by the first line of the code and calling <code>prcomp</code> with <code>iris[,-species]</code> instead of <code>iris</code>.</p>
+									<p>The parameter settings <code>center=T</code>, <code>scale=T</code>, where <code>T</code> is just a short form of <code>TRUE</code>, mean that z-score standardization is carried out for each attribute before applying PCA.</p>
+									<p>The function <code>predict</code> can be applied in the above-described way to obtain the transformed data from which the PCA was computed. If the computed PCA transformation should be applied to another data set <code>x</code>, this can be achieved by</p>
+									<pre><code class="language-r">predict(iris.pca,newdata=x)</code></pre>
+									<p>where <code>x</code> must have the same number of columns as the data set from which the PCA has been computed. In this case, <code>x</code> must have four columns which must be numerical. <code>predict</code> will compute the full transformation, so that the above command will also yield transformed data with four columns.</p>
+									<h3 id="chapter-4-e">Multidimensional Scaling</h3>
+									<small>Book reference: Chapter 4.8.2.5, page XXX</small>
+									<p>MDS requires the library <code>MASS</code> which is not included in the standard version of R and needs installing. First, a distance matrix is needed for MDS. Identical objects leading to zero distances are not admitted. Therefore, if there are identical objects in a data set, all copies of the same object except one must be removed. In the Iris data set, there is only one pair of identical objects, so that one of them needs to be removed. The <code>Species</code> is not a numerical attribute and will be ignored for the distance.</p>
+									<pre><code class="language-r">library(MASS)
+x <- iris[-102,]
+species <- which(colnames(x)=="Species")
+x.dist <- dist(x[,-species])
+x.sammon <- sammon(x.dist,k=2)
+plot(x.sammon$points)
+</code></pre>
+									<pre class="output">Initial stress        : 0.00678
+stress after  10 iters: 0.00404, magic = 0.500
+stress after  12 iters: 0.00402</pre>
+									<figure class="output">
+										<img src="assets/img/c4-r-scatterplot_10.png" alt="" />
+									</figure>
+									<p><code>k = 2</code> means that MDS should reduce the original data set to two dimensions.</p>
+									<p>Note that in the above example code no normalization or z-score standardization is carried out.</p>
+									<h3 id="chapter-4-f">Parallel Coordinates, Radar, and Star Plots</h3>
+									<small>Book reference: Chapter 4.8.2.6, page XXX</small>
+									<p>Parallel coordinates need the library <code>MASS</code>. All attributes must be numerical. If the attribute <code>Species</code> should be included in the parallel coordinates, one can achieve this in the following way:</p>
+									<pre><code class="language-r">library(MASS)
+x <- iris
+x$Species <- as.numeric(iris$Species)
+parcoord(x)</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-r-parallel-coords_1.png" alt="" />
+									</figure>
+									<p>Star and radar plots are obtained by the following two commands:</p>
+									<pre><code class="language-r">stars(iris)</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-r-starplot_1.png" alt="" />
+									</figure>
+									<pre><code class="language-r">stars(iris,locations=c(0,0))</code></pre>
+									<figure class="output">
+										<img src="assets/img/c4-r-starplot_2.png" alt="" />
+									</figure>
+									<h3 id="chapter-4-g">Correlation Coefficients</h3>
+									<small>Book reference: Chapter 4.8.2.7, page XXX</small>
+									<p>Pearson’s, Spearman’s, and Kendall’s correlation coefficients are obtained by the following three commands:</p>
+									<pre><code class="language-r">cor(iris$Sepal.Length,iris$Sepal.Width)
+cor.test(iris$Sepal.Length,iris$Sepal.Width,method="spearman")
+cor.test(iris$Sepal.Length,iris$Sepal.Width,method="kendall")</code></pre>
+									<h3 id="chapter-4-h">Grubbs Test for Outlier Detection</h3>
+									<small>Book reference: Chapter 4.8.2.8, page XXX</small>
+									<p>Grubbs test for outlier detection needs the installation of the library <code>outliers</code>:</p>
+									<pre><code class="language-r">library(outliers)
+grubbs.test(iris$Petal.Width)</code></pre>
+									<pre class="output">	Grubbs test for one outlier
+
+data:  iris$Petal.Width
+G = 1.70638, U = 0.98033, p-value = 1
+alternative hypothesis: highest value 2.5 is an outlier</pre>
+								</div>
+							</div>
+							<div class="mod__item mod__item--chapter">
+								<div class="content -wysiwyg">
+									<a class="btn btn--outline content__download" href="downloads/Chapter5-ErrorsAndValidation-R.zip" download title="Download R Code - Chapter 5">Download Code</a>
+									<h2 id="chapter-5">Errors and Validation in R</h2>
+									<small>Book reference: Chapter 5.6.2, page XXX</small>
+									<h3 id="chapter-5-a">Training and Testing Data</h3>
+									<p>In order to apply the idea of using separate parts of a data set for training and testing, one needs to select random subsets of the data set. As a very simple example, we consider the Iris data set that we want to split into training and test sets. The size of the training set should contain 2/3 of the original data, and the test set 1/3. It would not be a good idea to take the first 100 records in the Iris data set for training purposes and the remaining 50 as a test set, since the records in the Iris data set are ordered with respect to the species.With such a split, all examples of Iris setosa and Iris versicolor would end up in the training set, but none of Iris versicolor, which would form the test set. Therefore, we need random sample from the Iris data set. If the records in the Iris data set were not systematically orderer, but in a random order, we could just take the first 100 records for training purposes and the remaining 50 as a test set.</p>
+									<p>Sampling and orderings in R provide a simple way to shuffle a data set, i.e., to generate a random order of the records.</p>
+									<p>First, we need to know the number <code>n</code> of records in our data set. Then we generate a permutation of the numbers <code>1, . . . , n</code> by sampling from the vector containing the numbers <code>1, . . . , n</code>, generated by the R-command <code>c(1:n)</code>. We sample <code>n</code> numbers without replacement from this vector:</p>
+									<pre><code class="language-r">n <- length(iris$Species)
+permut <- sample(c(1:n),n,replace=F)</code></pre>
+									<p>Then we define this permutation as an ordering in which the records of our data set should be ordered and store the shuffled data set in the object <code>iris.shuffled</code>:</p>
+									<pre><code class="language-r">ord <- order(permut)
+iris.shuffled <- iris[ord,]</code></pre>
+									<p>Now define how large the fraction for the training set should be—here 2/3—and take the first two thirds of the data set as a training set and the last third as a test set:</p>
+									<pre><code class="language-r">prop.train <- 2/3  # training data consists of 2/3 of observations
+k <- round(prop.train*n)
+iris.training <- iris.shuffled[1:k,]
+iris.test <- iris.shuffled[(k+1):n,]</code></pre>
+									<p>The R-command <code>sample</code> can also be used to generate bootstrap samples by setting the parameter <code>replace</code> to <code>TRUE</code> instead of <code>F</code> (<code>FALSE</code>).</p>
+								</div>
+							</div>
+							<div class="mod__item mod__item--chapter">
+								<div class="content -wysiwyg">
+									<a class="btn btn--outline content__download" href="downloads/Chapter6-DataPreparation-R.zip" download title="Download R Code - Chapter 6">Download Code</a>
+									<h2 id="chapter-6">Data Preparation in R</h2>
+									<h3 id="chapter-6-a">Missing Values</h3>
+									<small>Book reference: Chapter 6.6.2.2, page XXX</small>
+									<p>The logical constant <code>NA</code> (not available) is used to represent missing values in R. There are various methods in R that can handle missing values directly.</p>
+									<p>As a very simple example, we consider the mean value.We create a data set with one attribute with four missing values and try to compute the mean:</p>
+									<pre><code class="language-r">x <- c(3,2,NA,4,NA,1,NA,NA,5)
+mean(x)</code></pre>
+									<pre class="output">&lt;NA></pre>
+									<p>The mean value is in this case also a missing value, since R has no information about the missing values and how to handle them. But if we explicitly say that missing values should simply be ignored for the computation of the mean value (<code>na.rm=T</code>), then R returns the mean value of all nonmissing values:</p>
+									<pre><code class="language-r">mean(x,na.rm=T)</code></pre>
+									<pre class="output">3</pre>
+									<p>Note that this computation of the mean value implicitly assumes that the values are missing completely at random (MCAR).</p>
+									<h3 id="chapter-6-b">Normalization and Scaling</h3>
+									<small>Book reference: Chapter 6.6.2.3, page XXX</small>
+									<p>Normalization and standardization of numeric attributes can be achieved in the following way. The function <code>is.factor</code> returns true if the corresponding attribute is categorical (or ordinal), so that we can ensure with this function that normalization is only applied to all numerical attributes, but not to the categorical ones. With the following R-code, z-score standardization is applied to all numerical attributes:</p>
+									<pre><code class="language-r">iris.norm <- iris
+
+# for loop over each coloumn
+for (i in c(1:length(iris.norm))){
+    if (!is.factor(iris.norm[,i])){
+        attr.mean <- mean(iris.norm[,i])
+        attr.sd <- sd(iris.norm[,i])
+        iris.norm[,i] <- (iris.norm[,i]-attr.mean)/attr.sd
+    }
+}</code></pre>
+									<p>Other normalization and standardization techniques can carried out in a similar manner. Of course, instead of the functions mean (for the mean value) and <code>sd</code> (for the standard deviation), other functions like <code>min</code> (for the minimum), <code>max</code> (for the maximum), <code>median</code> (for the median), or <code>IQR</code> (for the interquartile range) have to be used.</p>
+								</div>
+							</div>
+							<div class="mod__item mod__item--chapter">
+								<div class="content -wysiwyg">
+									<a class="btn btn--outline content__download" href="downloads/Chapter7-FindingPatterns-R.zip" download title="Download R Code - Chapter 7">Download Code</a>
+									<h2 id="chapter-7">Finding Patterns in R</h2>
+									<h3 id="chapter-7-a">Hierarchical Clustering</h3>
+									<small>Book reference: Chapter 7.8.2.1, page XXX</small>
+									<p>As an example, we apply hierarchical clustering to the Iris data set, ignoring the categorical attribute <code>Species</code>. We use the normalized Iris data set <code>iris.norm</code> that is constructed in Sect. 6.6.2.3. We can apply hierarchical clustering after removing the categorical attribute and can plot the dendrogram afterwards:</p>
+									<pre><code class="language-r">#
+# NORMALIZATION
+#
+
+# using the iris data as an example
+iris.norm <- iris
+
+# for loop over each coloumn
+for (i in c(1:length(iris.norm))){
+	if (!is.factor(iris.norm[,i])){
+		attr.mean <- mean(iris.norm[,i])
+		attr.sd <- sd(iris.norm[,i])
+		iris.norm[,i] <- (iris.norm[,i]-attr.mean)/attr.sd
+	}
+}</code></pre>
+									<pre><code class="language-r">iris.num <- iris.norm[1:4]
+iris.cl <- hclust(dist(iris.num), method="ward.D")
+plot(iris.cl)</code></pre>
+									<figure class="output">
+										<img src="assets/img/c7-r-dendrogram_1.png" alt="Cluster Dendrogram" />
+									</figure>
+									<p>Here, the Ward method for the cluster distance aggregation function as described in Table 7.3 was chosen. For the other cluster distance aggregation functions in the table, one simply has to replace <code>ward.D</code> by <code>single</code> (for single linkage), by <code>complete</code> (for complete linkage), by <code>average</code> (for average linkage), or by <code>centroid</code>.</p>
+									<p>For heatmaps, the library <code>gplots</code> is required that needs installing first:</p>
+									<pre><code class="language-r">library(gplots)
+rowv <- as.dendrogram(hclust(dist(iris.num), method="ward.D"))
+colv <- as.dendrogram(hclust(dist(t(iris.num)), method="ward.D"))
+heatmap.2(as.matrix(iris.num), Rowv=rowv,Colv=colv, trace="none")</code></pre>
+									<figure class="output">
+										<img src="assets/img/c7-r-dendrogram_2.png" alt="Cluster Dendrogram" />
+									</figure>
+									<h3 id="chapter-7-b">Prototype-Based Clustering</h3>
+									<small>Book reference: Chapter 7.8.2.2, page XXX</small>
+									<p>The R-function <code>kmeans</code> carries out k-means clustering.</p>
+									<pre><code class="language-r">iris.km <- kmeans(iris.num,centers=3)</code></pre>
+									<p>The desired numbers of clusters is specified by the parameter <code>centers</code>. The location of the cluster centers and the assignment of the data to the clusters is obtained by the <code>print</code> function:</p>
+									<pre><code class="language-r">print(iris.km)</code></pre>
+									<pre class="output">K-means clustering with 3 clusters of sizes 50, 53, 47
+
+Cluster means:
+  Sepal.Length Sepal.Width Petal.Length Petal.Width
+1  -1.01119138  0.85041372   -1.3006301  -1.2507035
+2  -0.05005221 -0.88042696    0.3465767   0.2805873
+3   1.13217737  0.08812645    0.9928284   1.0141287
+
+Clustering vector:
+  [1] 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+ [38] 1 1 1 1 1 1 1 1 1 1 1 1 1 3 3 3 2 2 2 3 2 2 2 2 2 2 2 2 3 2 2 2 2 3 2 2 2
+ [75] 2 3 3 3 2 2 2 2 2 2 2 3 3 2 2 2 2 2 2 2 2 2 2 2 2 2 3 2 3 3 3 3 2 3 3 3 3
+[112] 3 3 2 2 3 3 3 3 2 3 2 3 2 3 3 2 3 3 3 3 3 3 2 2 3 3 3 2 3 3 3 2 3 3 3 2 3
+[149] 3 2
+
+Within cluster sum of squares by cluster:
+[1] 47.35062 44.08754 47.45019
+ (between_SS / total_SS =  76.7 %)
+
+Available components:
+
+[1] "cluster"      "centers"      "totss"        "withinss"     "tot.withinss"
+[6] "betweenss"    "size"         "iter"         "ifault"      </pre>
+									<p>For fuzzy c-means clustering, the library <code>cluster</code> is required. The clustering is carried out by the method <code>fanny</code> similar to <code>kmeans</code>:</p>
+									<pre><code class="language-r">library(cluster)
+iris.fcm <- fanny(iris.num,3)
+iris.fcm</code></pre>
+									<p>The last line provides the necessary information on the clustering results, especially the membership degrees to the clusters.</p>
+									<p>Gaussian mixture decomposition automatically determining the number of clusters requires the library <code>mclust</code> to be installed first:</p>
+									<pre><code class="language-r">library(mclust)
+iris.em <- mclustBIC(iris.num[,1:4])
+iris.mod <- mclustModel(iris.num[,1:4],iris.em)
+summary(iris.mod)</code></pre>
+									<p>The last line lists the assignment of the data to the clusters.</p>
+									<p>Density-based clustering with DBSCAN is implemented in the library <code>fpc</code> which needs installation first:</p>
+									<pre><code class="language-r">library(fpc)
+iris.dbscan <- dbscan(iris.num[,1:4],1.0,showplot=T)
+iris.dbscan$cluster</code></pre>
+									<p>The last line will print out the assignment of the data to the clusters. Singletons or outliers are marked by the number zero. The second argument in <code>dbscan</code> (in the above example 1:0) is the parameter " for DBSCAN. <code>showplot=T</code> will generate a plot of the clustering result projected to the first two dimensions of the data set.</p>
+									<h3 id="chapter-7-c">Self Organizing Maps</h3>
+									<small>Book reference: Chapter 7.8.2.3, page XXX</small>
+									<p>The library <code>som</code> provides methods for self organizing maps. The library <code>som</code> needs to be installed:</p>
+									<pre><code class="language-r">library(som)
+iris.som <- som(iris.num,xdim=5,ydim=5)
+plot(iris.som)</code></pre>
+									<figure class="output">
+										<img src="assets/img/c7-r-som_1.png" alt="Self-organizing Map" />
+									</figure>
+									<p><code>xdim</code> and <code>ydim</code> define the number of nodes in the mesh in x- and y-directions, respectively. <code>plot</code> will show, for each node in the mesh, a representation of the values in the form of parallel coordinates.</p>
+									<h3 id="chapter-7-d">Association Rules</h3>
+									<small>Book reference: Chapter 7.8.2.4, page XXX</small>
+									<p>For association rule mining, the library <code>arules</code> is required in which the function <code>apriori</code> is defined. This library does not come along with R directly and needs to be installed first.</p>
+									<p>Here we use an artificial data set <code>basket</code> that we enter manually. The data set is a list of vectors where each vector contains the items that were bought:</p>
+									<pre><code class="language-r">library(arules)
+baskets <- list(c("a","b","c"), c("a","d","e"),
+                c("b","c","d"), c("a","b","c","d"),
+                c("b","c"), c("a","b","d"),
+                c("d","e"), c("a","b","c","d"),
+                c("c","d","e"), c("a","b","c"))
+rules <- apriori(baskets,parameter = list(supp=0.1,conf=0.8,target="rules"))
+inspect(rules)</code></pre>
+									<pre class="output">Loading required package: Matrix
+
+
+Attaching package: ‘arules’
+
+
+The following objects are masked from ‘package:base’:
+
+    abbreviate, write</pre>
+									<pre class="output">Apriori
+
+Parameter specification:
+ confidence minval smax arem  aval originalSupport maxtime support minlen
+        0.8    0.1    1 none FALSE            TRUE       5     0.1      1
+ maxlen target  ext
+     10  rules TRUE
+
+Algorithmic control:
+ filter tree heap memopt load sort verbose
+    0.1 TRUE TRUE  FALSE TRUE    2    TRUE
+
+Absolute minimum support count: 1 
+
+set item appearances ...[0 item(s)] done [0.00s].
+set transactions ...[5 item(s), 10 transaction(s)] done [0.00s].
+sorting and recoding items ... [5 item(s)] done [0.00s].
+creating transaction tree ... done [0.00s].
+checking subsets of size 1 2 3 4 done [0.00s].
+writing ... [9 rule(s)] done [0.00s].
+creating S4 object  ... done [0.00s].
+    lhs        rhs support confidence coverage lift     count
+[1] {e}     => {d} 0.3     1.0000000  0.3      1.428571 3    
+[2] {a}     => {b} 0.5     0.8333333  0.6      1.190476 5    
+[3] {b}     => {c} 0.6     0.8571429  0.7      1.224490 6    
+[4] {c}     => {b} 0.6     0.8571429  0.7      1.224490 6    
+[5] {a,e}   => {d} 0.1     1.0000000  0.1      1.428571 1    
+[6] {c,e}   => {d} 0.1     1.0000000  0.1      1.428571 1    
+[7] {a,b}   => {c} 0.4     0.8000000  0.5      1.142857 4    
+[8] {a,c}   => {b} 0.4     1.0000000  0.4      1.428571 4    
+[9] {a,c,d} => {b} 0.2     1.0000000  0.2      1.428571 2    </pre>
+									<p>The last command lists the rules with their support, confidence, and lift.</p>
+								</div>
+							</div>
+							<div class="mod__item mod__item--chapter">
+								<div class="content -wysiwyg">
+									<a class="btn btn--outline content__download" href="downloads/Chapter8-FindingExplanations-R.zip" download title="Download R Code - Chapter 8">Download Code</a>
+									<h2 id="chapter-8">Finding Explanations</h2>
+
+									<h3 id="chapter-8-a">Decision tree</h3>
+									<p>R also allows for much finer control of the decision tree construction. The script below demonstrates how to create a simple tree for the Iris data set using a training set of 100 records. Then the tree is displayed, and a confusion matrix for the test set—the remaining 50 records of the Iris data set—is printed. The libraries <code>rpart</code>, which comes along with the standard installation of R, and <code>rattle</code>, that needs to be installed, are required:</p>
+									<pre><code class="language-r">library(rpart)
+iris.train <- c(sample(1:150,50))
+iris.dtree <- rpart(Species~.,data=iris,subset=iris.train)</code></pre>
+									<pre><code class="language-r">library(rattle)
+drawTreeNodes(iris.dtree)
+table(predict(iris.dtree,iris[-iris.train,],type="class"),
+      iris[-iris.train,"Species"])</code></pre>
+      								<pre class="output">Loading required package: tibble
+
+Loading required package: bitops
+
+Rattle: A free graphical interface for data science with R.
+Version 5.4.0 Copyright (c) 2006-2020 Togaware Pty Ltd.
+Type 'rattle()' to shake, rattle, and roll your data.</pre>
+									<pre class="output">             setosa versicolor virginica
+  setosa         35          0         0
+  versicolor      0         27         1
+  virginica       0          6        31</pre>
+
+									<figure class="output">
+										<img src="assets/img/c8-r-tree_1.png" alt="Decision tree" />
+									</figure>
+									<p>In addition to many options related to tree construction, R also offers many ways to beautify the graphical representation. We refer to R manuals for more details.</p>
+
+									<h3 id="chapter-8-b">Naive Bayes Classifiers</h3>
+									<p>Naive Bayes classifiers use normal distributions by default for numerical attributes. The package <code>e1071</code> must be installed first:</p>
+									<pre><code class="language-r">library(e1071)
+iris.train <- c(sample(1:150,75))
+iris.nbayes <- naiveBayes(Species~.,data=iris,subset=iris.train)
+table(predict(iris.nbayes,iris[-iris.train,],type="class"),
+      iris[-iris.train,"Species"])</code></pre>
+      								<pre class="output">             setosa versicolor virginica
+  setosa         28          0         0
+  versicolor      0         22         1
+  virginica       0          2        22</pre>
+  									<p>As in the example of the decision tree, the Iris data set is split into a training and a test data set, and the confusion matrix is printed. The parameters for the normal distributions of the classes can be obtained in the following way:</p>
+  									<pre><code class="language-r">print(iris.nbayes)</code></pre>
+  									<pre class="output">Naive Bayes Classifier for Discrete Predictors
+
+Call:
+naiveBayes.default(x = X, y = Y, laplace = laplace)
+
+A-priori probabilities:
+Y
+    setosa versicolor  virginica 
+ 0.2933333  0.3466667  0.3600000 
+
+Conditional probabilities:
+            Sepal.Length
+Y                [,1]      [,2]
+  setosa     4.972727 0.3781935
+  versicolor 6.034615 0.5059188
+  virginica  6.555556 0.5401804
+
+            Sepal.Width
+Y                [,1]      [,2]
+  setosa     3.422727 0.4264268
+  versicolor 2.807692 0.2682135
+  virginica  2.937037 0.3236191
+
+            Petal.Length
+Y                [,1]      [,2]
+  setosa     1.413636 0.1457181
+  versicolor 4.315385 0.4333057
+  virginica  5.514815 0.4888792
+
+            Petal.Width
+Y                 [,1]       [,2]
+  setosa     0.2409091 0.09081164
+  versicolor 1.3307692 0.18279875
+  virginica  2.0185185 0.30386869
+
+									</pre>
+									<p>If Laplace correction should be applied for categorical attribute, this can be achieved by setting the parameter <code>laplace</code> to the desired value when calling the function <code>naiveBayes</code>.</p>
+
+									<h3 id="chapter-8-c">Regression</h3>
+									<p>Least squares linear regression is implemented by the function <code>lm</code> (linear model). As an example, we construct a linear regression function to predict the petal width of the Iris data set based on the other numerical attributes:</p>
+									<pre><code class="language-r">iris.lm <- lm(iris$Petal.Width ~ iris$Sepal.Length
+              + iris$Sepal.Width + iris$Petal.Length)
+summary(iris.lm)</code></pre>
+      								<pre class="output">Call:
+lm(formula = iris$Petal.Width ~ iris$Sepal.Length + iris$Sepal.Width + 
+    iris$Petal.Length)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.60959 -0.10134 -0.01089  0.09825  0.60685 
+
+Coefficients:
+                  Estimate Std. Error t value Pr(>|t|)    
+(Intercept)       -0.24031    0.17837  -1.347     0.18    
+iris$Sepal.Length -0.20727    0.04751  -4.363 2.41e-05 ***
+iris$Sepal.Width   0.22283    0.04894   4.553 1.10e-05 ***
+iris$Petal.Length  0.52408    0.02449  21.399  < 2e-16 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.192 on 146 degrees of freedom
+Multiple R-squared:  0.9379,	Adjusted R-squared:  0.9366 
+F-statistic: 734.4 on 3 and 146 DF,  p-value: < 2.2e-16</pre>
+									<p>The <code>summary</code> provides the necessary information about the regression result, including the coefficient of the regression function.</p>
+									<p>If we want to use a polynomial as the regression function, we need to protect the evaluation of the corresponding power by the function <code>I</code> inhibiting interpretation. As an example, we compute a regression function to predict the petal width based on a quadratic function in the petal length:</p>
+									<pre><code class="language-r">iris.lm <- lm(iris$Petal.Width ~ iris$Petal.Length +
+              I(iris$Petal.Length^2))
+summary(iris.lm)</code></pre>
+      								<pre class="output">Call:
+lm(formula = iris$Petal.Width ~ iris$Petal.Length + I(iris$Petal.Length^2))
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.56213 -0.12392 -0.01555  0.13547  0.64105 
+
+Coefficients:
+                        Estimate Std. Error t value Pr(>|t|)    
+(Intercept)            -0.386781   0.079883  -4.842 3.22e-06 ***
+iris$Petal.Length       0.433833   0.053652   8.086 2.10e-13 ***
+I(iris$Petal.Length^2) -0.002569   0.007501  -0.342    0.732    
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.2071 on 147 degrees of freedom
+Multiple R-squared:  0.9272,	Adjusted R-squared:  0.9262 
+F-statistic: 935.7 on 2 and 147 DF,  p-value: < 2.2e-16</pre>
+									<p>Robust regression requires the library <code>MASS</code>, which needs installation. Otherwise it is handled in the same way as least squares regression, using the function <code>rlm</code> instead of <code>lm</code>:</p>
+									<pre><code class="language-r">library(MASS)
+iris.rlm <- rlm(iris$Petal.Width ~ iris$Sepal.Length
+                + iris$Sepal.Width + iris$Petal.Length)
+summary(iris.rlm)</code></pre>
+      								<pre class="output">Call: rlm(formula = iris$Petal.Width ~ iris$Sepal.Length + iris$Sepal.Width + 
+    iris$Petal.Length)
+Residuals:
+      Min        1Q    Median        3Q       Max 
+-0.606532 -0.099003 -0.009158  0.101636  0.609940 
+
+Coefficients:
+                  Value   Std. Error t value
+(Intercept)       -0.2375  0.1771    -1.3412
+iris$Sepal.Length -0.2062  0.0472    -4.3713
+iris$Sepal.Width   0.2201  0.0486     4.5297
+iris$Petal.Length  0.5231  0.0243    21.5126
+
+Residual standard error: 0.1492 on 146 degrees of freedom</pre>
+									<p>The default method is based on Huber’s error function. If Tukey’s biweight should be used, the parameter <code>method</code> should be changed in the following way:</p>
+									<pre><code class="language-r"># ridge regression with Tukey's biweight
+iris.rlm <- rlm(iris$Petal.Width ~ iris$Sepal.Length
+                + iris$Sepal.Width + iris$Petal.Length,
+                method="MM")
+summary(iris.rlm)</code></pre>
+      								<pre class="output">Call: rlm(formula = iris$Petal.Width ~ iris$Sepal.Length + iris$Sepal.Width + 
+    iris$Petal.Length, method = "MM")
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-0.60608 -0.09975 -0.01030  0.10375  0.61963 
+
+Coefficients:
+                  Value   Std. Error t value
+(Intercept)       -0.1896  0.1718    -1.1036
+iris$Sepal.Length -0.2152  0.0457    -4.7036
+iris$Sepal.Width   0.2181  0.0471     4.6276
+iris$Petal.Length  0.5252  0.0236    22.2689
+
+Residual standard error: 0.1672 on 146 degrees of freedom</pre>
+									<p>A plot of the computed weights can be obtained by the following command:</p>
+									<pre><code class="language-r">plot(iris.rlm$w)</code></pre>
+									<figure class="output">
+										<img src="assets/img/c8-r-boxplot_1.png" alt="Boxplot" />
+									</figure>
+								</div>
+							</div>
+							<div class="mod__item mod__item--chapter">
+								<div class="content -wysiwyg">
+									<a class="btn btn--outline content__download" href="downloads/Chapter9-Predictors-R.zip" download title="Download R Code - Chapter 9">Download Code</a>
+									<h2 id="chapter-9">Predictors</h2>
+
+									<h3 id="chapter-9-a">Nearest Neighbor Classifiers</h3>
+									<p>A nearest-neighbor classifier based on the Euclidean distance is implemented in the package <code>class</code> in R. To show how to use the nearest-neighbor classifier in R, we use splitting of the Iris data set into a training set <code>iris.training</code> and test set <code>iris.test</code> as it was demonstrated in Sect. 5.6.2. The function <code>knn</code> requires a training and a set with only numerical attributes and a vector containing the classifications for the training set. The parameter <code>k</code> determines how many nearest neighbors are considered for the classification decision.</p>
+									<pre><code class="language-r"># generating indices for shuffling
+n <- length(iris$Species)
+permut <- sample(c(1:n),n,replace=F)
+
+# shuffling the observations
+ord <- order(permut)
+iris.shuffled <- iris[ord,]
+
+# splitting into training and testing data
+prop.train <- 2/3  # training data consists of 2/3 of observations
+k <- round(prop.train*n)
+iris.training <- iris.shuffled[1:k,]
+iris.test <- iris.shuffled[(k+1):n,]</code></pre>
+									<pre><code class="language-r">library(class)
+iris.knn <- knn(iris.training[,1:4],iris.test[,1:4],iris.training[,5],k=3)
+table(iris.knn,iris.test[,5])</code></pre>
+      								<pre class="output">iris.knn     setosa versicolor virginica
+  setosa         18          0         0
+  versicolor      0         18         0
+  virginica       0          1        13</pre>
+  									<p>The last line prints the confusion matrix.</p>
+
+  									<h3 id="chapter-9-c">Neural Networks</h3>
+									<p>For the example of multilayer perceptrons in R, we use the same training and test data as for the nearest-neighbor classifier above. The multilayer perceptron can only process numerical values. Therefore, we first have to transform the categorical attribute <code>Species</code> into a numerical attribute:</p>
+									<pre><code class="language-r">x <- iris.training
+x$Species <- as.numeric(x$Species)</code></pre>
+									<p>The multilayer perceptron is constructed and trained in the following way, where the library <code>neuralnet</code> needs to be installed first:</p>
+									<pre><code class="language-r">library(neuralnet)
+iris.nn <- neuralnet(Species + Sepal.Length ~
+                     Sepal.Width + Petal.Length + Petal.Width, x,
+                     hidden=c(3))</code></pre>
+                     				<p>The first argument of <code>neuralnet</code> defines that the attributes <code>Species</code> and <code>sepal length</code> correspond to the output neurons. The other three attributes correspond to the input neurons. <code>x</code> specifies the training data set. The parameter <code>hidden</code> defines how many hidden layers the multilayer perceptron should have and how many neurons in each hidden layer should be. In the above example, there is only one hidden layer with three neurons. When we replace <code>c(3)</code> by <code>c(4,2</code>), there would be two hidden layers, one with four and one with two neurons.</p>
+                     				<p>The training of the multilayer perceptron can take some time, especially for larger data sets.</p>
+                     				<p>When the training is finished, the multilayer perceptron can be visualized:</p>
+									<pre><code class="language-r">plot(iris.nn)</code></pre>
+									<p>The visualization includes also dummy neurons as shown in Fig. 9.4.</p>
+									<p>The output of the multilayer perceptron for the test set can be calculated in the following way. Note that we first have to remove the output attributes from the test set:</p>
+									<pre><code class="language-r">y <- iris.test
+y <- y[-5]
+y <- y[-1]
+y.out <- compute(iris.nn,y)</code></pre>
+									<p>We can then compare the target outputs for the training set with the outputs from the multilayer perceptron. If we want to compute the squared errors for the second output neuron -— the <code>sepal length</code> —- we can do this in the following way:</p>
+									<pre><code class="language-r">y.sqerr <- (y[1] - y.out$net.result[,2])^2</code></pre>
+
+									<h3 id="chapter-9-c">Support Vector Machines</h3>
+									<p>For support vector machine, we use the same training and test data as already for the nearest-neighbor classifier and for the neural networks. A support vector machine to predict the <code>species</code> in the Iris data set based on the other attributes can be constructed in the following way. The package <code>e1071</code> is needed and should be installed first if it has not been installed before:</p>
+									<pre><code class="language-r">library(e1071)
+iris.svm <- svm(Species ~ ., data = iris.training)
+table(predict(iris.svm,iris.test[1:4]),iris.test[,5])</code></pre>
+									<pre class="output">             setosa versicolor virginica
+  setosa         18          0         0
+  versicolor      0         19         1
+  virginica       0          0        12</pre>
+  									<p>The last line prints the confusion matrix for the test data set.</p>
+  									<p>The function <code>svm</code> works also for support vector regression. We could, for instance, use</p>
+  									<pre><code class="language-r">iris.svm <- svm(Petal.Width ~ ., data = iris.training)
+sqerr <- (predict(iris.svm,iris.test[-4])-iris.test[4])^2</code></pre>
+									<p>to predict the numerical attribute <code>petal width</code> based on the other attributes and to compute the squared errors for the test set.</p>
+
+									<h3 id="chapter-9-d">Ensemble Methods</h3>
+									<p>As an example for ensemble methods, we consider <code>random forest</code> with the training and test data of the Iris data set as before. The package randomForest needs to be installed first:</p>
+									<pre><code class="language-r">library(randomForest)
+iris.rf <- randomForest(Species ~., iris.training)
+table(predict(iris.rf,iris.test[1:4]),iris.test[,5])</code></pre>
+									<pre class="output">             setosa versicolor virginica
+  setosa         18          0         0
+  versicolor      0         19         1
+  virginica       0          0        12</pre>
+  									<p>In this way, a random forest is constructed to predict the <code>species</code> in the Iris data set based on the other attributes. The last line of the code prints the confusion matrix for the test data set.</p>
+						</div>
+					</section>
+
+				</main>
+			</section>
+		</div>
+
+		<footer class="page__footer">
+			<div class="footer__body">
+				<div class="footer__item footer__item--title">
+					<h2>Guide to Intelligent Data Science<br>
+						<span>How to Intelligently Make Use of Real Data</span></h2>
+					<a class="btn" href="#" target="_blank">Buy now</a>
+				</div>
+				<div class="footer__item footer__item--data">
+					<ul>
+						<li>
+							<strong>Copyright</strong>
+							<p>2020</p>
+						</li>
+						<li>
+							<strong>eBook ISBN</strong>
+							<p>978-3-030-45574-3</p>
+						</li>
+						<li>
+							<strong>Publisher</strong>
+							<p>Springer International Publishing</p>
+						</li>
+						<li>
+							<strong>DOI</strong>
+							<p>10.1007/978-3-030-45574-3</p>
+						</li>
+						<li>
+							<strong>Copyright Holder</strong>
+							<p>Springer Nature Switzerland AG</p>
+						</li>
+						<li>
+							<strong>Hardcover ISBN</strong>
+							<p>978-3-030-45573-6</p>
+						</li>
+					</ul>
+				</div>
+				<div class="footer__item footer__item--nav">
+					<nav class="nav-footer" role="navigation">
+						<ul class="menu">
+							<li class="menu__item">
+								<a href="mailto:info@datascienceguide.org">Contact</a>
+							</li>
+							<li class="menu__item">
+								<a href="imprint.html">Imprint</a>
+							</li>
+							<li class="menu__item">
+								<a href="errata.html">Errata</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</footer>
+
+		<div class="page__offcanvas" role="navigation">
+			<div class="offcanvas__body">
+				<nav class="nav-offcanvas nav-offcanvas--primary" role="navigation">
+					<ul class="menu">
+						<li class="menu__item">
+							<a href="index.html">About the Book</a>
+						</li>
+						<li class="menu__item">
+							<a href="contents-and-teaching-material.html -active">Contents & Teaching Material</a>
+						</li>
+						<li class="menu__item">
+							<a href="https://www.springer.com/gp/book/9783030455736" target="_blank">Buy Book</a>
+						</li>
+					</ul>
+				</nav>
+				<nav class="nav-offcanvas nav-offcanvas--secondary" role="navigation">
+					<ul class="menu">
+						<li class="menu__item">
+							<a href="mailto:info@datascienceguide.org">Contact</a>
+						</li>
+						<li class="menu__item">
+							<a href="imprint.html">Imprint</a>
+						</li>
+						<li class="menu__item">
+							<a href="errata.html">Errata</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+
+		<script src="assets/js/lib/babel-polyfill.min.js"></script>
+		<script src="assets/js/lib/conditionizr.min.js"></script>
+		<script src="assets/js/lib/jquery-3-5-1.min.js"></script>
+		<script src="assets/js/lib/svg4everybody.min.js"></script>
+		<script src="assets/js/scripts.min.js"></script>
+		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<script type="application/ld+json">
+			{
+				 "@context" 	: "http://schema.org",
+				 "@type" 		: "WebPage",
+				 "mainEntity" 	: {
+					"@type" 		: "Book",
+					"author" 		: [
+						{
+							"@type" 		: "Person",
+							"name" 			: "Michael R. Berthold"
+						},
+						{
+							"@type" 		: "Person",
+							"name" 			: "Christian Borgelt"
+						},
+						{
+							"@type"			: "Person",
+							"name" 			: "Frank Höppner"
+						},
+						{
+							"@type"			: "Person",
+							"name"			: "Frank Klawonn"
+						},
+						{
+							"@type"			: "Person",
+							"name"			: "Rosaria Silipo"
+						}
+					],
+					"bookEdition" 	: "2nd Edition",
+					"copyrightYear" : "2020",
+					"copyrightHolder" : "Springer Nature Switzerland AG",
+					"datePublished" : "2020-07-15",
+					"genre"			: "Data Science",
+					"image" 		: "https://images.springer.com/sgw/books/medium/9783030455736.jpg",
+					"inLanguage" 	: "en",
+					"name" 			: "Guide to Intelligent Data Science",
+					"numberOfPages" : "418",
+					"publisher" 	: {
+						"@type" 		: "Organization",
+						"name" 			: "Springer International Publishing"
+					},
+					"url" 			: "https://www.springer.com/book/9783030455736",
+					"workExample"	: [
+						{
+							"@type" 		: "Book",
+							"bookFormat" 	: "http://schema.org/EBook",
+							"isbn" 			: "978-3-030-45574-3",
+							"fileFormat" 	: "application/pdf",
+							"offers" 		: {
+								"@type" 		: "Offer",
+								"price" 		: "69.99",
+								"priceCurrency" : "USD",
+								"url" 			: "https://www.springer.com/book/9783030455736"
+							}
+						},
+						{
+							"@type" 		: "Book",
+							"bookFormat" 	: "http://schema.org/Hardcover",
+							"isbn" 			: "978-3-030-45573-6",
+							"offers" 		: {
+								"@type" 		: "Offer",
+								"price" 		: "89.99",
+								"priceCurrency" : "USD",
+								"url" 			: "https://www.springer.com/book/9783030455736"
+							}
+						}
+					]
+				 }
+			}
+		</script>
+
+	</body>
+</html>
