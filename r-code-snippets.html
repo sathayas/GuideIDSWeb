@@ -302,7 +302,7 @@ alternative hypothesis: highest value 2.5 is an outlier</pre>
 								<div class="content -wysiwyg">
 									<a class="btn btn--outline content__download" href="downloads/Chapter5-ErrorsAndValidation-R.zip" download title="Download R Code - Chapter 5">Download Code</a>
 									<h2 id="chapter-5">Errors and Validation in R</h2>
-									<small>Book reference: Chapter 5.6.2, page XXX</small>
+									<small><a href="contents-and-teaching-material.html#chapter-5">Book reference: Chapter 5.5.1, page 112</a></small>
 									<h3 id="chapter-5-a">Training and Testing Data</h3>
 									<p>In order to apply the idea of using separate parts of a data set for training and testing, one needs to select random subsets of the data set. As a very simple example, we consider the Iris data set that we want to split into training and test sets. The size of the training set should contain 2/3 of the original data, and the test set 1/3. It would not be a good idea to take the first 100 records in the Iris data set for training purposes and the remaining 50 as a test set, since the records in the Iris data set are ordered with respect to the species.With such a split, all examples of Iris setosa and Iris versicolor would end up in the training set, but none of Iris versicolor, which would form the test set. Therefore, we need random sample from the Iris data set. If the records in the Iris data set were not systematically orderer, but in a random order, we could just take the first 100 records for training purposes and the remaining 50 as a test set.</p>
 									<p>Sampling and orderings in R provide a simple way to shuffle a data set, i.e., to generate a random order of the records.</p>
