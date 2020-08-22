@@ -244,7 +244,7 @@ Cumulative Proportion  0.7296 0.9581 0.99482 1.00000</pre>
 									<pre><code class="language-r">predict(iris.pca,newdata=x)</code></pre>
 									<p>where <code>x</code> must have the same number of columns as the data set from which the PCA has been computed. In this case, <code>x</code> must have four columns which must be numerical. <code>predict</code> will compute the full transformation, so that the above command will also yield transformed data with four columns.</p>
 									<h3 id="chapter-4-e">Multidimensional Scaling</h3>
-									<small><a href="contents-and-teaching-material.html#chapter-4">Book reference: Chapter 4.3.2.3, page 53<a></small>
+									<small><a href="contents-and-teaching-material.html#chapter-4">Book reference: Chapter 4.3.2.3, page 53</a></small>
 									<p>MDS requires the library <code>MASS</code> which is not included in the standard version of R and needs installing. First, a distance matrix is needed for MDS. Identical objects leading to zero distances are not admitted. Therefore, if there are identical objects in a data set, all copies of the same object except one must be removed. In the Iris data set, there is only one pair of identical objects, so that one of them needs to be removed. The <code>Species</code> is not a numerical attribute and will be ignored for the distance.</p>
 									<pre><code class="language-r">library(MASS)
 x <- iris[-102,]
