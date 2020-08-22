@@ -325,7 +325,7 @@ iris.test <- iris.shuffled[(k+1):n,]</code></pre>
 									<a class="btn btn--outline content__download" href="downloads/Chapter6-DataPreparation-R.zip" download title="Download R Code - Chapter 6">Download Code</a>
 									<h2 id="chapter-6">Data Preparation in R</h2>
 									<h3 id="chapter-6-a">Missing Values</h3>
-									<small>Book reference: Chapter 6.6.2.2, page XXX</small>
+									<small><a href="contents-and-teaching-material.html#chapter-6">Book reference: Chapter 6.2.2, page 137</a></small>
 									<p>The logical constant <code>NA</code> (not available) is used to represent missing values in R. There are various methods in R that can handle missing values directly.</p>
 									<p>As a very simple example, we consider the mean value.We create a data set with one attribute with four missing values and try to compute the mean:</p>
 									<pre><code class="language-r">x <- c(3,2,NA,4,NA,1,NA,NA,5)
@@ -336,7 +336,7 @@ mean(x)</code></pre>
 									<pre class="output">3</pre>
 									<p>Note that this computation of the mean value implicitly assumes that the values are missing completely at random (MCAR).</p>
 									<h3 id="chapter-6-b">Normalization and Scaling</h3>
-									<small>Book reference: Chapter 6.6.2.3, page XXX</small>
+									<small><a href="contents-and-teaching-material.html#chapter-6">Book reference: Chapter 6.6.3, page 153</a></small>
 									<p>Normalization and standardization of numeric attributes can be achieved in the following way. The function <code>is.factor</code> returns true if the corresponding attribute is categorical (or ordinal), so that we can ensure with this function that normalization is only applied to all numerical attributes, but not to the categorical ones. With the following R-code, z-score standardization is applied to all numerical attributes:</p>
 									<pre><code class="language-r">iris.norm <- iris
 
