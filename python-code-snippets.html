@@ -704,6 +704,7 @@ plt.show()</code></pre>
 									<h2 id="chapter-9">Predictors </h2>
 
 									<h3 id="chapter-9-a">Nearest Neighbor Classifiers</h3>
+									<small><a href="contents-and-teaching-material.html#chapter-9">Book reference: Chapter 9.1, page 275</a></small>
 									<p>In this example, we will construct a nearest neighbor classifier for the Iris data. First, we load the data set as before, and split it into the training (N=100) and testing (N=50) data sets.</p>
 									<pre><code class="language-python">import numpy as np
 import matplotlib.pyplot as plt
@@ -749,6 +750,7 @@ X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=50,
 weighted avg       0.92      0.92      0.92        50</pre>
 
 									<h3 id="chapter-9-b">Neural Networks</h3>
+									<small><a href="contents-and-teaching-material.html#chapter-9">Book reference: Chapter 9.2, page 282</a></small>
 									<p>We use a multilayer perceptron (MLP) to classify species in the Iris data set. We define an MLP classifier object <code>MLPClassifier</code> available under the <code>sklearn.neural_network</code> library. As we define the classifier object <code>mlp</code>, we use the stochastic gradient descent solver (<code>solver=sgd</code>). We use 2 hidden layers 4 and 2 neurons, as defined by the parameter <code>hidden_layer_sizes=(4, 2)</code>.</p>
 									<pre><code class="language-python">from sklearn.neural_network import MLPClassifier
 
@@ -785,7 +787,9 @@ mlp = MLPClassifier(solver='sgd',
 weighted avg       0.92      0.92      0.92        50</pre>
 
 									<h3 id="chapter-9-c">Support Vector Machines</h3>
+									<small><a href="contents-and-teaching-material.html#chapter-9">Book reference: Chapter 9.4, page 297</a></small>
 									<p>Support vector machine (SVM) classifier and regression models are available under the <code>sklearn.svm</code> library as <code>SVC</code> and <code>SVR</code>, respectively. For the SVM classifier, we define a classifier object <code>svc</code> with the linear kernel (<code>kernel='linear'</code>) and a somewhat soft margin (<code>C=1.0</code>).</p>
+									<small><a href="contents-and-teaching-material.html#chapter-9">Book reference: Chapter 9.4, page 297</a></small>
 									<pre><code class="language-python">from sklearn.svm import SVC, SVR
 
 svc = SVC(kernel='linear', C=0.1)</code></pre>
@@ -838,6 +842,7 @@ plt.show()</code></pre>
 									</figure>
 
 									<h3 id="chapter-9-d">Ensemble Methods</h3>
+									<small><a href="contents-and-teaching-material.html#chapter-9">Book reference: Chapter 9.5, page 304</a></small>
 									<p>As an example of ensemble methods, we train a random forest classifier and use it to predict the Iris species. A random forest classifier is available as <code>RandomForestClassifier</code> in the <code>sklearn.ensemble</code> library. We define a random forest classifier object <code>rf</code>, with the following parameters:</p>
 									<ul><li>Criterion: <code>criterion = 'entropy'</code></li>
 									<li>Number of trees: <code>n_estimators = 100</code></li>

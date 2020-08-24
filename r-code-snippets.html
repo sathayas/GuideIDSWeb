@@ -683,6 +683,7 @@ Residual standard error: 0.1672 on 146 degrees of freedom</pre>
 									<h2 id="chapter-9">Predictors</h2>
 
 									<h3 id="chapter-9-a">Nearest Neighbor Classifiers</h3>
+									<small><a href="contents-and-teaching-material.html#chapter-9">Book reference: Chapter 9.1, page 275</a></small>
 									<p>A nearest-neighbor classifier based on the Euclidean distance is implemented in the package <code>class</code> in R. To show how to use the nearest-neighbor classifier in R, we use splitting of the Iris data set into a training set <code>iris.training</code> and test set <code>iris.test</code> as it was demonstrated in Sect. 5.6.2. The function <code>knn</code> requires a training and a set with only numerical attributes and a vector containing the classifications for the training set. The parameter <code>k</code> determines how many nearest neighbors are considered for the classification decision.</p>
 									<pre><code class="language-r"># generating indices for shuffling
 n <- length(iris$Species)
@@ -707,6 +708,7 @@ table(iris.knn,iris.test[,5])</code></pre>
   									<p>The last line prints the confusion matrix.</p>
 
   									<h3 id="chapter-9-c">Neural Networks</h3>
+										<small><a href="contents-and-teaching-material.html#chapter-9">Book reference: Chapter 9.2, page 282</a></small>
 									<p>For the example of multilayer perceptrons in R, we use the same training and test data as for the nearest-neighbor classifier above. The multilayer perceptron can only process numerical values. Therefore, we first have to transform the categorical attribute <code>Species</code> into a numerical attribute:</p>
 									<pre><code class="language-r">x <- iris.training
 x$Species <- as.numeric(x$Species)</code></pre>
@@ -729,6 +731,7 @@ y.out <- compute(iris.nn,y)</code></pre>
 									<pre><code class="language-r">y.sqerr <- (y[1] - y.out$net.result[,2])^2</code></pre>
 
 									<h3 id="chapter-9-c">Support Vector Machines</h3>
+									<small><a href="contents-and-teaching-material.html#chapter-9">Book reference: Chapter 9.4, page 297</a></small>
 									<p>For support vector machine, we use the same training and test data as already for the nearest-neighbor classifier and for the neural networks. A support vector machine to predict the <code>species</code> in the Iris data set based on the other attributes can be constructed in the following way. The package <code>e1071</code> is needed and should be installed first if it has not been installed before:</p>
 									<pre><code class="language-r">library(e1071)
 iris.svm <- svm(Species ~ ., data = iris.training)
@@ -744,6 +747,7 @@ sqerr <- (predict(iris.svm,iris.test[-4])-iris.test[4])^2</code></pre>
 									<p>to predict the numerical attribute <code>petal width</code> based on the other attributes and to compute the squared errors for the test set.</p>
 
 									<h3 id="chapter-9-d">Ensemble Methods</h3>
+									<small><a href="contents-and-teaching-material.html#chapter-9">Book reference: Chapter 9.5, page 304</a></small>
 									<p>As an example for ensemble methods, we consider <code>random forest</code> with the training and test data of the Iris data set as before. The package randomForest needs to be installed first:</p>
 									<pre><code class="language-r">library(randomForest)
 iris.rf <- randomForest(Species ~., iris.training)
