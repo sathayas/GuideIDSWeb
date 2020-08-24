@@ -504,7 +504,8 @@ creating S4 object  ... done [0.00s].
 									<h2 id="chapter-8">Finding Explanations</h2>
 
 									<h3 id="chapter-8-a">Decision tree</h3>
-									<p>R also allows for much finer control of the decision tree construction. The script below demonstrates how to create a simple tree for the Iris data set using a training set of 100 records. Then the tree is displayed, and a confusion matrix for the test set—the remaining 50 records of the Iris data set—is printed. The libraries <code>rpart</code>, which comes along with the standard installation of R, and <code>rattle</code>, that needs to be installed, are required:</p>
+									<small><a href="contents-and-teaching-material.html#chapter-8">Book reference: Chapter 8.1, page 220</a></small>
+							<p>R also allows for much finer control of the decision tree construction. The script below demonstrates how to create a simple tree for the Iris data set using a training set of 100 records. Then the tree is displayed, and a confusion matrix for the test set—the remaining 50 records of the Iris data set—is printed. The libraries <code>rpart</code>, which comes along with the standard installation of R, and <code>rattle</code>, that needs to be installed, are required:</p>
 									<pre><code class="language-r">library(rpart)
 iris.train <- c(sample(1:150,50))
 iris.dtree <- rpart(Species~.,data=iris,subset=iris.train)</code></pre>
@@ -530,6 +531,7 @@ Type 'rattle()' to shake, rattle, and roll your data.</pre>
 									<p>In addition to many options related to tree construction, R also offers many ways to beautify the graphical representation. We refer to R manuals for more details.</p>
 
 									<h3 id="chapter-8-b">Naive Bayes Classifiers</h3>
+									<small><a href="contents-and-teaching-material.html#chapter-8">Book reference: Chapter 8.2, page 230</a></small>
 									<p>Naive Bayes classifiers use normal distributions by default for numerical attributes. The package <code>e1071</code> must be installed first:</p>
 									<pre><code class="language-r">library(e1071)
 iris.train <- c(sample(1:150,75))
@@ -581,6 +583,7 @@ Y                 [,1]       [,2]
 									<p>If Laplace correction should be applied for categorical attribute, this can be achieved by setting the parameter <code>laplace</code> to the desired value when calling the function <code>naiveBayes</code>.</p>
 
 									<h3 id="chapter-8-c">Regression</h3>
+									<small><a href="contents-and-teaching-material.html#chapter-8">Book reference: Chapter 8.3, page 241</a></small>
 									<p>Least squares linear regression is implemented by the function <code>lm</code> (linear model). As an example, we construct a linear regression function to predict the petal width of the Iris data set based on the other numerical attributes:</p>
 									<pre><code class="language-r">iris.lm <- lm(iris$Petal.Width ~ iris$Sepal.Length
               + iris$Sepal.Width + iris$Petal.Length)
