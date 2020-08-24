@@ -356,7 +356,7 @@ for (i in c(1:length(iris.norm))){
 									<a class="btn btn--outline content__download" href="downloads/Chapter7-FindingPatterns-R.zip" download title="Download R Code - Chapter 7">Download Code</a>
 									<h2 id="chapter-7">Finding Patterns in R</h2>
 									<h3 id="chapter-7-a">Hierarchical Clustering</h3>
-									<small>Book reference: Chapter 7.8.2.1, page XXX</small>
+									<small><a href="contents-and-teaching-material.html#chapter-7">Book reference: Chapter 7.1, page 159</a></small>
 									<p>As an example, we apply hierarchical clustering to the Iris data set, ignoring the categorical attribute <code>Species</code>. We use the normalized Iris data set <code>iris.norm</code> that is constructed in Sect. 6.6.2.3. We can apply hierarchical clustering after removing the categorical attribute and can plot the dendrogram afterwards:</p>
 									<pre><code class="language-r">#
 # NORMALIZATION
@@ -389,7 +389,7 @@ heatmap.2(as.matrix(iris.num), Rowv=rowv,Colv=colv, trace="none")</code></pre>
 										<img src="assets/img/c7-r-dendrogram_2.png" alt="Cluster Dendrogram" />
 									</figure>
 									<h3 id="chapter-7-b">Prototype-Based Clustering</h3>
-									<small>Book reference: Chapter 7.8.2.2, page XXX</small>
+									<small><a href="contents-and-teaching-material.html#chapter-7">Book reference: Chapter 7.3, page 173</a></small>
 									<p>The R-function <code>kmeans</code> carries out k-means clustering.</p>
 									<pre><code class="language-r">iris.km <- kmeans(iris.num,centers=3)</code></pre>
 									<p>The desired numbers of clusters is specified by the parameter <code>centers</code>. The location of the cluster centers and the assignment of the data to the clusters is obtained by the <code>print</code> function:</p>
@@ -434,7 +434,7 @@ iris.dbscan <- dbscan(iris.num[,1:4],1.0,showplot=T)
 iris.dbscan$cluster</code></pre>
 									<p>The last line will print out the assignment of the data to the clusters. Singletons or outliers are marked by the number zero. The second argument in <code>dbscan</code> (in the above example 1:0) is the parameter " for DBSCAN. <code>showplot=T</code> will generate a plot of the clustering result projected to the first two dimensions of the data set.</p>
 									<h3 id="chapter-7-c">Self Organizing Maps</h3>
-									<small>Book reference: Chapter 7.8.2.3, page XXX</small>
+									<small><a href="contents-and-teaching-material.html#chapter-7">Book reference: Chapter 7.5, page 187</a></small>
 									<p>The library <code>som</code> provides methods for self organizing maps. The library <code>som</code> needs to be installed:</p>
 									<pre><code class="language-r">library(som)
 iris.som <- som(iris.num,xdim=5,ydim=5)
@@ -444,7 +444,7 @@ plot(iris.som)</code></pre>
 									</figure>
 									<p><code>xdim</code> and <code>ydim</code> define the number of nodes in the mesh in x- and y-directions, respectively. <code>plot</code> will show, for each node in the mesh, a representation of the values in the form of parallel coordinates.</p>
 									<h3 id="chapter-7-d">Association Rules</h3>
-									<small>Book reference: Chapter 7.8.2.4, page XXX</small>
+									<small><a href="contents-and-teaching-material.html#chapter-7">Book reference: Chapter 7.9, page 189</a></small>
 									<p>For association rule mining, the library <code>arules</code> is required in which the function <code>apriori</code> is defined. This library does not come along with R directly and needs to be installed first.</p>
 									<p>Here we use an artificial data set <code>basket</code> that we enter manually. The data set is a list of vectors where each vector contains the items that were bought:</p>
 									<pre><code class="language-r">library(arules)
