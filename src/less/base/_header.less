@@ -15,21 +15,19 @@
 	.page--home & {
 		.bg--transparent;
 	}
-	.-sticky& {
+	.-scrolling-down &,
+	.-scrolled-down & {
 		.bg--silver;
 		@media (min-width : @screen-sm-min) {
 			--header-h: 10rem;
-		}
-	}
-	.-scrolling-down &,
-	.-scrolled-down & {
-		@media (min-width : @screen-sm-min) {
 			transform: translateY( -100% );
 		}
 	}
 	.-scrolling-up &,
 	.-scrolled-up & {
+		.bg--silver;
 		@media (min-width : @screen-sm-min) {
+			--header-h: 10rem;
 			opacity: 1;
 		}
 	}
@@ -39,8 +37,8 @@
 	.header__body {
 		grid-column: 2 / span 12;
 		.row;
-		.row--align-items-center;
-		.row--justify-between;
+		align-items: center;
+		justify-content: space-between;
 		flex-wrap: nowrap;
 		position: relative;
 		height: 100%;

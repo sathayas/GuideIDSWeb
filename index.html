@@ -28,11 +28,11 @@
 		<link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon.png">
 		<link rel="icon" type="image/png" href="assets/img/favicons/favicon-32x32.png" sizes="32x32">
 		<link rel="icon" type="image/png" href="assets/img/favicons/favicon-16x16.png" sizes="16x16">
-		<link rel="mask-icon" href="assets/img/favicons/safari-pinned-tab.svg" color="#e53736">
+		<link rel="mask-icon" href="assets/img/favicons/safari-pinned-tab.svg" color="#8A0C69">
 		<link rel="shortcut icon" href="assets/img/favicons/favicon.ico">
-		<meta name="msapplication-TileColor" content="#e53736">
+		<meta name="msapplication-TileColor" content="#8A0C69">
 		<meta name="theme-color" content="#ffffff">
-		<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&family=Source+Sans+Pro:wght@300;700&family=Source+Serif+Pro&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&family=Source+Sans+Pro:wght@400;700&family=Source+Serif+Pro&display=swap" rel="stylesheet">
 		<link rel="stylesheet" href="assets/css/styles.min.css" type="text/css" />
 		<script src="assets/js/lib/modernizr-custom.min.js"></script>
 
@@ -49,11 +49,11 @@
 				<div class="header__item header__item--nav-primary">
 					<nav class="nav-header nav-header--primary" role="navigation">
 						<ul class="menu">
-							<li class="menu__item -active">
-								<a href="index.html">About the Book</a>
+							<li class="menu__item">
+								<a href="teaching-material.html">Teaching Material</a>
 							</li>
 							<li class="menu__item">
-								<a href="contents-and-teaching-material.html">Contents & Teaching Material</a>
+								<a href="contents.html">Contents</a>
 							</li>
 							<li class="menu__item">
 								<a href="https://www.springer.com/gp/book/9783030455736" target="_blank">Buy Book</a>
@@ -63,7 +63,7 @@
 				</div>
 				<div class="header__item header__item--nav-min">
 					<nav class="nav-header nav-header--min" role="navigation">
-						<button class="menu-toggle">
+						<button class="menu-toggle" aria-label="Menu">
 							<span class="icon"></span>
 						</button>
 					</nav>
@@ -76,41 +76,29 @@
 			<section class="layout layout--default">
 				<main class="layout__body">
 
-					<section class="mod mod-stage bg--silver">
-						<div class="mod__body">
-							<div class="mod__item mod__item--text">
-								<h1 class="h0">Guide to Intelligent Data Science
-									<span>How to Intelligently Make Use of Real Data</span></h1>
-								<p class="sm dist--semi-t-margin">Michael&nbsp;R.&nbsp;Berthold, Christian&nbsp;Borgelt, Frank&nbsp;Höppner, Frank&nbsp;Klawonn, Rosaria&nbsp;Silipo</p>
+					<section class="mod mod-stage p-b0 bg--silver">
+						<div class="mod__item mod__item--text">
+							<h1 class="h0">Guide to Intelligent Data Science
+								<span>How to Intelligently Make Use of Real Data</span></h1>
+							<br><br>
+							<p class="sm">Michael&nbsp;R.&nbsp;Berthold, Christian&nbsp;Borgelt, Frank&nbsp;Höppner, Frank&nbsp;Klawonn, Rosaria&nbsp;Silipo</p>
+						</div>
+						<div class="mod__item mod__item--pic">
+							<div class="pic media--contain media-pos--left media-pos--sm-center">
+								<picture>
+									<img src="assets/img/book-cover.png" alt="Cover of Guide to Intelligent Data Science" />
+								</picture>
 							</div>
-							<div class="mod__item mod__item--pic">
-								<div class="pic media--contain media-pos--left media-pos--sm-center">
-									<picture>
-										<img src="assets/img/book-cover.png" alt="Cover of Guide to Intelligent Data Science" />
-									</picture>
-								</div>
-							</div>
-							<div class="mod__item mod__item--batch">
-								<div class="batch">
-									<p class="batch__title">Teaching material available via open access license</p>
-									<a class="btn btn--outline btn--neg batch__btn" href="contents-and-teaching-material.html" target="_blank">Access now</a>
-								</div>
+						</div>
+						<div class="mod__item mod__item--batch">
+							<div class="batch">
+								<p class="batch__title">Teaching material available via open access license</p>
+								<a class="btn btn--outline btn--neg batch__btn" href="teaching-material.html">Access now</a>
 							</div>
 						</div>
 					</section>
 
-					<section class="mod mod-cta bg--purple -neg">
-						<div class="mod__body">
-							<div class="mod__item mod__item--title">
-								<h3>The new book is available now on Springer</h3>
-							</div>
-							<div class="mod__item mod__item--btn">
-								<a class="btn btn--outline btn--neg cta__btn" href="https://www.springer.com/gp/book/9783030455736" target="_blank">Buy now</a>
-							</div>
-						</div>
-					</section>
-
-					<section class="mod mod-blocks bg--darkblue -neg">
+					<section class="mod mod-blocks bg--white">
 						<ul class="mod__body">
 							<li class="mod__item">
 								<p>Supplies a broad-range of perspectives on data science, providing readers with a comprehensive account of the field</p>
@@ -127,7 +115,35 @@
 						</ul>
 					</section>
 
-					<section class="mod mod-text mod-text--intro bg--porcelain">
+					<section class="mod mod-testimonials bg--darkblue -neg">
+						<div class="mod__body">
+							<div class="mod__item">
+								<div class="slider">
+									<div id="testimonials-slider-1-pagination" class="slider__progress"></div>
+									<div id="testimonials-slider-1" class="slider__container" data-autoplay="8000">
+										<div class="slider__slides">
+											<div class="slide testimonial">
+												<h4>Times Higher Education, 26 May 2011</h4>
+												<blockquote>“The persons, leading scholars in the field based in Germany and Spain, seek to offer a hands-on instructional approach to basic data analysis techniques and consider their use in solving problems. The reader is taken through the process, following the interlinked steps of project understanding, data understanding, data preparation, modelling, and deployment and monitoring. The text reviews the basics of classical statistics that support and justify many data analysis methods, and includes a glossary of statistical terms.”</blockquote>
+											</div>
+											<div class="slide testimonial">
+												<h4>Times Higher Education, 26 May 2011</h4>
+												<blockquote>“The persons, leading scholars in the field based in Germany and Spain, seek to offer a hands-on instructional approach to basic data analysis techniques and consider their use in solving problems. The reader is taken through the process, following the interlinked steps of project understanding, data understanding, data preparation, modelling, and deployment and monitoring. The text reviews the basics of classical statistics that support and justify many data analysis methods, and includes a glossary of statistical terms.”</blockquote>
+											</div>
+											<div class="slide testimonial">
+												<h4>Times Higher Education, 26 May 2011</h4>
+												<blockquote>“The persons, leading scholars in the field based in Germany and Spain, seek to offer a hands-on instructional approach to basic data analysis techniques and consider their use in solving problems. The reader is taken through the process, following the interlinked steps of project understanding, data understanding, data preparation, modelling, and deployment and monitoring. The text reviews the basics of classical statistics that support and justify many data analysis methods, and includes a glossary of statistical terms.”</blockquote>
+											</div>
+										</div>
+									</div>
+									<button id="testimonials-slider-1-nav-prev" class="slider__nav slider__nav--prev" aria-label="Previous Slide"><img class="svg" src="assets/img/arrow-prev.svg" /></button>
+									<button id="testimonials-slider-1-nav-next" class="slider__nav slider__nav--next" aria-label="Next Slide"><img class="svg" src="assets/img/arrow-next.svg" /></button>
+								</div>
+							</div>
+						</div>
+					</section>
+
+					<section class="mod mod-text bg--porcelain">
 						<div class="mod__body">
 							<div class="mod__item mod__item--head">
 								<h2 class="statement">Making use of data is not anymore a niche project but central to almost every project.</h2>
@@ -144,7 +160,7 @@
 					<section class="mod mod-persons bg--silver">
 						<div class="mod__body">
 							<div class="mod__item mod__item--title">
-								<h2 class="title">The Authors</h2>
+								<h2 class="h1">The<br>Authors</h2>
 							</div>
 							<div class="mod__item mod__item--person">
 								<figure class="person">
@@ -251,23 +267,13 @@
 						</div>
 					</section>
 
-					<section class="mod mod-testimonials bg--darkblue -neg">
+					<section class="mod mod-cta bg--purple -neg">
 						<div class="mod__body">
-							<div class="mod__item">
-								<div class="slider">
-									<div id="testimonials-slider-1-pagination" class="slider__progress"></div>
-									<div id="testimonials-slider-1" class="slider__container" data-autoplay="false">
-										<div class="slider__slides">
-											<div class="slide testimonial">
-												<h4>Times Higher Education, 26 May 2011</h4>
-												<blockquote>“The persons, leading scholars in the field based in Germany and Spain, seek to offer a hands-on instructional approach to basic data analysis techniques and consider their use in solving problems. The reader is taken through the process, following the interlinked steps of project understanding, data understanding, data preparation, modelling, and deployment and monitoring. The text reviews the basics of classical statistics that support and justify many data analysis methods, and includes a glossary of statistical terms.”</blockquote>
-											</div>
-										</div>
-									</div>
-									<button id="testimonials-slider-1-nav-prev" class="slider__nav slider__nav--prev" aria-label="Previous Slide"><img class="svg" src="assets/img/arrow-prev.svg" /></button>
-									<button id="testimonials-slider-1-nav-next" class="slider__nav slider__nav--next" aria-label="Next Slide"><img class="svg" src="assets/img/arrow-next.svg" /></button>
-									</div>
-								</div>
+							<div class="mod__item mod__item--title">
+								<h3>The new book is available now on Springer</h3>
+							</div>
+							<div class="mod__item mod__item--btn">
+								<a class="btn btn--outline btn--neg cta__btn" href="https://www.springer.com/gp/book/9783030455736" target="_blank">Buy now</a>
 							</div>
 						</div>
 					</section>
@@ -281,7 +287,7 @@
 				<div class="footer__item footer__item--title">
 					<h2>Guide to Intelligent Data Science<br>
 						<span>How to Intelligently Make Use of Real Data</span></h2>
-					<a class="btn" href="#" target="_blank">Buy now</a>
+					<a class="btn" href="https://www.springer.com/gp/book/9783030455736" target="_blank">Buy now</a>
 				</div>
 				<div class="footer__item footer__item--data">
 					<ul>
@@ -337,7 +343,10 @@
 							<a href="index.html">About the Book</a>
 						</li>
 						<li class="menu__item">
-							<a href="contents-and-teaching-material.html">Contents & Teaching Material</a>
+							<a href="teaching-material.html">Teaching Material</a>
+						</li>
+						<li class="menu__item">
+							<a href="contents.html">Contents</a>
 						</li>
 						<li class="menu__item">
 							<a href="https://www.springer.com/gp/book/9783030455736" target="_blank">Buy Book</a>
@@ -359,6 +368,8 @@
 				</nav>
 			</div>
 		</div>
+
+		<script src="assets/js/lib/css-vars-ponyfill.min.js"></script>
 		<script src="assets/js/lib/babel-polyfill.min.js"></script>
 		<script src="assets/js/lib/conditionizr.min.js"></script>
 		<script src="assets/js/lib/jquery-3-5-1.min.js"></script>

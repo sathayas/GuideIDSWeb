@@ -1,35 +1,38 @@
+
 // foregrounds
 .-neg {
 	.white;
 }
 .white {
-	color: @color-white;
+	color: var(--color-white);
 }
 .darkblue {
-	color: @color-darkblue;
+	color: var(--color-darkblue);
 }
 .purple {
-	color: @color-purple;
+	color: var(--color-purple);
 }
 .silver {
-	color: @color-silver;
+	color: var(--color-silver);
 }
 // backgrounds
 .bg--transparent {
 	background-color: transparent;
 }
 .bg--white {
-	background-color: @color-white;
+	background-color: var(--color-white);
 }
 .bg--alabaster {
-	background-color: @color-alabaster;
+	background-color: var(--color-alabaster);
 }
 .bg--darkblue {
-	background-color: @color-darkblue;
+	background-color: var(--color-darkblue);
+	--text-color: var(--color-neg);
 }
 .bg--purple {
-	background-color: @color-purple;
+	background-color: var(--color-purple);
+	--text-color: var(--color-neg);
 }
 .bg--silver {
-	background-color: @color-silver;
+	background-color: var(--color-silver);
 }

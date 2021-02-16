@@ -445,22 +445,6 @@ jQuery.extend( jQuery.easing,
 	};
 
 })( jQuery, window , document );
-/*!
- * Particleground
- *
- * @author Jonathan Nicol - @mrjnicol
- * @version 1.1.0
- * @description Creates a canvas based particle system background
- *
- * Inspired by http://requestlab.fr/ and http://disruptivebydesign.com/
- */
-!function(a,b){"use strict";function c(a){a=a||{};for(var b=1;b<arguments.length;b++){var c=arguments[b];if(c)for(var d in c)c.hasOwnProperty(d)&&("object"==typeof c[d]?deepExtend(a[d],c[d]):a[d]=c[d])}return a}function d(d,g){function h(){if(y){r=b.createElement("canvas"),r.className="pg-canvas",r.style.display="block",d.insertBefore(r,d.firstChild),s=r.getContext("2d"),i();for(var c=Math.round(r.width*r.height/g.density),e=0;c>e;e++){var f=new n;f.setStackPos(e),z.push(f)}a.addEventListener("resize",function(){k()},!1),b.addEventListener("mousemove",function(a){A=a.pageX,B=a.pageY},!1),D&&!C&&a.addEventListener("deviceorientation",function(){F=Math.min(Math.max(-event.beta,-30),30),E=Math.min(Math.max(-event.gamma,-30),30)},!0),j(),q("onInit")}}function i(){r.width=d.offsetWidth,r.height=d.offsetHeight,s.fillStyle=g.dotColor,s.strokeStyle=g.lineColor,s.lineWidth=g.lineWidth}function j(){if(y){u=a.innerWidth,v=a.innerHeight,s.clearRect(0,0,r.width,r.height);for(var b=0;b<z.length;b++)z[b].updatePosition();for(var b=0;b<z.length;b++)z[b].draw();G||(t=requestAnimationFrame(j))}}function k(){i();for(var a=d.offsetWidth,b=d.offsetHeight,c=z.length-1;c>=0;c--)(z[c].position.x>a||z[c].position.y>b)&&z.splice(c,1);var e=Math.round(r.width*r.height/g.density);if(e>z.length)for(;e>z.length;){var f=new n;z.push(f)}else e<z.length&&z.splice(e);for(c=z.length-1;c>=0;c--)z[c].setStackPos(c)}function l(){G=!0}function m(){G=!1,j()}function n(){switch(this.stackPos,this.active=!0,this.layer=Math.ceil(3*Math.random()),this.parallaxOffsetX=0,this.parallaxOffsetY=0,this.position={x:Math.ceil(Math.random()*r.width),y:Math.ceil(Math.random()*r.height)},this.speed={},g.directionX){case"left":this.speed.x=+(-g.maxSpeedX+Math.random()*g.maxSpeedX-g.minSpeedX).toFixed(2);break;case"right":this.speed.x=+(Math.random()*g.maxSpeedX+g.minSpeedX).toFixed(2);break;default:this.speed.x=+(-g.maxSpeedX/2+Math.random()*g.maxSpeedX).toFixed(2),this.speed.x+=this.speed.x>0?g.minSpeedX:-g.minSpeedX}switch(g.directionY){case"up":this.speed.y=+(-g.maxSpeedY+Math.random()*g.maxSpeedY-g.minSpeedY).toFixed(2);break;case"down":this.speed.y=+(Math.random()*g.maxSpeedY+g.minSpeedY).toFixed(2);break;default:this.speed.y=+(-g.maxSpeedY/2+Math.random()*g.maxSpeedY).toFixed(2),this.speed.x+=this.speed.y>0?g.minSpeedY:-g.minSpeedY}}function o(a,b){return b?void(g[a]=b):g[a]}function p(){console.log("destroy"),r.parentNode.removeChild(r),q("onDestroy"),f&&f(d).removeData("plugin_"+e)}function q(a){void 0!==g[a]&&g[a].call(d)}var r,s,t,u,v,w,x,y=!!b.createElement("canvas").getContext,z=[],A=0,B=0,C=!navigator.userAgent.match(/(iPhone|iPod|iPad|Android|BlackBerry|BB10|mobi|tablet|opera mini|nexus 7)/i),D=!!a.DeviceOrientationEvent,E=0,F=0,G=!1;return g=c({},a[e].defaults,g),n.prototype.draw=function(){s.beginPath(),s.arc(this.position.x+this.parallaxOffsetX,this.position.y+this.parallaxOffsetY,g.particleRadius/2,0,2*Math.PI,!0),s.closePath(),s.fill(),s.beginPath();for(var a=z.length-1;a>this.stackPos;a--){var b=z[a],c=this.position.x-b.position.x,d=this.position.y-b.position.y,e=Math.sqrt(c*c+d*d).toFixed(2);e<g.proximity&&(s.moveTo(this.position.x+this.parallaxOffsetX,this.position.y+this.parallaxOffsetY),g.curvedLines?s.quadraticCurveTo(Math.max(b.position.x,b.position.x),Math.min(b.position.y,b.position.y),b.position.x+b.parallaxOffsetX,b.position.y+b.parallaxOffsetY):s.lineTo(b.position.x+b.parallaxOffsetX,b.position.y+b.parallaxOffsetY))}s.stroke(),s.closePath()},n.prototype.updatePosition=function(){if(g.parallax){if(D&&!C){var a=(u-0)/60;w=(E- -30)*a+0;var b=(v-0)/60;x=(F- -30)*b+0}else w=A,x=B;this.parallaxTargX=(w-u/2)/(g.parallaxMultiplier*this.layer),this.parallaxOffsetX+=(this.parallaxTargX-this.parallaxOffsetX)/10,this.parallaxTargY=(x-v/2)/(g.parallaxMultiplier*this.layer),this.parallaxOffsetY+=(this.parallaxTargY-this.parallaxOffsetY)/10}var c=d.offsetWidth,e=d.offsetHeight;switch(g.directionX){case"left":this.position.x+this.speed.x+this.parallaxOffsetX<0&&(this.position.x=c-this.parallaxOffsetX);break;case"right":this.position.x+this.speed.x+this.parallaxOffsetX>c&&(this.position.x=0-this.parallaxOffsetX);break;default:(this.position.x+this.speed.x+this.parallaxOffsetX>c||this.position.x+this.speed.x+this.parallaxOffsetX<0)&&(this.speed.x=-this.speed.x)}switch(g.directionY){case"up":this.position.y+this.speed.y+this.parallaxOffsetY<0&&(this.position.y=e-this.parallaxOffsetY);break;case"down":this.position.y+this.speed.y+this.parallaxOffsetY>e&&(this.position.y=0-this.parallaxOffsetY);break;default:(this.position.y+this.speed.y+this.parallaxOffsetY>e||this.position.y+this.speed.y+this.parallaxOffsetY<0)&&(this.speed.y=-this.speed.y)}this.position.x+=this.speed.x,this.position.y+=this.speed.y},n.prototype.setStackPos=function(a){this.stackPos=a},h(),{option:o,destroy:p,start:m,pause:l}}var e="particleground",f=a.jQuery;a[e]=function(a,b){return new d(a,b)},a[e].defaults={minSpeedX:.1,maxSpeedX:.7,minSpeedY:.1,maxSpeedY:.7,directionX:"center",directionY:"center",density:1e4,dotColor:"#666666",lineColor:"#666666",particleRadius:7,lineWidth:1,curvedLines:!1,proximity:100,parallax:!0,parallaxMultiplier:5,onInit:function(){},onDestroy:function(){}},f&&(f.fn[e]=function(a){if("string"==typeof arguments[0]){var b,c=arguments[0],g=Array.prototype.slice.call(arguments,1);return this.each(function(){f.data(this,"plugin_"+e)&&"function"==typeof f.data(this,"plugin_"+e)[c]&&(b=f.data(this,"plugin_"+e)[c].apply(this,g))}),void 0!==b?b:this}return"object"!=typeof a&&a?void 0:this.each(function(){f.data(this,"plugin_"+e)||f.data(this,"plugin_"+e,new d(this,a))})})}(window,document),/**
- * requestAnimationFrame polyfill by Erik Möller. fixes from Paul Irish and Tino Zijdel
- * @see: http://paulirish.com/2011/requestanimationframe-for-smart-animating/
- * @see: http://my.opera.com/emoller/blog/2011/12/20/requestanimationframe-for-smart-er-animating
- * @license: MIT license
- */
-function(){for(var a=0,b=["ms","moz","webkit","o"],c=0;c<b.length&&!window.requestAnimationFrame;++c)window.requestAnimationFrame=window[b[c]+"RequestAnimationFrame"],window.cancelAnimationFrame=window[b[c]+"CancelAnimationFrame"]||window[b[c]+"CancelRequestAnimationFrame"];window.requestAnimationFrame||(window.requestAnimationFrame=function(b){var c=(new Date).getTime(),d=Math.max(0,16-(c-a)),e=window.setTimeout(function(){b(c+d)},d);return a=c+d,e}),window.cancelAnimationFrame||(window.cancelAnimationFrame=function(a){clearTimeout(a)})}();
 /*! npm.im/object-fit-images */
 var objectFitImages=function(){"use strict";function t(t){for(var e,r=getComputedStyle(t).fontFamily,i={};null!==(e=n.exec(r));)i[e[1]]=e[2];return i}function e(e,i){if(!e[c].parsingSrcset){var s=t(e);if(s["object-fit"]=s["object-fit"]||"fill",!e[c].s){if("fill"===s["object-fit"])return;if(!e[c].skipTest&&l&&!s["object-position"])return}var n=e[c].ios7src||e.currentSrc||e.src;if(i)n=i;else if(e.srcset&&!a&&window.picturefill){var o=window.picturefill._.ns;e[c].parsingSrcset=!0,e[o]&&e[o].evaled||window.picturefill._.fillImg(e,{reselect:!0}),e[o].curSrc||(e[o].supported=!1,window.picturefill._.fillImg(e,{reselect:!0})),delete e[c].parsingSrcset,n=e[o].curSrc||n}if(e[c].s)e[c].s=n,i&&(e[c].srcAttr=i);else{e[c]={s:n,srcAttr:i||f.call(e,"src"),srcsetAttr:e.srcset},e.src=c;try{e.srcset&&(e.srcset="",Object.defineProperty(e,"srcset",{value:e[c].srcsetAttr})),r(e)}catch(t){e[c].ios7src=n}}e.style.backgroundImage='url("'+n+'")',e.style.backgroundPosition=s["object-position"]||"center",e.style.backgroundRepeat="no-repeat",/scale-down/.test(s["object-fit"])?(e[c].i||(e[c].i=new Image,e[c].i.src=n),function t(){return e[c].i.naturalWidth?void(e[c].i.naturalWidth>e.width||e[c].i.naturalHeight>e.height?e.style.backgroundSize="contain":e.style.backgroundSize="auto"):void setTimeout(t,100)}()):e.style.backgroundSize=s["object-fit"].replace("none","auto").replace("fill","100% 100%")}}function r(t){var r={get:function(){return t[c].s},set:function(r){return delete t[c].i,e(t,r),r}};Object.defineProperty(t,"src",r),Object.defineProperty(t,"currentSrc",{get:r.get})}function i(){u||(HTMLImageElement.prototype.getAttribute=function(t){return!this[c]||"src"!==t&&"srcset"!==t?f.call(this,t):this[c][t+"Attr"]},HTMLImageElement.prototype.setAttribute=function(t,e){!this[c]||"src"!==t&&"srcset"!==t?g.call(this,t,e):this["src"===t?"src":t+"Attr"]=String(e)})}function s(t,r){var i=!A&&!t;if(r=r||{},t=t||"img",u&&!r.skipTest)return!1;"string"==typeof t?t=document.querySelectorAll("img"):t.length||(t=[t]);for(var n=0;n<t.length;n++)t[n][c]=t[n][c]||r,e(t[n]);i&&(document.body.addEventListener("load",function(t){"IMG"===t.target.tagName&&s(t.target,{skipTest:r.skipTest})},!0),A=!0,t="img"),r.watchMQ&&window.addEventListener("resize",s.bind(null,t,{skipTest:r.skipTest}))}var c="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==",n=/(object-fit|object-position)\s*:\s*([-\w\s%]+)/g,o=new Image,l="object-fit"in o.style,u="object-position"in o.style,a="string"==typeof o.currentSrc,f=o.getAttribute,g=o.setAttribute,A=!1;return s.supportsObjectFit=l,s.supportsObjectPosition=u,i(),s}();
 /* PrismJS 1.20.0
@@ -498,19 +482,26 @@ Prism.languages.r={comment:/#.*/,string:{pattern:/(['"])(?:\\.|(?!\1)[^\\\r\n])*
 
 var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; };
 
-/*
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-Version: 1.0.0
-Author: Sascha Obermüller
-Date: 09.06.2020
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
- */
+/* ================================================== 
+version: 2.0.0
+author: sod
+date: 13.02.2021
+dependencies : 
+- jquery
+================================================== */
 
-(function ($) {
-	var ODAnchorNav = function ODAnchorNav(element, settings) {
+var ODAnchorNav = function () {
+	function ODAnchorNav($el, settings) {
+		_classCallCheck(this, ODAnchorNav);
+
 		var O = this;
-		O.$E = $(element); // content container
-		var defaults = {
+		O.$E = $el;
+		O._initiated = false;
+		O._opts = $.extend(true, {}, {
 			anchors: {},
 			changeHash: false,
 			easing: 'swing',
@@ -527,71 +518,52 @@ Date: 09.06.2020
 				scrollStart: null,
 				scrollEnd: null
 			}
-		};
-		O.options = $.extend(true, {}, defaults, settings);
-		O.activeAnchor = null;
-		O.anchors = {};
+		}, settings);
+		O._activeAnchor = null;
+		O._anchors = {};
+		// basic init actions
+		O._create();
+		O.$E.addClass('-initiated');
+		O._initiated = true;
+		// callback
+		if ($.isFunction(O.opts.on.afterInit)) {
+			O.opts.on.afterInit.call(O);
+		}
+	}
 
-		O.getOptions = function () {
-			return O.options;
-		};
-		O.setOptions = function (settings) {
-			O.options = $.extend(true, O.options, settings);
-		};
-		O.init = function () {
+	_createClass(ODAnchorNav, [{
+		key: '_create',
+		value: function _create() {
+			var O = this;
 
-			O.create();
-			// get link elems
-			O.$links = O.$E.$nav.find(O.options.$links);
-
-			O.updateAnchors();
-
-			// update the anchor positions
-			$(window).on('resize orientationchange', function (e) {
-				O.updateAnchors();
-			});
-			// update the nav items
-			$(window).on('scroll resize orientationchange', function (e) {
-				O.updateNav();
-			});
-
-			O.$E.$nav.addClass('-initiated');
-
-			// callback
-			if ($.isFunction(O.options.on.afterInit)) {
-				O.options.on.afterInit.call(this);
-			}
-		};
-		O.create = function () {
-
-			var anchorSelector = Object.keys(O.options.anchors);
+			var anchorSelector = Object.keys(O.opts.anchors);
 			var $anchors = O.$E.find(anchorSelector.join(','));
 
 			if ($anchors.length > 0) {
 				// create nav and menu
-				O.$E.$nav = $('<nav id="nav-content" class="nav-content"></nav>').appendTo(O.options.$navContainer);
+				O.$E.$nav = $('<nav id="nav-content" class="nav-content"></nav>').appendTo(O.opts.$navContainer);
 				O.$E.$nav.$menu = $('<ul class="menu"></ul>').appendTo(O.$E.$nav);
-				O.$E.$nav.$toggle = $(O.options.$navToggle).prependTo(O.$E.$nav); // mobile toggle
+				O.$E.$nav.$toggle = $(O.opts.$navToggle).prependTo(O.$E.$nav); // mobile toggle
 				// menu toggle for mobile 
 				O.$E.$nav.$toggle.on('click', function () {
-					O.toggleNav();
+					O._toggleNav();
 				});
 
 				var currentLevel = 0;
 				var $currentMenu = O.$E.$nav.$menu;
 				var $currentMenuItem = null;
 
-				$anchors.each(function (i) {
-					var $anchor = $(this);
+				$anchors.each(function (i, el) {
+					var $anchor = $(el);
 					$anchor.level = 0;
 
-					$.each(O.options.anchors, function (selector, level) {
+					$.each(O.opts.anchors, function (selector, level) {
 						if ($anchor.is(selector)) {
 							$anchor.level = level;
 						}
 					});
 					// set id if not set
-					if (!$anchor.hasAttr('id')) {
+					if (!$anchor._hasAttr('id')) {
 						$anchor.attr('id', 'a' + i);
 					}
 					// create menu item
@@ -603,7 +575,7 @@ Date: 09.06.2020
 						var $parentalMenus = $currentMenuItem.parents('.menu, .submenu');
 						$currentMenu = $parentalMenus[Math.min($parentalMenus.length - 1, currentLevel - $anchor.level)]; //   $currentMenu.closest( '.menu, .submenu' );
 					} else if (currentLevel < $anchor.level) {
-						if (!isNull($currentMenuItem)) {
+						if (!_isNull($currentMenuItem)) {
 							// if( $anchor.level == 1 ) {
 							$currentMenu = $('<ul class="submenu"></ul>').appendTo($currentMenuItem);
 							// }
@@ -621,414 +593,265 @@ Date: 09.06.2020
 					var $menuLink = $('<a href="#' + $anchor.attr('id') + '"></a>').appendTo($menuItem);
 					$menuLink.text($anchor.text());
 					// click handler
-					$menuLink.on('click', function (e) {
+					$menuLink.on('click', function (event) {
 						$menuLink.blur();
-						O.closeNav();
-						O.setAnchor(e);
+						O._closeNav();
+						O._setAnchor(event);
 						// callback
-						if ($.isFunction(O.options.on.clickLink)) {
-							O.options.on.clickLink.call(this);
+						if ($.isFunction(O.opts.on.clickLink)) {
+							O.opts.on.clickLink.call(this);
 						}
 					});
 				});
 			}
-		};
-		O.updateAnchors = function () {
-			O.$links.each(function () {
-				var $link = $(this);
-				var linkHref = O.getHash($link);
+
+			// get link elems
+			O.$links = O.$E.$nav.find(O.opts.$links);
+
+			O._updateAnchors();
+
+			// update the anchor positions
+			$(window).on('resize orientationchange', function (event) {
+				O._updateAnchors();
+			});
+			// update the nav items
+			$(window).on('scroll resize orientationchange', function (event) {
+				O._updateNav();
+			});
+
+			O.$E.$nav.addClass('-initiated');
+
+			// callback
+			if ($.isFunction(O.opts.on.afterInit)) {
+				O.opts.on.afterInit.call(this);
+			}
+		}
+	}, {
+		key: '_updateAnchors',
+		value: function _updateAnchors() {
+			var O = this;
+
+			O.$links.each(function (i, el) {
+				var $link = $(el);
+				var linkHref = O._getHash($link);
 				var $linkTarget = $('#' + linkHref);
 				if ($linkTarget.length > 0) {
-					O.anchors[linkHref] = Math.round($linkTarget.offset().top);
+					O._anchors[linkHref] = Math.round($linkTarget.offset().top);
 				}
 			});
-		};
-		O.updateNav = function () {
-			if (O.getActiveAnchor() != O.activeAnchor) {
-				O.activeAnchor = O.getActiveAnchor();
+		}
+	}, {
+		key: '_updateNav',
+		value: function _updateNav() {
+			var O = this;
+
+			if (O._getActiveAnchor() != O._activeAnchor) {
+				O._activeAnchor = O._getActiveAnchor();
 				// remove all active classes
 				O.$E.$nav.find('.menu__item').removeClass('-active').removeClass('-has-active');
-				O.$links.each(function () {
-					var $link = $(this);
-					if (O.getHash($link) == O.activeAnchor) {
+				O.$links.each(function (i, el) {
+					var $link = $(el);
+					if (O._getHash($link) == O._activeAnchor) {
 						$link.parent().addClass('-active');
 						$link.parent().parents('.menu__item').addClass('-has-active');
 					}
 				});
 			}
-			if (getWinWidth() >= O.options.navThreshold) {
+			if (_getWinWidth() >= O.opts.navThreshold) {
 				O.$E.$nav.$toggle.removeClass('-active');
 				O.$E.$nav.$menu.removeClass('-active');
 				O.$E.$nav.$menu.css('display', '');
 			}
-		};
-		O.toggleNav = function () {
+		}
+	}, {
+		key: '_toggleNav',
+		value: function _toggleNav() {
+			var O = this;
+
 			if (O.$E.$nav.$menu.hasClass('-active')) {
-				O.closeNav();
+				O._closeNav();
 			} else {
-				O.openNav();
+				O._openNav();
 			}
-		};
-		O.closeNav = function () {
+		}
+	}, {
+		key: '_closeNav',
+		value: function _closeNav() {
+			var O = this;
+
 			O.$E.$nav.$toggle.removeClass('-active');
 			O.$E.$nav.$menu.removeClass('-active');
-			if (getWinWidth() < O.options.navThreshold) {
+			if (_getWinWidth() < O.opts.navThreshold) {
 				O.$E.$nav.$menu.slideUp(500, function () {
 					O.$E.$nav.$menu.css('display', '');
 				});
 			}
-		};
-		O.openNav = function () {
+		}
+	}, {
+		key: '_openNav',
+		value: function _openNav() {
+			var O = this;
+
 			O.$E.$nav.$toggle.addClass('-active');
 			O.$E.$nav.$menu.addClass('-active');
-			if (getWinWidth() < O.options.navThreshold) {
+			if (_getWinWidth() < O.opts.navThreshold) {
 				O.$E.$nav.$menu.slideDown(500);
 			}
-		};
-		O.getHash = function ($link) {
+		}
+	}, {
+		key: '_getHash',
+		value: function _getHash($link) {
 			return $link.attr('href').split('#')[1];
-		};
-		O.getActiveAnchor = function () {
+		}
+	}, {
+		key: '_getActiveAnchor',
+		value: function _getActiveAnchor() {
+			var O = this;
+
 			var winPosY = $(window).scrollTop();
-			var winH = Math.round($(window).height() * O.options.scrollThreshold);
+			var winH = Math.round($(window).height() * O.opts.scrollThreshold);
 			var activeAnchor = null;
-			$.each(O.anchors, function (anchor, aPosY) {
+			$.each(O._anchors, function (anchor, aPosY) {
 				if (aPosY - winH < winPosY) {
 					activeAnchor = anchor;
 				}
 			});
 			return activeAnchor;
-		};
-		O.setAnchor = function (e) {
-			var $link = $(e.currentTarget);
+		}
+	}, {
+		key: '_setAnchor',
+		value: function _setAnchor(event) {
+			var O = this;
+
+			var $link = $(event.currentTarget);
 			var target = $link.attr('href');
 
-			if (O.getHash($link) != O.activeAnchor) {
+			if (O._getHash($link) != O._activeAnchor) {
 				// callback
-				if ($.isFunction(O.options.on.scrollStart)) {
-					O.options.on.scrollStart.call(this);
+				if ($.isFunction(O.opts.on.scrollStart)) {
+					O.opts.on.scrollStart.call(this);
 				}
 				// scroll to the correct position
-				O.scrollTo(target, function () {
+				O._scrollTo(target, function () {
 					// do we need to change the hash?
-					if (O.options.changeHash) {
+					if (O.opts.changeHash) {
 						window.location.hash = target;
 					}
-					O.updateNav();
+					O._updateNav();
 					// callback
-					if ($.isFunction(O.options.on.scrollEnd)) {
-						O.options.on.scrollEnd.call(this);
+					if ($.isFunction(O.opts.on.scrollEnd)) {
+						O.opts.on.scrollEnd.call(this);
 					}
 				});
 			}
-			e.preventDefault();
-		};
-		O.scrollTo = function (target, callback) {
+
+			event.preventDefault();
+		}
+	}, {
+		key: '_scrollTo',
+		value: function _scrollTo(target, callback) {
+			var O = this;
+
 			var scrollOffset = 0;
 			// offset function
-			if ($.isFunction(O.options.scrollOffset)) {
-				scrollOffset = O.options.scrollOffset.call(this);
+			if ($.isFunction(O.opts.scrollOffset)) {
+				scrollOffset = O.opts.scrollOffset.call(this);
 			}
 			// offset val
 			else {
-					scrollOffset = O.options.scrollOffset;
+					scrollOffset = O.opts.scrollOffset;
 				}
 
 			var scrollY = $(target).offset().top - scrollOffset;
 
 			$('html, body').animate({
 				scrollTop: scrollY
-			}, O.options.scrollSpeed, O.options.easing, callback);
-		};
-	};
+			}, O.opts.scrollSpeed, O.opts.easing, callback);
+		}
+	}, {
+		key: 'opts',
+		get: function get() {
+			return this._opts;
+		},
+		set: function set(settings) {
+			this._opts = $.extend(true, {}, this.opts, settings);
+		}
+	}]);
 
-	$.fn.odAnchorNav = function (settings) {
-		var $odAnchorNav = $(this);
-		if ($odAnchorNav.data('od-scrollnav')) return;
-		var odan = new ODAnchorNav($odAnchorNav, settings);
-		$odAnchorNav.data('od-scrollnav', odan);
-		odan.init();
+	return ODAnchorNav;
+}();
 
-		return odan;
-	};
-})(jQuery);
+// helper function for instantiation
+
+
+$.fn.odAnchorNav = function (settings) {
+	var $el = $(this);
+	var O = $el.data('od-scrollnav');
+	if (!O) {
+		O = new ODAnchorNav($el, settings);
+		$el.data('od-scrollnav', O);
+	}
+	return O;
+};
 /*	================================================== 
 	fit images / polyfill
 	================================================== */
 
-function initFitImgFix() {
+var _initFitImgFix = function _initFitImgFix() {
 	var $fitImages = $('.media--cover img, .media--contain img');
 	if ($fitImages.length > 0) {
 		objectFitImages($fitImages, { watchMQ: true });
 	}
-}
+};
 
 /*	================================================== 
-	iedge fixes
+	ie fixes
 	================================================== */
 
-function initIEdgeFix() {
+var _initIEFix = function _initIEFix() {
 	// iedge <picture> fix
 	$('.no-object-fit.-iedge').find($('.media--contain picture source, .media--cover picture source')).remove();
-}
 
-/*	================================================== 
-	ie11 fixes
-	================================================== */
-
-function initIE11Fix() {
-	// fix grid row autoplacement
-	$(window).on('scroll', function () {
-		if ($(window).scrollTop() > 0) {
-			var $nav = $('.mod-nav-contents ');
-			var offsetNav = $(window).scrollTop() + parseInt($nav.parent().css('padding-top'));
-			$nav.css({
-				top: offsetNav + 'px'
-			});
-		}
-	});
-}
+	// css vars polyfill
+	if (_isBrowser(['-ie10', '-ie11'])) {
+		cssVars();
+	}
+};
 
 /*	================================================== 
 	fixes
 	================================================== */
 
-function initFixes() {
-	initFitImgFix();
-	if (isBrowser(['iedge'])) {
-		initIEdgeFix();
-	}
-	if (isBrowser(['ie11'])) {
-		initIE11Fix();
-	}
-}
-/*	================================================== 
-	debug console log
-	================================================== */
-
-function log(log) {
-	if (debug) {
-		console.log(log);
-	}
-}
-
-/*	==================================================
-	is browser
-	================================================== */
-
-function isBrowser(browser) {
-	if (Array.isArray(browser)) {
-		var isB = false;
-		browser.forEach(function (el) {
-			if ($('html').hasClass('-' + el)) {
-				isB = true;
-			}
-			// log( 'isBrowser: '+ el + ' = '+ isB );
-		});
-		return isB;
-	} else {
-		return $('html').hasClass(browser);
-	}
-}
-
-/*	==================================================
-	get rest data
-	================================================== */
-
-// arg1 = array with (A) setting or (B) url
-// arg2 = (B) returnType as function or boolean true to return data
-// arg3 = (B) async
-function getRestData(arg1, arg2, arg3) {
-
-	var xhrArgs = {};
-	var xhr = void 0;
-
-	if ($.isArray(arg1)) {
-		xhrArgs = $.extend(true, xhrArgs, arg1);
-	} else if (typeof arg1 === 'string' && typeof arg3 === 'boolean' && (typeof arg2 === 'function' || typeof arg2 === 'boolean')) {
-		xhrArgs = {
-			url: arg1,
-			async: arg3,
-			success: function success(data) {
-				try {
-					if ($.isFunction(arg2)) {
-						arg2.call(this, data);
-					} else if (arg2 === true) {
-						return data;
-					}
-				} catch (err) {
-					log(err);
-				}
-				xhr = null;
-			},
-			error: function error(xhr, status, _error) {
-				log(xhr.status + ' ' + xhr.statusText);
-				if ($.isFunction(arg2)) {
-					arg2.call(this, false);
-				} else if (arg2 === true) {
-					return false;
-				}
-				xhr = null;
-			}
-		};
-	}
-	xhr = $.ajax(xhrArgs);
-}
-
-/*	==================================================
-	get scrollbar width
-	================================================== */
-
-function getScrollbarWidth() {
-	return window.innerWidth - document.documentElement.clientWidth;
-}
-
-/*	==================================================
-	get scrollbar width
-	================================================== */
-
-function getWinWidth() {
-	return $(window).innerWidth() + getScrollbarWidth();
-}
-
-/*	================================================== 
-	get url vars
-	================================================== */
-
-function getUrlVars() {
-	var vars = [],
-	    hash;
-	var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
-	for (var i = 0; i < hashes.length; i++) {
-		hash = hashes[i].split('=');
-		vars.push(hash[0]);
-		vars[hash[0]] = hash[1];
-	}
-	return vars;
-}
-
-/*	================================================== 
-	check if is undefined
-	================================================== */
-
-function isUndefined(val) {
-	return (typeof val === 'undefined' ? 'undefined' : _typeof(val)) === (typeof undefined === 'undefined' ? 'undefined' : _typeof(undefined)) ? true : false;
-}
-
-/*	==================================================
-	check if is null undefined
-	================================================== */
-
-function isNull(val) {
-	return val == null ? true : false;
-}
-
-/*	==================================================
-	strip html tags
-	================================================== */
-
-function stripHtmlTags(str) {
-	if (str === null || str === '') {
-		return false;
-	} else {
-		str = str.toString();
-		return str.replace(/<[^>]*>/g, '');
-	}
-}
-
-/*	==================================================
-	got to
-	================================================== */
-
-$.fn.goTo = function (opts) {
-	if ($(this)) {
-		var scrollSpeed = globalScrollSpeed;
-		var scrollOffset = 0;
-		if (!isUndefined(opts) && !isUndefined(opts.speed) && opts.speed > 0) {
-			scrollSpeed = opts.speed;
-		}
-		if (!isUndefined(opts) && !isUndefined(opts.offset) && opts.offset > 0) {
-			scrollOffset = opts.offset;
-		}
-		$('html, body').animate({
-			scrollTop: $(this).offset().top - scrollOffset + 'px'
-		}, scrollSpeed);
-	}
-	return this;
+var _initFixes = function _initFixes() {
+	_initFitImgFix();
+	_initIEFix();
 };
+/* ================================================== 
+version: 3.0.0
+author: sod
+date: 01.01.2021
+dependencies : 
+- jquery
+================================================== */
 
-/*	==================================================
-	has attribute
-	================================================== */
+var ODOffcanvas = function () {
+	function ODOffcanvas($el, settings) {
+		_classCallCheck(this, ODOffcanvas);
 
-$.fn.hasAttr = function (attrName) {
-	if ($(this)) {
-		var attr = $(this).attr(attrName);
-		if ((typeof attr === 'undefined' ? 'undefined' : _typeof(attr)) !== (typeof undefined === 'undefined' ? 'undefined' : _typeof(undefined)) && attr !== false) {
-			// Element has this attribute
-			return true;
-		}
-	}
-	return false;
-};
-
-/*	==================================================
-	is visible
-	================================================== */
-
-$.fn.inView = function () {
-	var partial = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
-
-	var _$$0$getBoundingClien = $(this)[0].getBoundingClientRect(),
-	    top = _$$0$getBoundingClien.top,
-	    left = _$$0$getBoundingClien.left,
-	    bottom = _$$0$getBoundingClien.bottom,
-	    right = _$$0$getBoundingClien.right;
-
-	var _window = window,
-	    innerHeight = _window.innerHeight,
-	    innerWidth = _window.innerWidth;
-
-	return partial ? (top > 0 && top < innerHeight || bottom > 0 && bottom < innerHeight) && (left > 0 && left < innerWidth || right > 0 && right < innerWidth) : top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth;
-};
-
-/*	==================================================
-	get transform value
-	================================================== */
-
-$.fn.getTransformValue = function (val) {
-	var matrix = new DOMMatrix($(this).css('transform'));
-	if (isUndefined(matrix[val])) {
-		return 0;
-	} else {
-		return matrix[val];
-	}
-};
-
-/*
-
-Version: 1.7.0
-Author: Sascha Obermüller
-Date: 11.06.2020
-
- */
-(function ($) {
-	var ODOffcanvas = function ODOffcanvas(element, settings) {
 		var O = this;
-		this.$E = $(element);
-		var defaults = {
-			close: false,
-			closeIcon: '', // only when close=false
-			closeContainer: null,
+		O.$E = $el;
+		O._initiated = false;
+		O._opts = $.extend(true, {}, {
+			close: '.offcanvas__close',
+			closeContainer: O.$E,
 			cover: '.offcanvas__cover',
 			coverContainer: O.$E,
-			docked: 'right',
+			docked: 'r',
 			menu: 'clone', //clone, links, false
 			menuContainer: '.offcanvas__body',
 			menuObj: null,
 			shiftObj: null,
 			shiftSpeed: 1000,
-			shiftEasing: 'easeInOutExpo',
 			submenuToggle: null,
 			submenuToggleContainer: '.sub-menu',
 			submenuToggleSpeed: 300,
@@ -1036,8 +859,7 @@ Date: 11.06.2020
 			submenuToggleBtn: true, // true = extra toggle btn or complete element
 			submenuToggleBtnClass: '',
 			threshold: 1023,
-			toggle: false,
-			toggleContainer: '.nav--toggle',
+			toggle: '.offcanvas__toggle',
 			on: {
 				afterInit: null,
 				clickLink: null,
@@ -1045,179 +867,182 @@ Date: 11.06.2020
 				afterClose: null,
 				afterToggle: null
 			}
-		};
-		O.options = $.extend(true, {}, defaults, settings);
+		}, settings);
+		O._docked = O.opts.docked;
+		O._shiftDir = O.opts.docked == 'right' ? 'l' : 'r';
 		O.$shiftObj = [];
-		O.docked = O.options.docked == 'right' ? 'r' : 'l';
-		O.shiftDir = O.options.docked == 'right' ? 'l' : 'r';
-		O.isActive = false;
-		O.thresholdState = $(window).width() < O.options.submenuToggleThreshold;
+		O._active = false;
+		O._thresholdState = $(window).width() < O.opts.submenuToggleThreshold;
+		// basic init actions
+		O._create();
+		O.$E.addClass('-initiated');
+		O._initiated = true;
+		// callback
+		if ($.isFunction(O.opts.on.afterInit)) {
+			O.opts.on.afterInit.call(O);
+		}
+	}
 
-		O.getOptions = function () {
-			return O.options;
-		};
-		O.setOptions = function (settings) {
-			O.options = $.extend(true, O.options, settings);
-		};
-		O.init = function () {
-			O.createOffcanvas();
-			O.createToggle();
-			O.createCover();
-			O.createClose();
-			O.setShiftObj();
-			O.setMenu();
-			O.setSubmenuToggles();
+	_createClass(ODOffcanvas, [{
+		key: '_create',
+		value: function _create() {
+			var O = this;
 
-			O.$E.addClass('-initiated');
+			O._createOffcanvas();
+			O._createToggle();
+			O._createCover();
+			O._createClose();
 
-			// callback
-			if ($.isFunction(O.options.on.afterInit)) {
-				O.options.on.afterInit.call(this);
-			}
-		};
-		O.createOffcanvas = function () {
-
-			O.$E.addClass('offcanvas--' + O.docked);
-
+			O._setShiftObj();
+			O._setMenu();
+			O._setSubmenuToggles();
+		}
+	}, {
+		key: '_createOffcanvas',
+		value: function _createOffcanvas() {
+			var O = this;
+			O.$E.addClass('offcanvas--' + O._docked);
 			// set container
-			if (O.$E.find('.offcanvas__container').length > 0) {
-				O.$E.$container = O.$E.find('.offcanvas__container');
+			if (O.$E.find(O.opts.menuContainer).length > 0) {
+				O.$E.$container = O.$E.find(O.opts.menuContainer);
 			} else {
-				O.$E.$container = $('<div class="offcanvas__container"></div>').appendTo(O.$E);
+				O.$E.$container = $('<div class="' + O.opts.menuContainer.substring(1) + '"></div>').appendTo(O.$E);
 			}
-		};
-		O.createClose = function () {
-			// set close container
-			if (O.options.closeContainer) {
-				if (O.$E.find(O.options.closeContainer).length > 0) {
-					// option with class selector
-					O.$E.$closeContainer = O.$E.find(O.options.closeContainer);
+		}
+	}, {
+		key: '_createClose',
+		value: function _createClose() {
+			var O = this;
+			if (O.opts.close) {
+				if (O.opts.closeContainer.find(O.opts.close).length > 0) {
+					O.$E.$close = $(O.opts.close);
 				} else {
-					// option with element build
-					O.$E.$closeContainer = $(O.options.closeContainer).appendTo(O.$E.$container);
+					O.$E.$close = $('<button type="button" class="' + O.opts.close.substring(1) + '" aria-label="Close"></button>').prependTo(O.opts.closeContainer);
 				}
-			} else {
-				// false
-				O.$E.$closeContainer = O.$E.$container;
-			}
-			// set close button
-			if (O.options.close) {
-				O.$E.$close = $(O.options.close);
-				if (O.$E.$container.find(O.$E.$close).length <= 0) {
-					O.$E.$close.appendTo(O.$E.$closeContainer);
-				}
-			} else {
-				if (O.options.closeIcon) {
-					O.$E.$close = $('<button type="button" class="offcanvas__close" aria-label="Close">' + O.options.closeIcon + '</button>').appendTo(O.$E.$closeContainer);
-				}
-			}
-			if (O.$E.$close) {
-				O.$E.$close.bind('click', function (e) {
-					e.preventDefault();
-					O.close();
+				O.$E.$close.bind('click', function (event) {
+					event.preventDefault();
+					O._close();
 				});
 			}
 			// resize > check threshold
-			$(window).resize(function () {
-				if ($(window).width() > O.options.threshold && O.isActive && O.options.threshold > 0) {
-					O.close();
+			$(window).resize(function (event) {
+				if ($(window).width() > O.opts.threshold && O._active && O.opts.threshold > 0) {
+					O._close();
 				}
 			});
 			// close layer on ESC key
-			$(document).keyup(function (e) {
-				if (O.isActive && e.keyCode === 27) {
+			$(document).keyup(function (event) {
+				if (O._active && event.keyCode === 27) {
 					if (!$(':focus').is('input')) {
-						O.close();
+						O._close();
 					}
 				}
 			});
-		};
-		O.createToggle = function () {
+		}
+	}, {
+		key: '_createToggle',
+		value: function _createToggle() {
+			var _this = this;
+
+			var O = this;
 			// Main Toggle
 			O.$E.$toggle = null;
 
-			if (O.options.toggle) {
-				O.$E.$toggle = $(O.options.toggle);
-				// O.$E.$toggle.appendTo( O.options.toggleContainer );
-				O.$E.$toggle.bind('click', function (e) {
-					e.preventDefault();
-					O.toggle($(this));
+			if (O.opts.toggle) {
+				O.$E.$toggle = $(O.opts.toggle);
+				O.$E.$toggle.bind('click', function (event) {
+					O.$E.$toggle.blur();
+					event.preventDefault();
+					O._toggle($(_this));
 				});
 			}
-		};
-		O.createCover = function () {
+		}
+	}, {
+		key: '_createCover',
+		value: function _createCover() {
+			var O = this;
 			// Build cover to hide content, when showing off-canvas
-			if (O.options.cover) {
-				if ($(O.options.cover).length > 0) {
-					O.$E.$cover = $(O.options.cover);
+			if (O.opts.cover) {
+				if ($(O.opts.cover).length > 0) {
+					O.$E.$cover = $(O.opts.cover);
 				} else {
-					O.$E.$cover = $('<div class="' + O.options.cover.substring(1) + '"></div>').prependTo(O.options.coverContainer);
+					O.$E.$cover = $('<div class="' + O.opts.cover.substring(1) + '"></div>').prependTo(O.opts.coverContainer);
 				}
-				O.$E.$cover.bind('click', function (e) {
-					e.preventDefault();
-					O.close();
+				O.$E.$cover.bind('click', function (event) {
+					event.preventDefault();
+					O._close();
 				});
 			}
-		};
-		O.setShiftObj = function () {
+		}
+	}, {
+		key: '_setShiftObj',
+		value: function _setShiftObj() {
+			var O = this;
 			// Define canvas objects, that will be shift on click
-			if (O.options.shiftObj) {
+			if (O.opts.shiftObj) {
 				O.$shiftObj = [];
-				$(O.options.shiftObj).each(function (i) {
-					O.$shiftObj.push($(this));
-					$(this).attr('data-shift', O.options.docked);
+				$(O.opts.shiftObj).each(function (i, el) {
+					O.$shiftObj.push($(el));
+					$(el).attr('data-shift', O.opts.docked);
 				});
-
-				// $( window ).on( 'resize orientationchange keyup mouseenter mouseleave click', function( e ) {
-				// 	if( O.isActive ) {
-				// 		O.shift( O.shiftDir, false );
+				// $( window ).on( 'resize orientationchange keyup mouseenter mouseleave click', ( event ) => {
+				// 	if( O._active ) {
+				// 		O.shift( O._shiftDir, false );
 				// 	}
 				// } );
 			}
-		};
-		O.setMenu = function () {
+		}
+	}, {
+		key: '_setMenu',
+		value: function _setMenu() {
+			var O = this;
 			// set menu container
-			if (O.options.menuContainer) {
-				if (O.$E.find(O.options.menuContainer).length > 0) {
+			if (O.opts.menuContainer) {
+				if (O.$E.find(O.opts.menuContainer).length > 0) {
 					// option with class selector
-					O.$E.$menuContainer = O.$E.find(O.options.menuContainer);
+					O.$E.$menuContainer = O.$E.find(O.opts.menuContainer);
 				} else {
 					// option with element build
-					O.$E.$menuContainer = $(O.options.menuContainer).appendTo(O.$E.$container);
+					O.$E.$menuContainer = $(O.opts.menuContainer).appendTo(O.$E.$container);
 				}
 			} else {
 				// false
 				O.$E.$menuContainer = O.$E.$container;
 			}
 
-			if (O.options.menu) {
+			if (O.opts.menu) {
 				// Build offcanvas content 
-				if (O.options.menu == 'links') {
+				if (O.opts.menu == 'links') {
 					// copy only links from link obj
 					var $list = $('<ul />').appendTo(O.$E.$menuContainer);
-					$(O.options.menuObj).find('a').each(function () {
-						$('<li />', { html: $(this).clone() }).appendTo($list);
+					$(O.opts.menuObj).find('a').each(function (i, el) {
+						$('<li />', { html: $(el).clone() }).appendTo($list);
 					});
-				} else if (O.options.menu == 'clone') {
+				} else if (O.opts.menu == 'clone') {
 					// clone object
-					$(O.options.menuObj).each(function () {
-						$(this).clone().appendTo(O.$E.$menuContainer);
+					$(O.opts.menuObj).each(function (i, el) {
+						$(el).clone().appendTo(O.$E.$menuContainer);
 					});
 				}
 			}
-		};
-		O.setSubmenuToggles = function () {
-			// Collapse Submenus
-			if (O.options.submenuToggle) {
-				O.$E.find(O.options.submenuToggle).each(function (i) {
+		}
+	}, {
+		key: '_setSubmenuToggles',
+		value: function _setSubmenuToggles() {
+			var _this2 = this;
 
-					var $menuItem = $(this);
+			var O = this;
+			// Collapse Submenus
+			if (O.opts.submenuToggle) {
+				O.$E.find(O.opts.submenuToggle).each(function (i, el) {
+
+					var $menuItem = $(el);
 
 					var submenuToggleId = $menuItem.attr('id') == undefined ? i : $menuItem.attr('id');
-					var $submenuContainer = $menuItem.find(O.options.submenuToggleContainer);
+					var $submenuContainer = $menuItem.find(O.opts.submenuToggleContainer);
 					$submenuContainer.attr('id', 'sub-' + submenuToggleId);
 					var $submenuToggleBtn;
-					if (O.options.submenuToggleBtn) {
+					if (O.opts.submenuToggleBtn) {
 						if ($menuItem.find('a + .sub-menu__toggle').length == 0) {
 							$submenuToggleBtn = $('<button type="button" class="sub-menu__toggle" aria-label="Toggle Menu"><img class="svg" src="' + pathTheme + 'assets/img/arrow-down.svg" /></button>').insertAfter($menuItem.children('a'));
 						} else {
@@ -1226,138 +1051,178 @@ Date: 11.06.2020
 					} else {
 						$submenuToggleBtn = $menuItem;
 					}
-					$submenuToggleBtn.addClass(O.options.submenuToggleBtnClass);
+					$submenuToggleBtn.addClass(O.opts.submenuToggleBtnClass);
 					$submenuToggleBtn.data('collapse-container', $submenuContainer.attr('id'));
-					$submenuToggleBtn.on('click', function (e) {
-						this.blur();
+					$submenuToggleBtn.on('click', function (event) {
+						_this2.blur();
 						var $submenu = $('#' + $submenuToggleBtn.data('collapse-container'));
 
-						e.preventDefault();
+						event.preventDefault();
 						if ($menuItem.hasClass('-active')) {
 							$menuItem.removeClass('-active');
-							O.submenuCollapse($submenu);
+							O._submenuCollapse($submenu);
 						} else {
 							$menuItem.addClass('-active');
-							O.submenuExpand($submenu);
+							O._submenuExpand($submenu);
 						}
 					});
 				});
-				if (O.options.submenuToggleThreshold > 0 && $(window).width() < O.options.submenuToggleThreshold) {
-					O.submenuCollapse(O.$E.find(O.options.submenuToggleContainer));
+				if (O.opts.submenuToggleThreshold > 0 && $(window).width() < O.opts.submenuToggleThreshold) {
+					O._submenuCollapse(O.$E.find(O.opts.submenuToggleContainer));
 				}
-
-				$(window).on('resize orientationchange', function (e) {
-					var currentThresholdState = $(window).width() < O.options.submenuToggleThreshold;
-					if (currentThresholdState != O.thresholdState) {
-						O.thresholdState = currentThresholdState;
-						if (O.isActive) {
-							if (O.options.submenuToggleThreshold > 0 && $(window).width() < O.options.submenuToggleThreshold) {
-								O.submenuCollapse(O.$E.find(O.options.submenuToggleContainer));
+				// check for threshold
+				$(window).on('resize orientationchange', function (event) {
+					var currentThresholdState = $(window).width() < O.opts.submenuToggleThreshold;
+					if (currentThresholdState != O._thresholdState) {
+						O._thresholdState = currentThresholdState;
+						if (O._active) {
+							if (O.opts.submenuToggleThreshold > 0 && $(window).width() < O.opts.submenuToggleThreshold) {
+								O._submenuCollapse(O.$E.find(O.opts.submenuToggleContainer));
 							} else {
-								O.submenuExpand(O.$E.find(O.options.submenuToggleContainer));
+								O._submenuExpand(O.$E.find(O.opts.submenuToggleContainer));
 							}
 						}
 					}
 				});
 			}
-		};
-		O.submenuCollapse = function ($elem) {
-			$elem.slideUp(O.options.submenuToggleSpeed, function () {
+		}
+	}, {
+		key: '_submenuCollapse',
+		value: function _submenuCollapse($elem) {
+			var O = this;
+			$elem.slideUp(O.opts.submenuToggleSpeed, function () {
 				$(this).removeClass('-active');
 			});
-		};
-		O.submenuExpand = function ($elem) {
-			$elem.slideDown(O.options.submenuToggleSpeed, function () {
+		}
+	}, {
+		key: '_submenuExpand',
+		value: function _submenuExpand($elem) {
+			var O = this;
+			$elem.slideDown(O.opts.submenuToggleSpeed, function () {
 				$(this).removeClass('-active');
 			});
-		};
-		O.toggle = function ($toggle) {
-			if (O.isActive) {
-				O.close();
+		}
+	}, {
+		key: '_toggle',
+		value: function _toggle($toggle) {
+			var O = this;
+			if (O._active) {
+				O._close();
 			} else {
-				O.open($toggle);
+				O._open($toggle);
 			}
 			// callback
-			if ($.isFunction(O.options.on.afterToggle)) {
-				O.options.on.afterToggle.call(this, $toggle);
+			if ($.isFunction(O.opts.on.afterToggle)) {
+				O.opts.on.afterToggle.call(this, $toggle);
 			}
-		};
-		O.close = function () {
-			if (O.isActive) {
+		}
+	}, {
+		key: '_close',
+		value: function _close() {
+			var O = this;
+			if (O._active) {
 				O.$E.removeClass('-active');
 				$('html').removeClass('-offcanvas-active');
-				O.shift(-1, true);
-				$(O.options.toggle).removeClass('-active');
-				O.isActive = false;
+				O._shift(-1, true);
+				$(O.opts.toggle).removeClass('-active');
+				O._active = false;
 				// callback
-				if ($.isFunction(O.options.on.afterClose)) {
-					O.options.on.afterClose.call(this);
+				if ($.isFunction(O.opts.on.afterClose)) {
+					O.opts.on.afterClose.call(this);
 				}
 			}
-		};
-		O.open = function ($toggle) {
+		}
+	}, {
+		key: '_open',
+		value: function _open($toggle) {
+			var O = this;
 			O.$E.addClass('-active');
 			$('html').addClass('-offcanvas-active');
-			O.shift(O.shiftDir, true);
+			O._shift(O._shiftDir, true);
 			if ($toggle) {
 				$toggle.addClass('-active');
 			}
-			O.isActive = true;
+			O._active = true;
 			// callback
-			if ($.isFunction(O.options.on.afterOpen)) {
-				O.options.on.afterOpen.call(this);
+			if ($.isFunction(O.opts.on.afterOpen)) {
+				O.opts.on.afterOpen.call(this);
 			}
-		};
-		O.shift = function (shiftDir, shiftAnimated) {
-			if (O.options.shiftObj) {
-				$(O.options.shiftObj).each(function (i) {
-					var $shiftEl = $(this);
+		}
+	}, {
+		key: '_shift',
+		value: function _shift(dir, animate) {
+			var O = this;
+
+			if (O.opts.shiftObj) {
+				$(O.opts.shiftObj).each(function (i, el) {
+					var $shiftEl = $(el);
 					var shiftDelta = 0;
-					var shiftSpeed = shiftAnimated ? O.options.shiftSpeed : 0;
-					if (shiftDir != -1) {
+					var shiftSpeed = animate ? O.opts.shiftSpeed : 0;
+					if (dir != -1) {
 						shiftDelta = O.$E.innerWidth();
-						if (shiftDir == 'l') {
+						if (dir == 'l') {
 							shiftDelta *= -1;
 						}
 					}
 				});
 			}
-		};
-		O.updateMenu = function (url) {
+		}
+	}, {
+		key: '_updateMenu',
+		value: function _updateMenu(url) {
+			var O = this;
 			var currUrl;
-			if (!isNull(url) && url.length > 0) {
+			if (!_isNull(url) && url.length > 0) {
 				currUrl = url.split('/').pop();
 			} else {
 				currUrl = window.location.pathname.split('/').pop();
 			}
 			O.$E.find('.menu-item').removeClass('current-menu-item current-menu-parent current-menu-ancestor');
 			O.$E.find('.menu-item a[href*="' + currUrl + '"]').parents('.menu-item').addClass('current-menu-item');
-		};
-	};
+		}
+	}, {
+		key: 'opts',
+		get: function get() {
+			return this._opts;
+		},
+		set: function set(settings) {
+			this._opts = $.extend(true, {}, this.opts, settings);
+		}
+	}]);
 
-	$.fn.odOffcanvas = function (settings) {
-		var $odOffcanvas = $(this);
-		if ($odOffcanvas.data('od-offcanvas')) return;
-		var odo = new ODOffcanvas($odOffcanvas, settings);
-		$odOffcanvas.data('od-offcanvas', odo);
-		odo.init();
-		return odo;
-	};
-})(jQuery);
-/*
+	return ODOffcanvas;
+}();
 
-version: 2.1.0
-author: Sascha Obermüller
-date: 06/06/2020
-dependencies : swiper
+// helper function for instantiation
 
-*/
-(function ($) {
-	var ODSlider = function ODSlider(element, settings) {
+
+$.fn.odOffcanvas = function (settings) {
+	var $el = $(this);
+	var O = $el.data('od-offcanvas');
+	if (!O) {
+		O = new ODOffcanvas($el, settings);
+		$el.data('od-offcanvas', O);
+	}
+	return O;
+};
+/* ================================================== 
+version: 3.0.0
+author: sod
+date: 01.01.2021
+dependencies : 
+- jquery
+- swiper
+================================================== */
+
+var ODSlider = function () {
+	function ODSlider($el, settings) {
+		_classCallCheck(this, ODSlider);
+
 		var O = this;
-		O.$E = $(element);
+		O.$E = $el;
 		O.$E.id = O.$E.attr('id');
-		var defaults = {
+		O._initiated = false;
+		O._opts = $.extend(true, {}, {
 			brightness: true,
 			brightnessEl: O.$E,
 			parentClass: '.mod',
@@ -1415,32 +1280,32 @@ dependencies : swiper
 				watchOverflow: true,
 				on: {
 					init: function init() {
-						// O.setActiveSlide();
+						// O._setActiveSlide();
 					},
 					slideChangeTransitionEnd: function slideChangeTransitionEnd() {
-						O.setActiveSlide();
+						O._setActiveSlide();
 					},
 					slideChange: function slideChange() {
 						$(this.el).attr('data-slide-active', this.realIndex);
 					},
 					slideNextTransitionStart: function slideNextTransitionStart() {
 						//slides by 2 if two 50% slides visual
-						if (O.initFinished) {
+						if (O._initiated) {
 							var nextIndex = this.activeIndex + 1 > this.slides.length - 1 ? 0 : this.activeIndex + 1;
-							if ($(window).width() > O.options.threshold.split && $(this.slides[this.previousIndex]).hasClass('slide--50') && $(this.slides[this.activeIndex]).hasClass('slide--50')) {
+							if ($(window).width() > O.opts.threshold.split && $(this.slides[this.previousIndex]).hasClass('slide--50') && $(this.slides[this.activeIndex]).hasClass('slide--50')) {
 								this.slideTo(nextIndex, this.params.speed, false);
 							}
-							O.setActiveSlide();
+							O._setActiveSlide();
 						}
 					},
 					slidePrevTransitionStart: function slidePrevTransitionStart() {
 						//slides by 2 if previous two slides are 50% wide
-						if (O.initFinished) {
+						if (O._initiated) {
 							var prevIndex = this.activeIndex - 1 >= 0 ? this.activeIndex - 1 : this.slides.length - 1;
-							if ($(window).width() > O.options.threshold.split && $(this.slides[this.activeIndex]).hasClass('slide--50') && $(this.slides[prevIndex]).hasClass('slide--50')) {
+							if ($(window).width() > O.opts.threshold.split && $(this.slides[this.activeIndex]).hasClass('slide--50') && $(this.slides[prevIndex]).hasClass('slide--50')) {
 								this.slideTo(prevIndex, this.params.speed, false);
 							}
-							O.setActiveSlide();
+							O._setActiveSlide();
 						}
 					}
 				}
@@ -1448,23 +1313,27 @@ dependencies : swiper
 			on: {
 				afterInitSlider: null
 			}
-		};
-		O.options = $.extend(true, {}, defaults, settings);
-		O.$E.slider = null;
+		}, settings);
+		O.slider = null;
 		O.$E.$wrapper = O.$E.parents('.slider');
+		// basic init actions
+		O._create();
+		O.$E.addClass('-initiated');
+		O._initiated = true;
+		// callback
+		if ($.isFunction(O.opts.on.afterInit)) {
+			O.opts.on.afterInit.call(O);
+		}
+	}
 
-		O.getOptions = function () {
-			return O.options;
-		};
-		O.setOptions = function (settings) {
-			O.options = $.extend(true, O.options, settings);
-		};
-		O.init = function () {
-			O.initFinished = false;
+	_createClass(ODSlider, [{
+		key: '_create',
+		value: function _create() {
+			var O = this;
 			//add autoplay if set by data attr
 			O.autoplay = O.$E.data('autoplay');
 			if (O.autoplay && O.autoplay > 0) {
-				O.options = $.extend(true, O.options, {
+				O.opts = $.extend(true, O.opts, {
 					swiperDefaults: {
 						autoplay: {
 							delay: O.autoplay,
@@ -1473,93 +1342,115 @@ dependencies : swiper
 					}
 				});
 			} else {
-				O.options = $.extend(true, O.options, {
+				O.opts = $.extend(true, O.opts, {
 					swiperDefaults: {
 						autoplay: false
 					}
 				});
 			}
 			// brightness element function
-			if ($.isFunction(O.options.brightnessEl)) {
-				O.$brightnessEl = O.options.brightnessEl.call(this);
+			if ($.isFunction(O.opts.brightnessEl)) {
+				O.$brightnessEl = O.opts.brightnessEl.call(this);
 				if (!O.$brightnessEl) {
-					O.$brightnessEl = $(O.options.brightnessEl);
+					O.$brightnessEl = $(O.opts.brightnessEl);
 				}
 			} else {
-				O.$brightnessEl = $(O.options.brightnessEl);
+				O.$brightnessEl = $(O.opts.brightnessEl);
 			}
 			// create slider only when it contains more than 1 slides
-			if (O.$E.find(O.options.slideClass).length > 1) {
-				O.createSlider();
+			if (O.$E.find(O.opts.slideClass).length > 1) {
+				O._createSlider();
 				// after init action
-				if ($.isFunction(O.options.on.afterInitSlider)) {
-					O.options.on.afterInitSlider.call(this, O.$E.slider);
+				if ($.isFunction(O.opts.on.afterInitSlider)) {
+					O.opts.on.afterInitSlider.call(this, O.slider);
 				}
 			} else {
 				// ... otherwise remove slider nav components
-				$(O.options.swiperDefaults.pagination.el).remove();
-				$(O.options.swiperDefaults.navigation.prevEl).remove();
-				$(O.options.swiperDefaults.navigation.nextEl).remove();
+				$(O.opts.swiperDefaults.pagination.el).remove();
+				$(O.opts.swiperDefaults.navigation.prevEl).remove();
+				$(O.opts.swiperDefaults.navigation.nextEl).remove();
 			}
-			// // resize triggers update
-			// O.$E.parents( O.options.parentClass ).sizeChanged( function() {
-			// 	O.update();
+			// // resize triggers _update
+			// O.$E.parents( O.opts.parentClass ).sizeChanged( function() {
+			// 	O._update();
 			// } );
-
-			O.initFinished = true;
-		};
-		O.createSlider = function () {
+		}
+	}, {
+		key: '_createSlider',
+		value: function _createSlider() {
+			var O = this;
 			// create Swiper
-			O.$E.slider = new Swiper('#' + O.$E.id, O.options.swiperDefaults);
-		};
-		O.update = function () {
-			if (!isUndefined(O.$E.slider)) {
-				// fake resize triggers update
+			O.slider = new Swiper('#' + O.$E.id, O.opts.swiperDefaults);
+		}
+	}, {
+		key: '_update',
+		value: function _update() {
+			var O = this;
+			if (!_isUndefined(O.slider)) {
+				// fake resize triggers _update
 				$(window).trigger('resize');
 			}
-		};
-		O.setActiveSlide = function () {
-
-			O.$E.find(O.options.slideClass).removeClass('slide--active');
-			O.$activeSlide = O.$E.find('.swiper-slide-active').addClass('slide--active');
+		}
+	}, {
+		key: '_setActiveSlide',
+		value: function _setActiveSlide() {
+			var O = this;
+			O.$activeSlide = O.$E.find('.slide--active');
 			// special case split slide
-			if (O.$activeSlide.hasClass('slide--50') && $(window).width() > O.options.threshold.split) {
+			if (O.$activeSlide.hasClass('slide--50') && $(window).width() > O.opts.threshold.split) {
 				O.$activeSlide.next('.slide').addClass('slide--active');
 			}
 
 			// slide brightness
-			if (O.options.brightness && O.$brightnessEl) {
-				O.$brightnessEl.removeClass('bright dark');
+			if (O.opts.brightness && O.$brightnessEl) {
+				O.$brightnessEl.removeClass('-bright -dark');
 				// set brightness class of slide
-				if (O.$activeSlide.hasClass('dark')) {
-					O.$brightnessEl.addClass('dark');
+				if (O.$activeSlide.hasClass('-dark')) {
+					O.$brightnessEl.addClass('-dark');
 				} else {
-					O.$brightnessEl.addClass('bright');
+					O.$brightnessEl.addClass('-bright');
 				}
 			}
-		};
-	};
+		}
+	}, {
+		key: 'opts',
+		get: function get() {
+			return this._opts;
+		},
+		set: function set(settings) {
+			this._opts = $.extend(true, {}, this.opts, settings);
+		}
+	}]);
 
-	$.fn.odSlider = function (settings) {
-		return this.each(function (index) {
-			var $odSlider = $(this);
-			if ($odSlider.data('od-slider')) return;
-			var ods = new ODSlider($odSlider, settings);
-			$odSlider.data('od-slider', ods);
-			ods.init();
-		});
-	};
-})(jQuery);
-/*	================================================== 
-	svg
-	================================================== */
+	return ODSlider;
+}();
 
-function initSVGInline($svgImg) {
+// helper function for instantiation
 
-	//SVG Replacement
-	$svgImg.each(function () {
-		var $img = $(this);
 
+$.fn.odSlider = function (settings) {
+	var Os = [];
+	this.each(function (index) {
+		var $el = $(this);
+		var O = $el.data('od-slider');
+		if (!O) {
+			O = new ODSlider($el, settings);
+			$el.data('od-slider', O);
+		}
+		Os.push(O);
+	});
+	return Os;
+};
+
+var _app = _app || {};
+_app.controller = _app.controller || {};
+
+$.fn._svgInline = function (callback) {
+	var _this3 = this;
+
+	// svg replacement
+	$(this).each(function (i, img) {
+		var $img = $(img);
 		if ($img.is('img')) {
 			var imgID = $img.attr('id');
 			var imgClass = $img.attr('class');
@@ -1571,78 +1462,96 @@ function initSVGInline($svgImg) {
 			var imgDataSVGOffset = $img.data('svg-offset');
 			var imgDataSVGReverse = $img.data('svg-reverse');
 			$.get(imgURL, function (data) {
-				// Get the SVG tag, ignore the rest
+				// get the svg tag, ignore the rest
 				var $svg = $(data).find('svg');
-				// Add replaced image's ID to the new SVG
-				if (typeof imgID !== 'undefined') {
+				// add replaced image's id to the new ssvg
+				if (!_isUndefined(imgID)) {
 					$svg = $svg.attr('id', imgID);
 				}
-				// Add replaced image's classes to the new SVG
-				if (typeof imgClass !== 'undefined') {
+				// add replaced image's classes to the new ssvg
+				if (!_isUndefined(imgClass)) {
 					$svg = $svg.attr('class', imgClass + ' svg--replaced');
 				}
-				if (typeof imgDataSVGHover !== 'undefined') {
+				if (!_isUndefined(imgDataSVGHover)) {
 					$svg.attr('data-svg-hover', imgDataSVGHover);
 				}
-				if (typeof imgDataSVGTrigger !== 'undefined') {
+				if (!_isUndefined(imgDataSVGTrigger)) {
 					$svg.attr('data-svg-trigger', imgDataSVGTrigger);
 				}
-				if (typeof imgDataSVGDelay !== 'undefined') {
+				if (!_isUndefined(imgDataSVGDelay)) {
 					$svg.attr('data-svg-delay', imgDataSVGDelay);
 				}
-				if (typeof imgDataSVGDuration !== 'undefined') {
+				if (!_isUndefined(imgDataSVGDuration)) {
 					$svg.attr('data-svg-duration', imgDataSVGDuration);
 				}
-				if (typeof imgDataSVGOffset !== 'undefined') {
+				if (!_isUndefined(imgDataSVGOffset)) {
 					$svg.attr('data-svg-offset', imgDataSVGOffset);
 				}
-				if (typeof imgDataSVGReverse !== 'undefined') {
+				if (!_isUndefined(imgDataSVGReverse)) {
 					$svg.attr('data-svg-reverse', imgDataSVGReverse);
 				}
-				// Remove any invalid XML tags as per http://validator.w3.org
+				// remove any invalid xml tags as per http://validator.w3.org
 				$svg = $svg.removeAttr('xmlns:a');
-				// Check if the viewport is set, if the viewport is not set the SVG wont't scale.
+				// check if the viewport is set, if the viewport is not set the svg wont't scale.
 				if (!$svg.attr('viewBox') && $svg.attr('height') && $svg.attr('width')) {
 					$svg.attr('viewBox', '0 0 ' + $svg.attr('height') + ' ' + $svg.attr('width'));
 				}
-				// Replace image with new SVG
+				// replace image with new ssvg
 				$img.replaceWith($svg);
 				$svg.addClass('svg--initiated');
+				// $svg._svgDraw();
+				// callback action
+				if ($.isFunction(callback)) {
+					callback.call(this, $svg);
+				}
 			}, 'xml');
 		} else if ($img.is('svg')) {
-			$svg.addClass('svg--initiated');
+			$img.addClass('svg--initiated');
+			// $img._svgDraw();
+			// callback action
+			if ($.isFunction(callback)) {
+				callback.call(_this3, $img);
+			}
 		}
 	});
-}
+};
 
-function prepareSVGPath($el) {
-	var lineLength = $el[0].getTotalLength();
+$.fn._svgPreparePath = function () {
+	var offset = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 0;
+
+	var $el = $(this);
+	var lineLength = Math.ceil($el[0].getTotalLength() + offset);
+	$el.data('stroke-dasharray', lineLength);
 	$el.css('stroke-dasharray', lineLength);
 	$el.css('stroke-dashoffset', lineLength);
-}
+	$el.addClass('-prepared');
+};
 /*
 
-version: 3.0.0
-author: sascha obermüller
-date: 23/06/2020
-dependencies : anime.js
+version: 4.1.0
+author: Sascha Obermüller
+date: 06.02.2021
 
-options by data attributes
+dependencies :
+- anime.js
 
+options by data attributes: 
 data-toggle="#id"
 data-toggle-group="group-id"
 data-toggle-keep-active
 data-toggle-load="src"
+ */
 
-*/
-(function ($) {
-	var ODToggle = function ODToggle(element, settings) {
+var ODToggle = function () {
+	function ODToggle($el, settings) {
+		_classCallCheck(this, ODToggle);
+
 		var O = this;
-		O.$E = $(element);
-		var defaults = {
+		O.$E = $($el);
+		O._initiated = false;
+		O._opts = $.extend(true, {}, {
 			animate: true,
-			calcHeight: true,
-			easing: 'easeInOut',
+			easing: 'cubicBezier(0.16, 1, 0.3, 1)',
 			focus: {
 				collapse: {
 					offset: $(window).height() / 2,
@@ -1656,8 +1565,9 @@ data-toggle-load="src"
 				}
 			},
 			icons: {
-				loading: pathTheme + 'assets/img/loading.svg'
+				loading: _pathTheme + 'assets/img/loader.svg'
 			},
+			keepActive: O.$E.data('toggle-keep-active') == undefined ? false : O.$E.data('toggle-keep-active'),
 			label: {
 				$el: '.toggle__label',
 				switch: false // data-toggle-collapse & data-toggle-expand on label must be set
@@ -1673,82 +1583,97 @@ data-toggle-load="src"
 				beforeFocus: null,
 				beforeToggle: null
 			}
-		};
-		O.options = $.extend(true, {}, defaults, settings);
-		O.isActive = false;
-		O.keepActive = false;
-		O.hasLoaded = false;
-		O.getOptions = function () {
-			return O.options;
-		};
-		O.setOptions = function (settings) {
-			O.options = $.extend(true, O.options, settings);
-		};
-		O.init = function () {
-			O.initFinished = false;
-			if (!O.options.animate) {
-				O.options.speed = 0;
+		}, settings);
+		O._loaded = false;
+		O._active = false;
+		// basic init actions
+		O._create();
+		O.$E.addClass('-initiated');
+		O._initiated = true;
+		// callback
+		if ($.isFunction(O.opts.on.afterInit)) {
+			O.opts.on.afterInit.call(O);
+		}
+	}
+
+	_createClass(ODToggle, [{
+		key: '_create',
+		value: function _create(check) {
+			_log('toggle / create');
+			var O = this;
+			// set animation spped
+			if (!O.opts.animate) {
+				O.opts.speed = 0;
 			}
-			O.create();
-			// afterInit Action
-			if ($.isFunction(O.options.on.afterInit)) {
-				O.options.on.afterInit.call(this);
-			}
-			O.initFinished = true;
-		};
-		O.create = function (check) {
+			// unbind default click event
 			O.$E.unbind('click');
+			// set toggle container
+			O.$container = $(O.$E.data('toggle'));
 
-			O.keepActive = O.$E.data('toggle-keep-active') == undefined ? false : O.$E.data('toggle-keep-active');
-			O.$E.$container = $(O.$E.data('toggle'));
-			// set initial height of container to css min-height
-			O.$E.$container.height(O.$E.$container.css('min-height'));
-
-			O.$E.$container.$close = $('[data-toggle-close="' + O.$E.data('toggle') + '"]');
-			O.$E.$container.$close.bind('click', function (e) {
+			O.$container.$close = $('[data-toggle-close="' + O.$E.data('toggle') + '"]');
+			O.$container.$close.bind('click', function (e) {
 				this.blur();
-				O.toggle();
+				O._toggle();
 			});
 			// create loading spinner
 			if (O.$E.data('toggle-load') && O.$E.data('toggle-load').length > 0) {
-				O.$loading = $('<div class="toggle-loading loading"><img src="' + O.options.icons.loading + '" alt="loading..." /></div>');
+				O.$loading = $('<div class="toggle-loading loading"><img src="' + O.opts.icons.loading + '" alt="loading..." /></div>');
 			}
-
 			// set toggle group
 			O.$E.$group = $('[data-toggle-group="' + O.$E.data('toggle-group') + '"]');
 			// bind event
 			O.$E.bind('click', function (e) {
 				// load content if data-toggle load is set and not loaded yet
 				if (O.$E.data('toggle-load') && O.$E.data('toggle-load').length > 0) {
-					if (!O.hasLoaded || O.options.reload) {
-						O.load(O.$E.data('toggle-load'));
+					if (!O._loaded || O.opts.reload) {
+						O._load(O.$E.data('toggle-load'));
 					}
 				}
 				// when keep active attr is set, toggle only if toggle is not active
-				if (!O.keepActive || O.keepActive && !$(this).hasClass('-active')) {
-					O.toggle();
+				if (!O.opts.keepActive || O.opts.keepActive && !O.$E.hasClass('-active')) {
+					O._toggle();
 				}
 				O.$E.blur();
 			});
 			// switch label ?
-			O.$E.$label = O.$E.find(O.options.label.$el);
-			O.switchLabel();
+			O.$E.$label = O.$E.find(O.opts.label.$el);
+			O._switchLabel();
 
 			// initial active toggle
 			if (O.$E.hasClass('-active')) {
-				O.toggle();
+				O._active = true;
+				O.$container.css('height', '');
+				O.$E.addClass('-active');
+				O.$container.addClass('-active');
+			} else {
+				// set initial height of container to css min-height
+				if (O.$container.css('min-height') != 'auto') {
+					O.$container.height(O.$container.css('min-height'));
+				} else {
+					O.$container.height(0);
+				}
+				// O.$container.hide();
 			}
+
 			// change container height on resize;
 			$(window).on('resize orientationchange', function (e) {
-				if (O.isActive) {
-					O.$E.$container.height(O.$E.$container.children().outerHeight(true));
+				var ch = void 0;
+				if (O._active) {
+					ch = '';
+				} else {
+					// set initial height of container to css min-height
+					ch = O.$container.css('min-height') > 0 ? O.$container.css('min-height') : 0;
 				}
+				O.$container.height(ch);
 			});
-		};
-		O.toggle = function () {
+		}
+	}, {
+		key: '_toggle',
+		value: function _toggle() {
+			var O = this;
 			// beforeToggle Action
-			if ($.isFunction(O.options.on.beforeToggle)) {
-				O.options.on.beforeToggle.call(this);
+			if ($.isFunction(O.opts.on.beforeToggle)) {
+				O.opts.on.beforeToggle.call(this);
 			}
 			// close group elements
 			if (O.$E.$group.length > 0) {
@@ -1760,42 +1685,48 @@ data-toggle-load="src"
 					}
 				});
 			}
-			if (O.isActive) {
-				O.collapse(O.options.focus.collapse);
+			if (O._active) {
+				O._collapse(O.opts.focus.collapse);
 			} else {
-				O.expand(O.options.focus.expand);
+				O._expand(O.opts.focus.expand);
 			}
 			// afterToggle Action
-			if ($.isFunction(O.options.on.afterToggle)) {
-				O.options.on.afterToggle.call(this);
+			if ($.isFunction(O.opts.on.afterToggle)) {
+				O.opts.on.afterToggle.call(this);
 			}
-		};
-		O.abortLoad = function () {
-			O.$E.$container.xhr.abort();
-		};
-		O.load = function (source, callback) {
+		}
+	}, {
+		key: '_abortLoad',
+		value: function _abortLoad() {
+			this.$container.xhr.abort();
+		}
+	}, {
+		key: '_load',
+		value: function _load(source, callback) {
+			_log('toggle / load: ' + source);
+			var O = this;
 			// abort already running ajax calls
-			if (!isNull(O.$E.$container.xhr)) {
-				O.abortLoad();
+			if (!_isNull(O.$container.xhr)) {
+				O._abortLoad();
 			}
 			O.$E.$loading = O.$loading.appendTo(O.$E); // append loading spinner to container
 			O.$E.addClass('-loading');
-			O.$E.$container.addClass('-loading');
+			O.$container.addClass('-loading');
 			// start loading source
-			O.$E.$container.xhr = $.ajax({
+			O.$container.xhr = $.ajax({
 				url: source,
 				async: false,
 				success: function success(data) {
 					O.$E.removeClass('-loading');
-					O.$E.$container.removeClass('-loading');
+					O.$container.removeClass('-loading');
 					O.$E.$loading.detach();
 					try {
-						O.$E.$container.html(data);
-						O.hasLoaded = true;
+						O.$container.html(data);
+						O._loaded = true;
 					} catch (err) {
-						log(err);
+						_log(err);
 					}
-					O.$E.$container.xhr = null;
+					O.$container.xhr = null;
 					// callback Action
 					if ($.isFunction(callback)) {
 						callback.call(this);
@@ -1803,73 +1734,97 @@ data-toggle-load="src"
 				},
 				error: function error(xhr) {
 					O.$E.removeClass('-loading');
-					O.$E.$container.removeClass('-loading');
-					O.$E.$container.addClass('toggle-error');
-					log(xhr.status + ' ' + xhr.statusText);
-					O.$E.$container.xhr = null;
+					O.$container.removeClass('-loading');
+					O.$container.addClass('-toggle-error');
+					_log(xhr.status + ' ' + xhr.statusText);
+					O.$container.xhr = null;
 				}
 			});
-		};
-		O.collapse = function (focus) {
-			if (O.isActive) {
-				O.isActive = false;
-				var ani = anime({
-					targets: [O.$E.$container[0]],
-					height: O.$E.$container.css('min-height'),
-					duration: O.options.speed,
-					easing: O.options.easing,
+		}
+	}, {
+		key: '_collapse',
+		value: function _collapse(focus) {
+			// _log( 'toggle / collapse' );
+			var O = this;
+			if (O._active) {
+				O._active = false;
+				O.$container.height(O.$container.prop('scrollHeight'));
+				var ch = O.$container.css('min-height') > 0 ? O.$container.css('min-height') : 0;
+
+				// O.$container.slideUp();
+
+				anime({
+					targets: [O.$container[0]],
+					height: ch,
+					duration: O.opts.speed,
+					easing: O.opts.easing,
 					complete: function complete() {
 						if (focus !== false) {
 							// scroll to toggle when loaded
-							O.focus(-1);
+							O._focus(-1);
 						}
 					}
 				});
 				O.$E.removeClass('-active');
-				O.$E.$container.removeClass('-active');
+				O.$container.removeClass('-active');
 
-				O.switchLabel();
+				O._switchLabel();
 			}
-		};
-		O.expand = function (focus) {
-			if (!O.isActive) {
-				O.isActive = true;
-				var ch = O.$E.$container.children().outerHeight(true);
-				var ani = anime({
-					targets: [O.$E.$container[0]],
+		}
+	}, {
+		key: '_expand',
+		value: function _expand(focus) {
+			// _log( 'toggle / expand' );
+			var O = this;
+
+			if (!O._active) {
+				O._active = true;
+				var ch = O.$container.prop('scrollHeight'); //.children().outerHeight( true );
+
+				// O.$container.slideDown();
+
+				anime({
+					targets: [O.$container[0]],
 					height: ch,
-					duration: O.options.speed,
-					easing: O.options.easing,
+					duration: O.opts.speed,
+					easing: O.opts.easing,
 					complete: function complete() {
 						if (focus !== false) {
 							// scroll to toggle when loaded
-							O.focus(1);
+							O._focus(1);
 						}
+						O.$container.css('height', '');
 					}
 				});
 				O.$E.addClass('-active');
-				O.$E.$container.addClass('-active');
+				O.$container.addClass('-active');
 
-				O.switchLabel();
+				O._switchLabel();
 			}
-		};
-		O.switchLabel = function () {
-			if (O.options.label.switch && O.$E.$label) {
-				if (O.isActive) {
+		}
+	}, {
+		key: '_switchLabel',
+		value: function _switchLabel() {
+			var O = this;
+			if (O.opts.label.switch && O.$E.$label) {
+				if (O._active) {
 					O.$E.$label.html(O.$E.$label.data('toggle-collapse'));
-				} else if (!O.isActive) {
+				} else if (!O._active) {
 					O.$E.$label.html(O.$E.$label.data('toggle-expand'));
 				}
 			}
-		};
-		O.focus = function (dir) {
+		}
+	}, {
+		key: '_focus',
+		value: function _focus(dir) {
+			var O = this;
 			// before focus action
-			if ($.isFunction(O.options.on.beforeFocus)) {
-				O.options.on.beforeFocus.call(this);
+			if ($.isFunction(O.opts.on.beforeFocus)) {
+				O.opts.on.beforeFocus.call(this);
 			}
 			var $target = O.$E;
 			// get target param depending on toggle direction
-			var t = dir > 0 ? O.options.focus.expand.target : O.options.focus.collapse.target;
+			var t = dir > 0 ? O.opts.focus.expand.target : O.opts.focus.collapse.target;
 			if (t) {
 				// target is function
 				if ($.isFunction(t)) {
@@ -1881,282 +1836,562 @@ data-toggle-load="src"
 			}
 			// focus dir: expand or collapse
 			if (dir > 0) {
-				$target.goTo(O.options.focus.expand);
+				$target._goTo(O.opts.focus.expand);
 			} else if (dir < 0) {
-				$target.goTo(O.options.focus.collapse);
-			}
-		};
-	};
-
-	$.fn.odToggle = function (settings) {
-		return this.each(function (index) {
-			var $odToggle = $(this);
-			if ($odToggle.data('od-toggle')) return;
-			var odt = new ODToggle($odToggle, settings);
-			$odToggle.data('od-toggle', odt);
-			odt.init();
-		});
-	};
-})(jQuery);
-
-/*	================================================== 
-	Conditionizr
-	================================================== */
-
-function initConditionizr() {
-	// Browser Detection Tests
-	try {
-		conditionizr.add('iedge', function () {
-			return (/Edge\/\d./i.test(navigator.userAgent)
-			);
-		});
-		conditionizr.add('ie11', function () {
-			return !!navigator.userAgent.match(/Trident.*rv\:11\./);
-		});
-		conditionizr.add('ie10', function () {
-			return navigator.appVersion.indexOf('MSIE 10') !== -1;
-		});
-		conditionizr.add('safari', function () {
-			return (/constructor/i.test(window.HTMLElement) || function (p) {
-					return p.toString() === "[object SafariRemoteNotification]";
-				}(!window['safari'] || safari.pushNotification)
-			);
-		});
-		conditionizr.add('firefox', function () {
-			return (/firefox/i.test(navigator.userAgent)
-			);
-		});
-		conditionizr.add('ios', function () {
-			return (/iP(ad|hone|od)/i.test(navigator.userAgent)
-			);
-		});
-		conditionizr.add('touch', function () {
-			return 'ontouchstart' in window || !!navigator.msMaxTouchPoints;
-		});
-		// add ie/iedge classes to html 
-		conditionizr.on('iedge', function () {
-			$('html').addClass('-iedge');
-			log('IEDGE');
-		});
-		conditionizr.on('ie11', function () {
-			$('html').addClass('-ie11');
-			log('IE11');
-		});
-		// polyfill css var
-		conditionizr.polyfill('//cdn.jsdelivr.net/gh/nuxodin/ie11CustomProperties@4.1.0/ie11CustomProperties.min.js', ['ie11']);
-		conditionizr.on('ie10', function () {
-			$('html').addClass('-ie10');
-			log('IE10');
-		});
-		conditionizr.on('safari', function () {
-			$('html').addClass('-safari');
-			log('Safari');
-		});
-		conditionizr.on('firefox', function () {
-			$('html').addClass('-firefox');
-			log('Firefox');
-		});
-		conditionizr.on('ios', function () {
-			$('html').addClass('-ios');
-			log('iOS');
-		});
-		conditionizr.on('touch', function () {
-			$('html').addClass('-touch');
-			log('Touch');
-		});
-	} catch (err) {
-		log(err);
-	}
-}
-
-/*	================================================== 
-	scroll direction
-	================================================== */
-
-var scrollDirOffset = 0; // offset from top to start with classes 
-var scrollThreshold = 0; // delay when scroll changes will take effect
-var scrollDir = 0;
-var scrollLastY = $(window).scrollTop(); // initialize last scroll position
-
-function handleScrollDirection(e) {
-	return window.requestAnimationFrame(setScrollDirection);
-}
-
-function setScrollDirection() {
-	var currY = $(window).scrollTop(),
-	    // get current scroll position
-	y = currY > scrollLastY ? 'down' : currY === scrollLastY ? 'none' : 'up'; // determine current scroll direction
-	if (Math.abs(currY - scrollLastY) > scrollThreshold) {
-
-		$('html').removeClass('-scrolled');
-		if (currY > scrollDirOffset) {
-			// reset all -scrolling classes
-			$('html').removeClass('-scrolling -scrolling-down -scrolling-up -scrolled-up -scrolled-down');
-			$('html').addClass('-scrolled');
-			if (scrollDir > 0) {
-				$('html').addClass('-scrolled-up');
-			} else if (scrollDir < 0) {
-				$('html').addClass('-scrolled-down');
-			}
-			scrollDir = 0;
-		}
-		if (currY <= scrollDirOffset) {
-			$('html').removeClass('-scrolling -scrolling-down -scrolling-up -scrolled -scrolled-up -scrolled-down');
-		} else if (currY > scrollDirOffset) {
-			if (y == 'up') {
-				$('html').addClass('-scrolling -scrolling-up');
-				$('html').removeClass('-scrolling-down');
-				scrollDir = 1;
-			} else {
-				$('html').addClass('-scrolling -scrolling-down');
-				$('html').removeClass('-scrolling-up');
-				scrollDir = -1;
+				$target._goTo(O.opts.focus.collapse);
 			}
 		}
-		scrollLastY = currY; // update last scroll position to current position
+	}, {
+		key: 'opts',
+		get: function get() {
+			return this._opts;
+		},
+		set: function set(settings) {
+			this._opts = $.extend(true, {}, this._opts, settings);
+		}
+	}]);
+
+	return ODToggle;
+}();
+
+// helper function for instantiation
+
+
+$.fn.odToggle = function (settings) {
+	var Os = [];
+	this.each(function (index) {
+		var $el = $(this);
+		var O = $el.data('od-toggle');
+		if (!O) {
+			O = new ODToggle($el, settings);
+			$el.data('od-toggle', O);
+		}
+		Os.push(O);
+	});
+	return Os;
+};
+/* ================================================== 
+version: 1.0.0
+author: sod
+date: 27.12.2020
+dependencies : 
+- conditionizr
+================================================== */
+
+var ODUI = function () {
+	function ODUI(settings) {
+		_classCallCheck(this, ODUI);
+
+		var O = this;
+		// defaults
+		O._opts = $.extend(true, {}, {
+			scrollDirOffset: 0, // offset from top to start with classes 
+			scrollThreshold: 0, // delay when scroll changes will take effect
+			status: $('html'),
+			on: {
+				afterInit: null
+			}
+		}, settings);
+
+		O._$status = O.opts.status;
+		O._vh = 1;
+
+		O._create();
+		// callback
+		if ($.isFunction(O.opts.on.afterInit)) {
+			O.opts.on.afterInit.call(O);
+		}
 	}
-}
 
-function initScrollDirection() {
-	scrollPivot = window.scrollY || window.pageYOffset;
-	// setScrollDirection();
-	$(window).on('resize orientationchange scroll', function (e) {
-		handleScrollDirection(e);
-	});
-}
+	_createClass(ODUI, [{
+		key: '_create',
 
-/*	================================================== 
-	viewport
-	================================================== */
 
-var vh;
+		/**
+   * CREATE
+   * init basic ui features
+   */
 
-function setViewportHeight() {
-	// if( ! $( 'html' ).hasClass( 'is-ios' ) ) {
-	// get the viewport height and we multiple it by 1% to get a value for a vh unit
-	vh = window.innerHeight * 0.01;
-	// set the value in the --vh custom property to the root of the document
-	document.documentElement.style.setProperty('--vh', vh + 'px');
-	// }
-}
+		value: function _create() {
+			this._initConditionizr();
+			this._initScrollDir();
+			this._initVH();
+			this._initLinks();
+		}
 
-function initViewportHeight() {
-	setViewportHeight();
-	$(window).on('resize orientationchange', function (e) {
-		setViewportHeight();
-	});
-}
+		/**
+   * INIT CONDITIONIZR
+   * browser detection tests
+   */
 
-/*	==================================================
-	links
-	================================================== */
+	}, {
+		key: '_initConditionizr',
+		value: function _initConditionizr() {
+			var O = this;
 
-function initLinks() {
-	// scroll to position on load
-	var hash = window.location.hash.replace('#', '');
-	if (hash.length > 1) {
-		var $deepTarget = $('#' + hash);
-		if ($deepTarget && $deepTarget.length > 0) {
-			$deepTarget.goTo({
-				'offset': scrollToLinkOffset
+			try {
+				conditionizr.add('iedge', function () {
+					return (/Edge\/\d./i.test(navigator.userAgent)
+					);
+				});
+				conditionizr.add('ie11', function () {
+					return !!navigator.userAgent.match(/Trident.*rv\:11\./);
+				});
+				conditionizr.add('safari', function () {
+					return (/constructor/i.test(window.HTMLElement) || function (p) {
+							return p.toString() === "[object SafariRemoteNotification]";
+						}(!window['safari'] || safari.pushNotification)
+					);
+				});
+				conditionizr.add('firefox', function () {
+					return (/firefox/i.test(navigator.userAgent)
+					);
+				});
+				conditionizr.add('ios', function () {
+					return (/iP(ad|hone|od)/i.test(navigator.userAgent)
+					);
+				});
+				conditionizr.add('touch', function () {
+					return 'ontouchstart' in window || !!navigator.msMaxTouchPoints;
+				});
+
+				// polyfills
+				// conditionizr.polyfill( '//cdn.jsdelivr.net/npm/css-vars-ponyfill@2', ['ie11'] );
+
+				// add ie/iedge classes to html 
+				conditionizr.on('iedge', function () {
+					O._$status.addClass('-iedge');
+					_log('IEDGE');
+				});
+				conditionizr.on('ie11', function () {
+					O._$status.addClass('-ie11');
+					_log('IE11');
+				});
+				conditionizr.on('safari', function () {
+					O._$status.addClass('-safari');
+					_log('Safari');
+				});
+				conditionizr.on('firefox', function () {
+					O._$status.addClass('-firefox');
+					_log('Firefox');
+				});
+				conditionizr.on('ios', function () {
+					O._$status.addClass('-ios');
+					_log('iOS');
+				});
+				conditionizr.on('touch', function () {
+					O._$status.addClass('-touch');
+					_log('Touch');
+				});
+			} catch (err) {
+				_log(err);
+			}
+		}
+
+		/**
+   * HANDLE SCROLL DIR
+   * handler for scroll dir detection
+   */
+
+	}, {
+		key: '_handleScrollDir',
+		value: function _handleScrollDir(event) {
+			var O = this;
+
+			return window.requestAnimationFrame(function () {
+				O._setScrollDir();
 			});
 		}
-	}
 
-	$('a, button').on('click', function (e) {
-		this.blur();
-	});
+		/**
+   * SET SCROLL DIR
+   * set scroll dir detection as class
+   */
 
-	// link in page anchor
-	$('a[href*="#"]').on('click', function (e) {
-		var href = $(this).attr('href');
-		// check if link is inpage link and no deeplink to other page
-		if (!isUndefined(href) && (href.indexOf(window.location.href) >= 0 || window.location.href.indexOf(href.substring(0, href.indexOf('#'))) >= 0 || href.indexOf('#') == 0) && href.length > 1) {
-			// close offcanvas menu if open
-			if ($('html').hasClass('-offcanvas-active')) {
-				$('.page__offcanvas').data('od-offcanvas').close();
-			}
-			// e.preventDefault(); 
-			var _hash = href.substring(href.indexOf('#')); // get pure hash
-			var $target = $(_hash); // target obj
-			if ($target && $target.length > 0) {
-				$target.goTo({
-					'offset': scrollToLinkOffset
-				});
-				window.location.hash = _hash; // set hash
+	}, {
+		key: '_setScrollDir',
+		value: function _setScrollDir() {
+			var O = this;
+
+			var currY = $(window).scrollTop(); // get current scroll position
+			var currDir = currY > O._scrollLastY ? 'down' : currY === O._scrollLastY ? 'none' : 'up'; // determine current scroll direction
+
+			clearTimeout(O._scrollCheck);
+			// changed scroll-pos since last action?
+			if (Math.abs(currY - O._scrollLastY) > O._scrollThreshold) {
+
+				// scroll pos above offset: remove all
+				if (currY <= O._scrollDirOffset) {
+					O._$status.removeClass('-scrolling -scrolling-down -scrolling-up -scrolled -scrolled-up -scrolled-down');
+				}
+				// scrolled below offset
+				else if (currY > O._scrollDirOffset) {
+						if (currDir == 'up') {
+							O._$status.addClass('-scrolled -scrolled-up');
+							O._$status.addClass('-scrolling -scrolling-up');
+							O._$status.removeClass('-scrolling-down -scrolled-down');
+							O._scrollDir = 1;
+						} else if (currDir == 'down') {
+							O._$status.addClass('-scrolled -scrolled-down');
+							O._$status.addClass('-scrolling -scrolling-down');
+							O._$status.removeClass('-scrolling-up -scrolled-up');
+							O._scrollDir = -1;
+						} else {
+							O._$status.removeClass('-scrolling -scrolling-down -scrolling-up');
+							O._scrollDir = 0;
+						}
+					}
+				O._scrollLastY = currY; // update last scroll position to current position
+				O._scrollCheck = setTimeout(function () {
+					O._setScrollDir();
+				}, 250);
+			} else {
+				O._$status.removeClass('-scrolling -scrolling-down -scrolling-up');
 			}
 		}
-	});
-}
 
-/*	================================================== 
-	utils
-	================================================== */
+		/**
+   * INIT SCROLL DIR
+   * initialize scroll direction detectection
+   */
 
-function initUtils() {
-	initConditionizr();
-	initScrollDirection();
-	initViewportHeight();
-	initLinks();
-}
-/*	================================================== 
-	global vars
-	================================================== */
+	}, {
+		key: '_initScrollDir',
+		value: function _initScrollDir() {
+			var O = this;
 
-var debug = false; // switch for debug mode
-var globalScreenSizes = {
-	min: {
-		xxxs: 380,
-		xxs: 460,
-		xs: 576,
-		sm: 768,
-		md: 1024,
-		lg: 1280,
-		xl: 1440,
-		xxl: 1920
+			O._scrollLastY = window.scrollY || window.pageYOffset;
+			O._scrollDirOffset = O.opts.scrollDirOffset; // offset from top to start with classes 
+			O._scrollThreshold = O.opts.scrollThreshold; // delay when scroll changes will take effect
+			O._scrollDir = 0;
+			// O._scrollLastY = $( window ).scrollTop();// initialize last scroll position
+			$(window).on('resize orientationchange scroll', function (event) {
+				O._handleScrollDir(event);
+			});
+		}
+
+		/**
+   * SET VH
+   * sets as css var viewport height
+   */
+
+	}, {
+		key: '_setVH',
+		value: function _setVH() {
+			var O = this;
+			// if( ! O._$status.hasClass( '-ios' ) ) {
+			// get the viewport height and we multiple it by 1% to get a value for a vh unit
+			O._vh = window.innerHeight * 0.01;
+			// set the value in the --vh custom property to the root of the document
+			document.documentElement.style.setProperty('--vh', O._vh + 'px');
+			// }
+		}
+
+		/**
+   * INIT VH
+   * sanitize viewport height
+   */
+
+	}, {
+		key: '_initVH',
+		value: function _initVH() {
+			var O = this;
+
+			O._setVH();
+			$(window).on('resize orientationchange', function (event) {
+				O._setVH();
+			});
+		}
+
+		/**
+   * INIT LINKS
+   * handle anchor links
+   */
+
+	}, {
+		key: '_initLinks',
+		value: function _initLinks() {
+			var O = this;
+
+			// scroll to position on load
+			var hash = window.location.hash.replace('#', '');
+			if (hash.length > 1) {
+				var $deepTarget = $('#' + hash);
+				if ($deepTarget && $deepTarget.length > 0) {
+					$deepTarget._goTo();
+				}
+			}
+
+			$('a, button').on('click', function (event) {
+				this.blur();
+			});
+		}
+	}, {
+		key: 'opts',
+		get: function get() {
+			return this._opts;
+		},
+		set: function set(settings) {
+			this._opts = $.extend(true, {}, this.opts, settings);
+		}
+	}]);
+
+	return ODUI;
+}();
+
+/* ================================================== 
+version: 1.0.0
+author: sod
+date: 27.12.2020
+dependencies : 
+================================================== */
+
+/**
+ * LOG
+ * logs message to console, if _debug flag is set for this class
+ * @param {string} log: log message
+ * @param {string} style: key of style that shall be applied on the log
+ */
+
+var _debug = _debug || true;
+
+var _log = function _log(log, style) {
+	if (_debug) {
+		var styles = {
+			primary: 'background: #000; color:#fff; padding: 1px 2px;',
+			secondary: 'background: #aaa; color:#fff; padding: 1px 2px;',
+			level1: 'padding-left: 10px',
+			level2: 'padding-left: 20px',
+			strong: 'font-weight: bold;',
+			error: 'background: red; color: #ffffff; padding: 1px 2px;',
+			warning: 'background: yellow; padding: 1px 2px;',
+			hook: 'background: orange; padding: 1px 2px;'
+		};
+		if (style in styles) {
+			console.log('%c' + log, styles[style]);
+		} else {
+			console.log(log);
+		}
 	}
 };
-var pathTheme = '/';
-var gridMaxWidth = 1280;
-var globalEasing = 'easeInOutCubic';
-var globalSpeedFaster = 125;
-var globalSpeedFast = 250;
-var globalSpeed = 500;
-var globalSpeedSlow = 750;
-var globalSpeedSlower = 1000;
-var globalScrollSpeed = globalSpeedSlower;
-var scrollToLinkOffset = 128;
 
-/*	================================================== 
-	header & menu
-	================================================== */
+/** 
+  * IS UNDEFINED
+  * @param {any} val: any kind of value that shall be checked
+  * @returns if the value is undefined
+  */
 
-function setStickyHeader() {
-	var $header = $('.page__header');
-	var scrollTop = $(window).scrollTop();
-	if (scrollTop > 0) {
-		$header.addClass('-sticky');
+var _isUndefined = function _isUndefined(val) {
+	return (typeof val === 'undefined' ? 'undefined' : _typeof(val)) === (typeof undefined === 'undefined' ? 'undefined' : _typeof(undefined)) ? true : false;
+};
+
+/** 
+  * IS NULL
+  * @param {any} val: any kind of value that shall be checked
+  * @returns if the value is null
+  */
+
+var _isNull = function _isNull(val) {
+	return val == null ? true : false;
+};
+
+/** 
+  * GET SCROLLBAR WIDTH
+  * @returns the scrollbar width
+  */
+
+var _getScrollbarWidth = function _getScrollbarWidth() {
+	return window.innerWidth - document.documentElement.clientWidth;
+};
+
+/** 
+  * GET WIN WIDTH
+  * @returns window width without scrollbar
+  */
+
+var _getWinWidth = function _getWinWidth() {
+	return $(window).innerWidth() + _getScrollbarWidth();
+};
+
+var _isBrowser = function _isBrowser(browser) {
+	if (Array.isArray(browser)) {
+		var isB = false;
+		browser.forEach(function (el) {
+			if (_ui._$status.hasClass(el)) {
+				isB = true;
+			}
+			// _log( 'isBrowser: '+ el + ' = '+ isB );
+		});
+		return isB;
 	} else {
-		$header.removeClass('-sticky');
+		return _ui._$status.hasClass(browser);
 	}
-}
+};
 
-function initStickyHeader() {
-	setStickyHeader();
-	$(window).on('scroll', function () {
-		setStickyHeader();
-	});
-}
+/** 
+  * GET URL VARS
+  * @returns the params of the current url
+  */
 
-function initHeader() {
-	initStickyHeader();
-}
+var _getUrlVars = function _getUrlVars() {
+	var vars = [],
+	    hash = void 0;
+	var anchorIndex = window.location.href.indexOf('#');
+	var varsIndex = window.location.href.indexOf('?');
+	if (anchorIndex < 0) {
+		anchorIndex = window.location.href.length;
+	}
+	if (varsIndex >= 0) {
+		var hashes = window.location.href.substring(varsIndex + 1, anchorIndex).split('&');
+		for (var i = 0; i < hashes.length; i++) {
+			hash = hashes[i].split('=');
+			vars.push(hash[0]);
+			vars[hash[0]] = hash[1];
+		}
+	}
+	return vars;
+};
+
+/** 
+  * GO TO
+  * scrolls to target on which the function is applied
+  * @returns the target
+  */
+
+$.fn._goTo = function (opts) {
+	if ($(this)) {
+		var scrollSpeed = 750;
+		var scrollOffset = 0;
+		if (!_isUndefined(opts) && !_isUndefined(opts.speed) && opts.speed > 0) {
+			scrollSpeed = opts.speed;
+		}
+		if (!_isUndefined(opts) && !_isUndefined(opts.offset) && opts.offset > 0) {
+			scrollOffset = opts.offset;
+		}
+		$('html, body').animate({
+			scrollTop: $(this).offset().top - scrollOffset + 'px'
+		}, scrollSpeed);
+	}
+	return this;
+};
+
+/** 
+  * HAS ATTRIBUTE
+  * checks whether a certain element has a searched attribute
+  * @param {string} attrName: name of the searched attribute
+  * @returns if the element has the attribute 
+  */
+
+$.fn._hasAttr = function (attrName) {
+	if ($(this)) {
+		var attr = $(this).attr(attrName);
+		if ((typeof attr === 'undefined' ? 'undefined' : _typeof(attr)) !== (typeof undefined === 'undefined' ? 'undefined' : _typeof(undefined)) && attr !== false) {
+			// Element has this attribute
+			return true;
+		}
+	}
+	return false;
+};
+
+/** 
+  * IS VISIBLE
+  * checks wether a certain element is in the visible viewport
+  * @param {boolean} partial: element is partially or fully visible
+  * @returns if the element is visible in terns of the params
+  */
+
+$.fn._isVisible = function (partial) {
+	var $t = $(this),
+	    $w = $(window),
+	    viewTop = $w.scrollTop(),
+	    viewBottom = viewTop + $w.height(),
+	    _top = $t.offset().top,
+	    _bottom = _top + $t.height(),
+	    compareTop = partial === true ? _bottom : _top,
+	    compareBottom = partial === true ? _top : _bottom;
+
+	return compareBottom <= viewBottom && compareTop >= viewTop;
+};
+
+/** 
+  * IN VIEW
+  * checks wether a certain element is in the visible viewport
+  * @param {boolean} partial: element is partially or fully visible
+  * @returns if the element is visible in terns of the params
+  */
+
+$.fn._inView = function () {
+	var partial = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
+
+	var _$$0$getBoundingClien = $(this)[0].getBoundingClientRect(),
+	    top = _$$0$getBoundingClien.top,
+	    left = _$$0$getBoundingClien.left,
+	    bottom = _$$0$getBoundingClien.bottom,
+	    right = _$$0$getBoundingClien.right;
+
+	var _window = window,
+	    innerHeight = _window.innerHeight,
+	    innerWidth = _window.innerWidth;
+
+	return partial ? (top > 0 && top < innerHeight || bottom > 0 && bottom < innerHeight) && (left > 0 && left < innerWidth || right > 0 && right < innerWidth) : top >= 0 && left >= 0 && bottom <= innerHeight && right <= innerWidth;
+};
+
+/** 
+  * GET TRANSFORM VALUE
+  * get elements transfomation matrix
+  * @param {integer} val: index of the matrix value
+  * @returns the specific matrix value of transformation
+  */
+
+$.fn._getTransformValue = function (val) {
+	var matrix = new DOMMatrix($(this).css('transform'));
+	if (_isUndefined(matrix[val])) {
+		return 0;
+	} else {
+		return matrix[val];
+	}
+};
+var _pathTheme = '/';
+
+var _ui = _ui || new ODUI();
+
+var _app = _app || {};
+_app._globals = {
+	spa: true, // single page app
+	status: $('html'),
+	breakpoints: {
+		min: {
+			xxxs: 375,
+			xxs: 460,
+			xs: 576,
+			sm: 768,
+			md: 1024,
+			lg: 1280,
+			xl: 1440,
+			xxl: 1920
+		}
+	},
+	easing: {
+		default: 'easeInOutCubic',
+		slider: 'cubicBezier(0.83, 0, 0.17, 1)'
+	},
+	speed: {
+		default: 500,
+		slow: 750,
+		slower: 1000,
+		fast: 250,
+		faster: 125,
+		scroll: 1000
+	}
+};
+
+_app._controller = _app._controller || {}; // controllers
 
 /*	================================================== 
 	menus
 	================================================== */
 
-function initAnchorNav() {
+_app._initAnchorNav = function () {
 	var $el = $('[data-anchor-nav]');
 	if ($el.length > 0) {
 		// create anchor nav
@@ -2166,7 +2401,7 @@ function initAnchorNav() {
 				'h3': 1
 			},
 			$navContainer: $($el.data('anchor-nav')),
-			scrollSpeed: globalScrollSpeed,
+			scrollSpeed: _app._globals.speed.slower,
 			scrollOffset: function scrollOffset() {
 				if ($(window).width() > 768) {
 					return 140;
@@ -2185,38 +2420,35 @@ function initAnchorNav() {
 			}
 		});
 	}
-}
+};
 
 /*	================================================== 
 	offcanvas navigation
 	================================================== */
 
-var offcanvasController;
-
-function initOffcanvas() {
-	offcanvasController = $('.page__offcanvas').odOffcanvas({
+_app._initOffcanvas = function () {
+	_app._controller.offcanvas = $('.page__offcanvas').odOffcanvas({
 		closeIcon: false,
 		cover: null,
 		coverContainer: null,
 		docked: 'right',
 		shiftObj: '.page__offcanvas',
-		shiftSpeed: globalSpeed,
-		shiftEasing: globalEasing,
+		shiftSpeed: _app._globals.speed.default,
+		shiftEasing: _app._globals.easing.default,
 		threshold: 767,
 		toggle: '.nav-header--min .menu-toggle',
 		toggleContainer: null,
 		on: {
 			afterInit: function afterInit() {
 				var O = this;
-				O.$E.sb = new SimpleBar(O.$E.find('.offcanvas__container')[0]);
 			},
 			afterOpen: function afterOpen() {
 				var O = this;
 				var ani = anime({
 					targets: $('.page__canvas')[0],
 					translateX: ['100%', '0'],
-					duration: O.options.shiftSpeed,
-					easing: O.options.shiftEasing
+					duration: O.opts.shiftSpeed,
+					easing: O.opts.shiftEasing
 				});
 			},
 			afterClose: function afterClose() {
@@ -2224,56 +2456,58 @@ function initOffcanvas() {
 				var ani = anime({
 					targets: $('.page__canvas')[0],
 					translateX: ['0', '100%'],
-					duration: O.options.shiftSpeed,
-					easing: O.options.shiftEasing
+					duration: O.opts.shiftSpeed,
+					easing: O.opts.shiftEasing
 				});
 			}
 		}
 	});
-}
+};
 
 /*	================================================== 
 	svg
 	================================================== */
 
-function initSVG(container) {
+_app._initSVG = function (container) {
 	var $elems = $(container).length > 0 ? $(container).find('img.svg') : $('img.svg');
 	svg4everybody();
-	initSVGInline($elems);
-}
+
+	$elems._svgInline();
+};
 
 /*	================================================== 
 	toggles
 	================================================== */
 
-function initToggles(container) {
+_app._initToggles = function (container) {
 
 	var $elems = $(container).length > 0 ? $(container).find('[data-toggle]') : $('[data-toggle]');
 
 	// toggles
 	$elems.odToggle({
 		calcHeight: true,
-		easing: globalEasing,
+		easing: _app._globals.easing.default,
 		label: {
 			switch: true
 		},
 		minHeight: 0,
-		speed: globalSpeed,
+		speed: _app._globals.speed.default,
 		focus: {
 			collapse: {
-				speed: globalSpeed
+				speed: _app._globals.speed.default
 			},
 			expand: false
 		}
 	});
-}
+};
 
 /*	================================================== 
 	slider
 	================================================== */
 
-function initTestimonialsSlider(container) {
+_app._initTestimonialsSlider = function (container) {
 	var $elems = $(container).find('.slider__container');
+
 	$elems.odSlider({
 		swiperDefaults: {
 			autoHeight: true,
@@ -2287,65 +2521,30 @@ function initTestimonialsSlider(container) {
 			},
 			simulateTouch: true,
 			spaceBetween: 0,
-			speed: globalSpeedSlower
+			speed: _app._globals.speed.slower
 		}
 	});
-}
+};
 
-function initSliders() {
-	initTestimonialsSlider('.mod-testimonials');
-}
-
-/* ================================================== 
-	particles
-   ================================================== */
-
-function initStage() {
-	var $elems = $('.mod__bg--particles');
-	if ($elems.length > 0) {
-		$elems.each(function () {
-			particleground($(this)[0], {
-				dotColor: '#000000',
-				lineColor: '#000000'
-			});
-		});
-	}
-}
-
-/*	================================================== 
-	anime.js helper
-	================================================== */
-
-function getAnimeTargets(ani) {
-	log(ani);
-	return ani.children.reduce(function (all, one) {
-		return all.concat(getAnimeTargets(one));
-	}, ani.animatables.map(function (a) {
-		return a.target;
-	}));
-}
-
-function cancelAnime(ani) {
-	getAnimeTargets(ani).forEach(anime.remove);
-}
+_app._initSliders = function () {
+	_app._initTestimonialsSlider('.mod-testimonials');
+};
 
 /*	================================================== 
 	init all
 	================================================== */
 
-// init main scripts
-function initMainScripts() {
-	initUtils();
-	initHeader();
-	initOffcanvas();
-	initSliders();
-	initToggles();
-	initAnchorNav();
-	initSVG();
-	initStage();
-	initFixes();
-}
+// init page
+_app._init = function () {
+	_app._initOffcanvas();
+	_app._initSliders();
+	_app._initToggles();
+	_app._initAnchorNav();
+	_app._initSVG();
+
+	_initFixes();
+};
 
 $(document).ready(function () {
-	initMainScripts();
+	_app._init();
 });

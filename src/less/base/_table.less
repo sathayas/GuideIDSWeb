@@ -1,0 +1,118 @@
+table {
+	width: 100%;
+	border: 0;
+	margin: 0;
+	padding: 0;
+	border-spacing: 0;
+	border-collapse: collapse;
+	font-size: 1.6rem;
+	@media (max-width: @screen-xs-max) {
+		display: flex;
+		flex-wrap: wrap;
+		border-style: solid;
+		border-width: var(--line-w) 0 0 0;
+		border-color: var(--color-purple);
+	}
+	&.-striped {
+		tbody {
+			tr {
+				&:nth-child(odd) {
+					background-color: var(--color-white);
+				}
+				&:nth-child(even) {
+					background-color: var(--color-table-stripe);
+				}
+			}
+		}
+	}
+	&.-striped-2 {
+		tbody {
+			tr {
+				&:nth-child(4n + 1),
+				&:nth-child(4n + 2) {
+					background-color: var(--color-white);
+				}
+				&:nth-child(4n+3),
+				&:nth-child(4n+4) {
+					background-color: var(--color-table-stripe);
+				}
+			}
+		}
+	}
+	thead {
+		position: relative;
+		.sm;
+		color : var(--color-white);
+		background-color: var(--color-purple);
+		@media (max-width: @screen-xs-max) {
+			display: none;
+		}
+	}
+	tbody {
+		position: relative;
+		@media (max-width: @screen-xs-max) {
+			display: flex;
+			flex-wrap: wrap;
+			flex: 1 0 100%;
+		}
+	}
+	tr {
+		@media (max-width: @screen-xs-max) {
+			display: flex;
+			flex-wrap: wrap;
+			flex: 1 0 100%;
+			padding-top: 2rem;
+			padding-bottom: 2rem;
+			border-style: solid;
+			border-width: 0 0 1px 0;
+			border-color: var(--color-border);
+		}
+	}
+	th,
+	td {
+		padding-left: 2rem;
+		padding-right: 2rem;
+		text-align: left;
+		@media (max-width: @screen-xs-max) {
+			display: block;
+			flex: 1 0 100%;
+		}
+	}
+	th {
+		min-height: 6rem;
+		padding-top: 2rem;
+		padding-bottom: 1rem;
+		vertical-align: bottom;
+	}
+	td {
+		padding-top: 2rem;
+		padding-bottom: 2rem;
+		border-style: solid;
+		border-width: 0 0 1px 0;
+		border-color: var(--color-border);
+		vertical-align: top;
+		vertical-align: baseline;
+		@media (max-width: @screen-xs-max) {
+			padding: 0 0 1rem 0;
+			border: 0;
+		}
+		&:before {
+			content: attr(data-label);
+			position: relative;
+			display: block;
+			width: 100%;
+			margin-bottom: 0.5rem;
+			.sm;
+			.sans;
+			color: var(--text-color);
+			display: block;
+			@media (min-width: @screen-sm-min) {
+				display: none;
+			}
+		}
+	}
+	.td--label {
+		.serif--light;
+		.purple;
+	}
+}

@@ -1,5 +1,5 @@
 /*	================================================== 
-	Buttons
+	buttons
 	================================================== */
 
 button {
@@ -14,7 +14,8 @@ button {
 	position: relative;
 	display: inline-block;
 	padding: 0.5rem 1.8rem;
-	border: 0.2rem solid @color-purple;
+	margin: 0.5rem 1rem 0.5rem 0;
+	border: 0.2rem solid var(--color-purple);
 	.serif--light;
 	.white;
 	.bg--purple;
@@ -28,26 +29,29 @@ button {
 	&:focus,
 	&:hover {
 		.bg--darkblue;
-		border-color: @color-darkblue;
+		border-color: var(--color-darkblue);
 		.white;
 	}
 	&:after {
 		content: none;
 	}
 	&--outline {
-		border-color: @color-darkblue;
+		border-color: var(--color-darkblue);
 		background-color: transparent;
 		.darkblue;
 	}
 	&--neg {
-		border-color: @color-white;
+		border-color: var(--color-white);
 		background-color: transparent;
 		.white;
 		&:hover {
-			border-color: @color-white;
+			border-color: var(--color-white);
 			.darkblue;
 			.bg--white;
 		}
+	}
+	&:last-child {
+		margin-right: 0;
 	}
 	h1 + &,
 	h2 + &,

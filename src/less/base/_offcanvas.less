@@ -1,6 +1,7 @@
 /*	================================================  
-	Off-Canvas
+	offcanvas
 	================================================  */
+	
 .page__offcanvas {
 	.grid;
 	position: fixed;
@@ -10,13 +11,13 @@
 	height: 100%;
 	visibility: hidden;
 	.bg--darkblue;
-	&.offcanvas--l {
+	&.offcanvas--left {
 		left: -100%;
 		&.-active {
 			transform: translateX( 100% );
 		}
 	}
-	&.offcanvas--r {
+	&.offcanvas--right {
 		right: -100%;
 		&.-active {
 			transform: translate( -100% );

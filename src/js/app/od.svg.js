@@ -1,14 +1,11 @@
-/*	================================================== 
-	svg
-	================================================== */
 
+var _app = _app || {};
+_app.controller = _app.controller || {};
 
-function initSVGInline( $svgImg ) {
-
-	//SVG Replacement
-	$svgImg.each( function() {
-		var $img = $( this );
-
+$.fn._svgInline = function( callback ) {
+	// svg replacement
+	$( this ).each( ( i, img ) => {
+		var $img = $( img );
 		if( $img.is( 'img' ) ) {
 			let imgID = $img.attr( 'id' );
 			let imgClass = $img.attr( 'class' );
@@ -22,55 +19,68 @@ function initSVGInline( $svgImg ) {
 			$.get( 
 				imgURL, 
 				function( data ) {
-					// Get the SVG tag, ignore the rest
+					// get the svg tag, ignore the rest
 					let $svg = $( data ).find( 'svg' );
-					// Add replaced image's ID to the new SVG
-					if( typeof imgID !== 'undefined' ) {
+					// add replaced image's id to the new ssvg
+					if( ! _isUndefined( imgID ) ) {
 						$svg = $svg.attr( 'id', imgID );
 					}
-					// Add replaced image's classes to the new SVG
-					if( typeof imgClass !== 'undefined' ) {
+					// add replaced image's classes to the new ssvg
+					if( ! _isUndefined( imgClass ) ) {
 						$svg = $svg.attr( 'class', imgClass+' svg--replaced' );
 					}
-					if( typeof imgDataSVGHover !== 'undefined' ) {
+					if( ! _isUndefined( imgDataSVGHover ) ) {
 						$svg.attr( 'data-svg-hover', imgDataSVGHover );
 					}
-					if( typeof imgDataSVGTrigger !== 'undefined' ) {
+					if( ! _isUndefined( imgDataSVGTrigger ) ) {
 						$svg.attr( 'data-svg-trigger', imgDataSVGTrigger );
 					}
-					if( typeof imgDataSVGDelay !== 'undefined' ) {
+					if( ! _isUndefined( imgDataSVGDelay ) ) {
 						$svg.attr( 'data-svg-delay', imgDataSVGDelay );
 					}
-					if( typeof imgDataSVGDuration !== 'undefined' ) {
+					if( ! _isUndefined( imgDataSVGDuration ) ) {
 						$svg.attr( 'data-svg-duration', imgDataSVGDuration );
 					}
-					if( typeof imgDataSVGOffset !== 'undefined' ) {
+					if( ! _isUndefined( imgDataSVGOffset ) ) {
 						$svg.attr( 'data-svg-offset', imgDataSVGOffset );
 					}
-					if( typeof imgDataSVGReverse !== 'undefined' ) {
+					if( ! _isUndefined( imgDataSVGReverse ) ) {
 						$svg.attr( 'data-svg-reverse', imgDataSVGReverse );
 					}
-					// Remove any invalid XML tags as per http://validator.w3.org
+					// remove any invalid xml tags as per http://validator.w3.org
 					$svg = $svg.removeAttr( 'xmlns:a' );
-					// Check if the viewport is set, if the viewport is not set the SVG wont't scale.
+					// check if the viewport is set, if the viewport is not set the svg wont't scale.
 					if( !$svg.attr( 'viewBox' ) && $svg.attr( 'height' ) && $svg.attr( 'width' ) ) {
 						$svg.attr( 'viewBox', '0 0 ' + $svg.attr( 'height' ) + ' ' + $svg.attr( 'width' ) );
 					}
-					// Replace image with new SVG
+					// replace image with new ssvg
 					$img.replaceWith( $svg );
 					$svg.addClass( 'svg--initiated' );
+					// $svg._svgDraw();
+					// callback action
+					if( $.isFunction( callback ) ) {
+						callback.call( this, $svg );
+					}		
 				},
 				'xml'
 			 );
 		}
 		else if( $img.is( 'svg' ) ) {
-			$svg.addClass( 'svg--initiated' );
+			$img.addClass( 'svg--initiated' );
+			// $img._svgDraw();
+			// callback action
+			if( $.isFunction( callback ) ) {
+				callback.call( this, $img );
+			}
 		}
-	} );	
-}
+	} )	
+};
 
-function prepareSVGPath ( $el ) {
-	var lineLength = $el[0].getTotalLength();
+$.fn._svgPreparePath = function( offset = 0 ) {
+	let $el = $( this );
+	var lineLength = Math.ceil( $el[0].getTotalLength() + offset );
+	$el.data( 'stroke-dasharray', lineLength );
 	$el.css( 'stroke-dasharray', lineLength );
 	$el.css( 'stroke-dashoffset', lineLength );
-}
+	$el.addClass( '-prepared' );
+};

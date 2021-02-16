@@ -1,6 +1,7 @@
 /*	================================================== 
-	Navigation
+	navigation
 	================================================== */
+
 nav {
 	position: relative;
 	overflow: visible;
@@ -33,7 +34,7 @@ nav {
 			transform: translateX( -50% );
 			display: block;
 			width: 0;
-			height: @line-width;
+			height: var(--line-w);
 			.bg--purple;
 			.trans--link;
 		}
@@ -73,7 +74,7 @@ nav {
 				top: 50%;
 				left: 50%;
 				width: 100%;
-				height: @line-width;
+				height: var(--line-w);
 				.bg--darkblue;
 				.trans--link;
 				.-offcanvas-active & {
@@ -99,14 +100,14 @@ nav {
 				transform: translate( -50%, 0rem );
 				display: block;
 				width: 100%;
-				height: @line-width;
+				height: var(--line-w);
 			}
 		}
 	}
 	.menu {
 		.row;
-		.row--justify-end;
-		.row--align-items-center;
+		justify-content: flex-end;
+		align-items: center;
 		flex-wrap: nowrap;
 		flex: 1 0 auto;
 	}
@@ -143,7 +144,7 @@ nav {
 	}
 	.menu {
 		.row;
-		.row--justify-start;
+		justify-content: flex-start;
 		flex: 1 0 100%;
 		.white;
 	}
@@ -161,8 +162,8 @@ nav {
 .nav-footer {
 	.menu {
 		.row;
-		.row--justify-start;
-		.row--align-items-center;
+		justify-content: flex-start;
+		align-items: center;
 		flex-wrap: nowrap;
 		flex: 1 0 auto;
 	}
@@ -202,18 +203,18 @@ nav {
 		&.-active,
 		&:hover {
 			.svg {
-				stroke: @color-purple;
+				stroke: var(--color-purple);
 			}
 		}
 		.svg {
-			stroke: @color-darkblue;
-			stroke-width: @stroke-width;
+			stroke: var(--color-darkblue);
+			stroke-width: var(--stroke-width);
 		}
 	}
 	.menu {
 		.row;
-		.row--justify-start;
-		.row--align-items-center;
+		justify-content: flex-start;
+		align-items: center;
 		flex: 1 0 0;
 		@media (max-width: @screen-xs-max) {
 			position: absolute;
@@ -288,7 +289,7 @@ nav {
 			top: 50%;
 			bottom: unset;
 			transform: translate( -2rem, -50% );
-			width: @line-width;
+			width: var(--line-w);
 			height: 0;
 		}
 	}
@@ -313,9 +314,9 @@ nav {
 		&:focus,
 		&:hover {
 			.svg {
-				stroke: @color-darkblue;
+				stroke: var(--color-darkblue);
 				.page__offcanvas & {
-					stroke: @color-purple;
+					stroke: var(--color-purple);
 				}
 			}
 		}
@@ -324,10 +325,10 @@ nav {
 		}
 	}
 	.svg {
-		stroke: @color-purple;
-		stroke-width: @stroke-width;
+		stroke: var(--color-purple);
+		stroke-width: var(--stroke-width);
 		.page__offcanvas & {
-			stroke: @color-white;
+			stroke: var(--color-white);
 		}
 	}
 }

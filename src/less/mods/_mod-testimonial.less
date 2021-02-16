@@ -1,6 +1,7 @@
-.mod.mod-testimonials {
+.mod-testimonials {
 	.mod__body {
-		.row--justify-center;
+		justify-content: center;
+		text-align: center;
 	}
 	.mod__item {
 		flex: 0 0 100%;
@@ -27,7 +28,7 @@
 		&:focus,
 		&:hover {
 			.svg {
-				stroke: @color-white;
+				stroke: var(--color-white);
 			}
 		}
 		&--prev {
@@ -49,8 +50,8 @@
 			}
 		}
 		.svg {
-			stroke: @color-purple;
-			stroke-width: @stroke-width; 
+			stroke: var(--color-purple);
+			stroke-width: var(--stroke-width); 
 		}
 	}
 	.slider__pagination--progressbar {
@@ -70,7 +71,7 @@
 			transform: translateY( -50% );
 			display: block;
 			width: 100%;
-			height: @line-width;
+			height: var(--line-w);
 			.bg--purple;
 		}
 	}
