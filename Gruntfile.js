@@ -7,7 +7,7 @@
 			less: {
 				default: {
 					files: {
-						"src/_dist/css/styles-app.css": "src/less/main.less"
+						"src/build/css/app.build.css": "src/less/main.less"
 					}
 				}
 			},
@@ -30,7 +30,7 @@
 				},
 				dist: {
 					files: {
-						'src/_dist/js/scripts-app-compiled.js': 'src/_dist/js/scripts-app.js'
+						'src/build/js/app.build-babel.js': 'src/build/js/app.build.js'
 					}
 				}
 			},
@@ -40,27 +40,27 @@
 						'src/js/app/*.js',
 						'src/js/scripts.js'
 					],
-					dest: 'src/_dist/js/scripts-app.js'
+					dest: 'src/build/js/app.build.js'
 				},
 				jsvendors: {
 					src: [
 						'src/js/lib/*.js'
 					],
-					dest: 'src/_dist/js/scripts-lib.js'
+					dest: 'src/build/js/lib.build.js'
 				},
 				jsall : {
 					src: [
-						'src/_dist/js/scripts-lib.js',
-						'src/_dist/js/scripts-app-compiled.js'
+						'src/build/js/lib.build.js',
+						'src/build/js/app.build-babel.js'
 					],
 					dest: 'assets/js/scripts.js'
 				},
 				css: {
 					src: [
 						'src/css/**/*.css',
-						'src/_dist/css/styles-app.css'
+						'src/build/css/app.build.css'
 					],
-					dest: 'src/_dist/css/styles.css'
+					dest: 'src/build/css/styles.build.css'
 				}
 			},
 			jshint: {
@@ -81,7 +81,7 @@
 					]
 				},
 				dist: {
-					src: 'src/_dist/css/styles.css',
+					src: 'src/build/css/styles.build.css',
 					dest: 'assets/css/styles.css'
 				}
 			},

@@ -1,62 +1,44 @@
-/*	================================================== 
-	global vars
-	================================================== */
+var _pathTheme = '/';
 
-var debug = false; // switch for debug mode
-const globalScreenSizes = {
-	min 	: {
-		xxxs	: 380,
-		xxs		: 460,
-		xs		: 576,
-		sm		: 768,
-		md		: 1024,
-		lg		: 1280,
-		xl		: 1440,
-		xxl		: 1920
+var _ui = _ui || new ODUI();
+
+var _app = _app || {};
+_app._globals = {
+	spa 			: true, // single page app
+	status 			: $( 'html' ),
+	breakpoints 	: {
+		min 		: {
+			xxxs		: 375,
+			xxs			: 460,
+			xs			: 576,
+			sm			: 768,
+			md			: 1024,
+			lg			: 1280,
+			xl			: 1440,
+			xxl			: 1920
+		}
+	},
+	easing 			: {
+		default 		: 'easeInOutCubic',
+		slider 			: 'cubicBezier(0.83, 0, 0.17, 1)'
+	},
+	speed 			: {
+		default 		: 500,
+		slow 			: 750,
+		slower 			: 1000,
+		fast 			: 250,
+		faster 			: 125,
+		scroll 			: 1000
 	}
 };
-const pathTheme = '/';
-const gridMaxWidth = 1280;
-const globalEasing = 'easeInOutCubic';
-const globalSpeedFaster = 125;
-const globalSpeedFast = 250;
-const globalSpeed = 500;
-const globalSpeedSlow = 750;
-const globalSpeedSlower = 1000;
-const globalScrollSpeed = globalSpeedSlower;
-const scrollToLinkOffset = 128;
 
-/*	================================================== 
-	header & menu
-	================================================== */
-
-function setStickyHeader(){
-	let $header = $( '.page__header' );
-	let scrollTop = $( window ).scrollTop();
-	if( scrollTop > 0 ){ 
-		$header.addClass( '-sticky' );
-	}
-	else {
-		$header.removeClass( '-sticky' ); 
-	}
-}
-
-function initStickyHeader() {
-	setStickyHeader();
-	$( window ).on( 'scroll', function() {
-		setStickyHeader();
-	} );
-}
-
-function initHeader() {
-	initStickyHeader();
-}
+_app._controller = _app._controller || {}; // controllers
 
 /*	================================================== 
 	menus
 	================================================== */
 
-function initAnchorNav() {
+_app._initAnchorNav = () => {
 	let $el = $( '[data-anchor-nav]' );
 	if( $el.length > 0 ) {
 		// create anchor nav
@@ -66,7 +48,7 @@ function initAnchorNav() {
 				'h3'		: 1
 			},
 			$navContainer : $( $el.data( 'anchor-nav' ) ),
-			scrollSpeed : globalScrollSpeed,
+			scrollSpeed : _app._globals.speed.slower,
 			scrollOffset : function() {
 				if( $( window ).width() > 768 ) {
 					return 140;
@@ -86,38 +68,35 @@ function initAnchorNav() {
 			}
 		} );
 	}
-}
+};
 
 /*	================================================== 
 	offcanvas navigation
 	================================================== */
 
-var offcanvasController;
-
-function initOffcanvas() {
-	offcanvasController = $( '.page__offcanvas' ).odOffcanvas( {
+_app._initOffcanvas = () => {
+	_app._controller.offcanvas = $( '.page__offcanvas' ).odOffcanvas( {
 		closeIcon 		: false,
 		cover 			: null,
 		coverContainer 	: null,
 		docked 			: 'right',
 		shiftObj 		: '.page__offcanvas',
-		shiftSpeed		: globalSpeed,
-		shiftEasing		: globalEasing,
+		shiftSpeed		: _app._globals.speed.default,
+		shiftEasing		: _app._globals.easing.default,
 		threshold 		: 767,
 		toggle 			: '.nav-header--min .menu-toggle',
 		toggleContainer	: null,
 		on 				: {
 			afterInit		: function() {
 				let O = this;
-				O.$E.sb = new SimpleBar( O.$E.find( '.offcanvas__container' )[0] );
 			},
 			afterOpen		: function() {
 				let O = this;
 				let ani = anime( {
 					targets		: $('.page__canvas')[0],
 					translateX 	: ['100%', '0'],
-					duration 	: O.options.shiftSpeed,
-					easing 		: O.options.shiftEasing
+					duration 	: O.opts.shiftSpeed,
+					easing 		: O.opts.shiftEasing
 				} );
 			},
 			afterClose		: function() {
@@ -125,56 +104,58 @@ function initOffcanvas() {
 				let ani = anime( {
 					targets		: $('.page__canvas')[0],
 					translateX 	: ['0', '100%'],
-					duration 	: O.options.shiftSpeed,
-					easing 		: O.options.shiftEasing
+					duration 	: O.opts.shiftSpeed,
+					easing 		: O.opts.shiftEasing
 				} );
 			}	
 		}
 	} );
-}
+};
 
 /*	================================================== 
 	svg
 	================================================== */
 
-function initSVG( container ) {
+_app._initSVG = ( container ) => {
 	let $elems = $( container ).length > 0 ? $( container ).find( 'img.svg' ) : $( 'img.svg' );
 	svg4everybody();
-	initSVGInline( $elems );
-}
+
+	$elems._svgInline();
+};
 
 /*	================================================== 
 	toggles
 	================================================== */
 
-function initToggles( container ) {
+_app._initToggles = ( container ) => {
 
 	let $elems = $( container ).length > 0 ? $( container ).find( '[data-toggle]' ) : $( '[data-toggle]' );
 
 	// toggles
 	$elems.odToggle( {
 		calcHeight		: true,
-		easing			: globalEasing,
+		easing			: _app._globals.easing.default,
 		label 			: {
 			switch 			: true
 		},
 		minHeight 		: 0,
-		speed			: globalSpeed,
+		speed			: _app._globals.speed.default,
 		focus			: {
 			collapse 		: {
-				speed 			: globalSpeed
+				speed 			: _app._globals.speed.default
 			},
 			expand 			: false
 		}
 	} );
-}
+};
 
 /*	================================================== 
 	slider
 	================================================== */
 
-function initTestimonialsSlider( container ) {
+_app._initTestimonialsSlider = ( container ) => {
 	let $elems = $( container ).find( '.slider__container' );
+	
 	$elems.odSlider( { 
 		swiperDefaults : {
 			autoHeight 		: true,
@@ -188,65 +169,30 @@ function initTestimonialsSlider( container ) {
 			},
 			simulateTouch 	: true,
 			spaceBetween	: 0,
-			speed 			: globalSpeedSlower
+			speed 			: _app._globals.speed.slower
 		}
 	} );
-}
+};
 
-function initSliders() {
-	initTestimonialsSlider( '.mod-testimonials' );
-}
-
-
-/* ================================================== 
-	particles
-   ================================================== */
-
-function initStage() {
-	let $elems = $( '.mod__bg--particles' );
-	if( $elems.length > 0 ) {
-		$elems.each( function(){
-			particleground( $( this )[0], {
-				dotColor: '#000000',
-				lineColor: '#000000'
-			} );			
-		} );
-	}
-}
-
-/*	================================================== 
-	anime.js helper
-	================================================== */
-
-function getAnimeTargets( ani ) {
-	log( ani );
-	return ani.children.reduce(
-		( all, one ) => all.concat( getAnimeTargets( one ) ),
-		ani.animatables.map( ( a ) => a.target )
-	);
-}
-
-function cancelAnime( ani ) {
-	getAnimeTargets( ani ).forEach( anime.remove );
-}
+_app._initSliders = () => {
+	_app._initTestimonialsSlider( '.mod-testimonials' );
+};
 
 /*	================================================== 
 	init all
 	================================================== */
 
-// init main scripts
-function initMainScripts() {
-	initUtils();
-	initHeader();
-	initOffcanvas();
-	initSliders();
-	initToggles();
-	initAnchorNav();
-	initSVG();
-	initStage();
-	initFixes();
-}
+// init page
+_app._init = () => {
+	_app._initOffcanvas();
+	_app._initSliders();
+	_app._initToggles();
+	_app._initAnchorNav();
+	_app._initSVG();
+
+	_initFixes();
+};
 
 $( document ).ready( function() { 
-	initMainScripts();
+	_app._init();
 } );

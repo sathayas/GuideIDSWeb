@@ -1,5 +1,6 @@
 .mod-blocks {
-	.dist--semi-pad;
+	padding-top: var(--dist-semi);
+	padding-bottom: var(--dist-semi);
 	.mod__item {
 		position: relative;
 		flex: 1 0 100%;
@@ -30,8 +31,8 @@
 			position: relative;
 			display: block;
 			width: 100%;
-			height: @line-width;
-			margin-bottom: 1.5rem;
+			height: var(--line-w);
+			margin-bottom: 2rem;
 			.bg--purple;
 			@media (min-width: @screen-md-min) {
 				margin-bottom: 3rem;

@@ -1,43 +1,62 @@
 /*	================================================  
-	Basics
+	basics
 	================================================  */
+
+@color-transparent	: #FFFFFF;
+@color-alabaster 	: #FAFAFA;
+@color-darkblue 	: #05162D;
+@color-purple		: #8A0C69;
+@color-silver		: #E6ECED;
+@color-border		: #D1D8DA;
+@color-table-stripe	: #F8F9FA;
+
 :root {
 	--grid-max-w 		: 128rem;
 	--header-h 			: 6rem;
 	--dist 				: 7rem;
 	--dist-semi 		: 3.5rem;
-	--edge 				: 1rem;
+	--dist-first 		: 9rem;
+	--edge 				: 0.5rem;
 	--gutter 			: 1rem;
-	--dist-first 		: var(--header-h);
-	--link-color 		: @color-darkblue;
-	--link-color-active : @color-purple;
-	@media (min-width: @screen-xxxs-min) {
-		--edge 			: 0.5rem;
-	}
+	--line-w			: 2px;
+	--stroke-width		: 1.5px;
+	--color-white		: #FFFFFF;
+	--color-alabaster 	: @color-alabaster;
+	--color-darkblue 	: @color-darkblue;
+	--color-purple		: @color-purple;
+	--color-silver		: @color-silver;
+	--color-pos			: var(--color-darkblue);
+	--color-neg			: var(--color-white);
+	--color-border		: @color-border;
+	--color-table-stripe: @color-table-stripe;
+	--text-color 		: var(--color-darkblue);
+	--link-color 		: var(--text-color);
+	--link-color-active : var(--color-purple);
 	@media (min-width: @screen-xs-min) {
 		--edge 		 	: 1rem;
-		--dist-first 	: calc( 3rem + var(--header-h));
 	}
 	@media (min-width: @screen-sm-min) {
 		--header-h 		: 10rem;
 		--edge 		 	: 2rem;
 		--dist 			: 10rem;
 		--dist-semi 	: 5rem;
-		--dist-first 	: calc( 10rem + var(--header-h));
+		--dist-first 	: 20rem;
 	}
 	@media (min-width: @screen-md-min) {
 		--header-h 		: 15rem;
 		--gutter		: 1.5rem;
+		--edge 			: 4rem;
 	}
 	@media (min-width: @screen-lg-min) {
 		--dist 			: 14rem;
 		--dist-semi 	: 7rem;
-		--edge 			: 4rem;
-		--gutter		: 1.5rem;
+		--edge 			: 8rem;
+	}
+	@media (min-width: @screen-xl-min) {
+		--edge 			: 12rem;
 	}
 }
-body,
-.page {
+body {
 	position: relative;
 	margin: 0;
 	padding: 0;
@@ -106,7 +125,8 @@ body,
 	width: 100%;
 	.grid;
 	grid-column: 1 / span 14;
-	.dist--pad;
+	padding-top: var(--dist);
+	padding-bottom: var(--dist);
 	&:first-of-type {
 		padding-top: var(--dist-first);
 	}
@@ -126,10 +146,28 @@ body,
 		grid-column: 2 / span 12;
 		.row;
 	}
+	.mod__head {
+		grid-row: 1 / span 1;
+		margin-bottom: var(--dist-semi);
+	}
+	.mod__body {
+		grid-row: 2 / span 1;
+	}
+	.mod__foot {
+		margin-top: var(--dist-semi);
+		grid-row: 3 / span 1;
+	}
 	.mod__item {
+		position: relative;
 		.col;
 		flex: 1 0 100%;
 		max-width: 100%;
+	}	
+	.mod__item--head {
+		@media (min-width: @screen-md-min) {
+			flex: 0 0 83.333333%;
+			max-width: 83.333333%;
+		}
 	}
 }
 .simplebar-track {
@@ -148,7 +186,7 @@ body,
 			bottom: 6rem;
 		}
 		.page__offcanvas & {
-			.bg--rgba( @color-white, 0.4 );
+			.bg--rgba( @color-alabaster, 0.4 );
 		}
 	}
 	.simplebar-scrollbar {

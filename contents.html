@@ -1,0 +1,1145 @@
+<!doctype html>
+<html lang="de">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+		<meta name="format-detection" content="telephone=no">
+
+		<meta name="robots" content="index follow" />
+		<meta name="description" content="" />
+		<meta property="og:locale" content="en_US" />
+		<meta property="og:title" content="Contents & Examples" />
+		<meta property="og:site_name" content="Guide to Intelligent Data Science" />
+		<meta property="og:description" content="" />
+		<meta property="og:url" content="datascienceguide.org" />
+		<meta property="og:type" content="book" />
+		<meta property="og:image" content="" />
+		<meta property="book:author" content="Michael R. Berthold, Christian Borgelt, Frank Höppner, Frank Klawonn, Rosaria Silipo" />
+		<meta property="book:isbn" content="978-3-030-45573-6" />
+		<meta name="twitter:card" content="summary_large_image">
+		<meta name="twitter:title" content="Contents & Examples" />
+		<meta name="twitter:site" content="@datascienceguide" />
+		<meta name="twitter:description" content="" />
+		<meta name="twitter:image" content="" />
+
+		<title>Contents / Guide to Intelligent Data Science</title>
+
+		<link rel="apple-touch-icon" sizes="180x180" href="assets/img/favicons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" href="assets/img/favicons/favicon-32x32.png" sizes="32x32">
+		<link rel="icon" type="image/png" href="assets/img/favicons/favicon-16x16.png" sizes="16x16">
+		<link rel="mask-icon" href="assets/img/favicons/safari-pinned-tab.svg" color="#8A0C69">
+		<link rel="shortcut icon" href="assets/img/favicons/favicon.ico">
+		<meta name="msapplication-TileColor" content="#8A0C69">
+		<meta name="theme-color" content="#ffffff">
+		<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;700&family=Source+Sans+Pro:wght@400;700&family=Source+Serif+Pro&display=swap" rel="stylesheet">
+		<link rel="stylesheet" href="assets/css/styles.min.css" type="text/css" />
+		<script src="assets/js/lib/modernizr-custom.min.js"></script>
+
+	</head>
+	<body class="page page--contents">
+		<noscript><div class="no-js"></div></noscript>
+		<header class="page__header" role="banner">
+			<div class="header__body">
+				<div class="header__item header__item--title">
+					<a class="header__title" href="index.html" target="_self">
+						Guide to Intelligent Data Science
+					</a>
+				</div>
+				<div class="header__item header__item--nav-primary">
+					<nav class="nav-header nav-header--primary" role="navigation">
+						<ul class="menu">
+							<li class="menu__item">
+								<a href="teaching-material.html">Teaching Material</a>
+							</li>
+							<li class="menu__item -active">
+								<a href="contents.html">Contents &amp; Examples</a>
+							</li>
+							<li class="menu__item">
+								<a href="https://www.springer.com/gp/book/9783030455736" target="_blank">Buy Book</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+				<div class="header__item header__item--nav-min">
+					<nav class="nav-header nav-header--min" role="navigation">
+						<button class="menu-toggle">
+							<span class="icon"></span>
+						</button>
+					</nav>
+				</div>
+			</div>
+		</header>
+
+		<div class="page__body">
+
+			<section class="layout layout--contents">
+
+				<aside class="layout__aside">
+					<section class="mod mod-nav-contents">
+						<div class="mod__body">
+							<div class="mod__item mod__item--nav" id="nav-contents"></div>
+						</div>
+					</section>
+				</aside>
+
+				<main class="layout__body" data-anchor-nav="#nav-contents">
+					<section class="mod mod-contents">
+						<div class="mod__body">
+							<div class="mod__item mod__item--chapter">
+								<div class="content -wysiwyg">
+									<h1><span>Contents &amp; Examples</span></h1>
+									<p class="note">
+										<b>Disclaimer:</b>
+										Except otherwise noted, the workflow and code examples are
+										available under the Creative Commons Attribution-NonCommercial 4.0 International Public License (<a href="https://creativecommons.org/licenses/by-nc/4.0/">CC BY-NC 4.0</a>).
+										</i>
+									</p>
+									<p>
+										<a class="btn btn--outline" href="downloads/Guide-to-Intelligent-Data-Science-Codes-Workflows.zip" download>Download all Code Snippets & Workflows</a>
+										<!-- <a class="btn btn--outline" href="downloads/Guide-to-Intelligent-Data-Science-PDFSlides.zip" download>Download all PDF slides</a>
+										<a class="btn btn--outline" href="downloads/Guide-to-Intelligent-Data-Science-PPTSlides.zip" download>Download all PPT slides</a> -->
+									</p>
+									<hr>
+									<h2 id="chapter-1">1&#8194;Introduction</h2>
+									<ol class="content__structure">
+										<li>1.1&#8194;Motivation
+											<ol>
+												<li>1.1.1&#8194;Data and Knowledge</li>
+												<li>1.1.2&#8194;Tycho Brahe and Johannes Kepler</li>
+												<li>1.1.3&#8194;Intelligent Data Analysis</li>
+											</ol>
+										</li>
+										<li>1.2&#8194;The Data Analysis Process</li>
+										<li>1.3&#8194;Methods, Tasks, and Tools</li>
+										<li>1.4&#8194;How to Read This Book</li>
+									</ol>
+									<p>In this introductory chapter we provide a brief overview of some core ideas of data
+										 science and their motivation. </p>
+									<div id="chapter-1-abstract" class="content__more">
+										<p>In a first step we carefully distinguish between “data”
+											 and “knowledge” in order to obtain clear notions that help us to work out why it is
+											 usually not enough to simply collect data and why we have to strive to turn them
+											 into knowledge. As an illustration, we consider a well-known example from the history
+											 of science. In a second step we characterize the data science process, also often
+											 referred to as the knowledge discovery process, in which modeling is one important
+											 step. We characterize standard data science tasks and summarize the catalog of
+											 methods to tackle them.</p>
+									</div>
+									<button data-toggle="#chapter-1-abstract" class="content__toggle" aria-label="Toggle"><span class="toggle__label" data-toggle-collapse="Show less" data-toggle-expand="Read more">Read more</span></button>
+								</div>
+							</div>
+							<div class="mod__item mod__item--chapter">
+								<div class="content -wysiwyg">
+									<h2 id="chapter-2">2&#8194;Practical Data Analysis: An Example</h2>
+									<ol class="content__structure">
+										<li>2.1&#8194;The Setup</li>
+										<li>2.2&#8194;Data Understanding and Pattern Finding</li>
+										<li>2.3&#8194;Explanation Finding</li>
+										<li>2.4&#8194;Prediction the Future</li>
+										<li>2.5&#8194;Concluding the Remarks</li>
+									</ol>
+									<p>Before talking about the full-fledged data science process and diving into the details
+										 of individual methods, this chapter demonstrates some typical pitfalls one encounters
+										 when analyzing real-world data. </p>
+									<div id="chapter-2-abstract" class="content__more">
+										<p>We start our journey through the data
+											 science process by looking over the shoulders of two (pseudo) data scientists, Stan
+											 and Laura, working on some hypothetical data science problems in a sales environment.
+											 Being differently skilled, they show how things should and should not
+											 be done. Throughout the chapter, a number of typical problems that data analysts
+											 meet in real work situations are demonstrated as well. We will skip algorithmic and
+											 other details here and only briefly mention the intention behind applying some of
+											 the processes and methods. They will be discussed in depth in subsequent chapters.</p>
+									</div>
+									<button data-toggle="#chapter-2-abstract" class="content__toggle" aria-label="Toggle"><span class="toggle__label" data-toggle-collapse="Show less" data-toggle-expand="Read more">Read more</span></button>
+								</div>
+							</div>
+							<div class="mod__item mod__item--chapter">
+								<div class="content -wysiwyg">
+									<h2 id="chapter-3">3&#8194;Project Understanding</h2>
+									<ol class="content__structure">
+										<li>3.1&#8194;Determine the Project Objective</li>
+										<li>3.2&#8194;Assess the Situation</li>
+										<li>3.3&#8194;Determine Analysis Goals</li>
+										<li>3.4&#8194;Further Reading</li>
+									</ol>
+									<p>We are at the beginning of a series of interdependent steps, where the project understanding
+										 phase marks the first. In this initial phase of the data analysis project, we
+										 have to map a problem onto one or many data analysis tasks. </p>
+									<div id="chapter-3-abstract" class="content__more">
+										<p>In a nutshell, we conjecture
+											 that the nature of the problem at hand can be adequately captured by some
+											 data sets (that still have to be identified or constructed), that appropriate modeling
+											 techniques can successfully be applied to learn the relationships in the data, and finally
+											 that the gained insights or models can be transferred back to the real case and
+											 applied successfully. This endeavor relies on a number of assumptions and is threatened
+											 by several risks, so the goal of the project understanding phase is to assess the
+											 main objective, the potential benefits, as well as the constraints, assumptions, and
+											 risks. While the number of data analysis projects is rapidly expanding, the failure
+											 rate is still high, so this phase should be carried out seriously to rate the chances
+											 of success realistically. The project understanding phase should be carried out with
+											 care to keep the project on the right track.</p>
+									</div>
+									<button data-toggle="#chapter-3-abstract" class="content__toggle" aria-label="Toggle"><span class="toggle__label" data-toggle-collapse="Show less" data-toggle-expand="Read more">Read more</span></button>
+								</div>
+							</div>
+							<div class="mod__item mod__item--chapter">
+								<div class="content -wysiwyg">
+									<h2 id="chapter-4">4&#8194;Data Understanding</h2>
+									<ol class="content__structure">
+										<li>4.1&#8194;Attribute Understanding</li>
+										<li>4.2&#8194;Data Quality</li>
+										<li>4.3&#8194;Data Visualization
+											<ol>
+												<li>4.3.1&#8194;Methods for One and Two Attributes</li>
+												<li>4.3.2&#8194;Methods for Higher-Dimensional Data</li>
+											</ol>
+										</li>
+										<li>4.4&#8194;Correlation Analysis</li>
+										<li>4.5&#8194;Outlier Detection
+											<ol>
+												<li>4.5.1&#8194;Outlier Detection for Single Attributes</li>
+												<li>4.5.2&#8194;Outlier Detection for Multidimensional Data</li>
+											</ol>
+										</li>
+										<li>4.6&#8194;Missing Values</li>
+										<li>4.7&#8194;A Checklist for Data Understanding</li>
+										<li>4.8&#8194;Data Understanding in Practice
+											<ol>
+												<li>4.8.1&#8194;Visualizing the Iris Data</li>
+												<li>4.8.2&#8194;Visualizing a Three-Dimensional Data Set on a Two-Coordinate Plot</li>
+											</ol>
+										</li>
+									</ol>
+									<p>The main goal of data understanding is to gain general insights about the data that
+										 will potentially be helpful for the further steps in the data analysis process, but data
+										 understanding should not be driven exclusively by the goals and methods to be applied
+										 in later steps. </p>
+									<div id="chapter-4-abstract" class="content__more">
+										<p>Although these requirements should be kept in mind during data
+											 understanding, one should approach the data from a neutral point of view. Never
+											 trust any data as long as you have not carried out some simple plausibility checks.
+											 Methods for such plausibility checks will be discussed in this chapter. At the end
+											 of the data understanding phase, we know much better whether the assumptions we
+											 made during the project understanding phase concerning representativeness, informativeness,
+											 data quality, and the presence or absence of external factors are justified.</p>
+									</div>
+									<button data-toggle="#chapter-4-abstract" class="content__toggle" aria-label="Toggle"><span class="toggle__label" data-toggle-collapse="Show less" data-toggle-expand="Read more">Read more</span></button>
+								</div>
+								<div class="material">
+									<button data-toggle="#chapter-4-r" class="material__toggle" aria-label="Toggle">R Code Snippets</button>
+									<div id="chapter-4-r" class="material__more">
+										<ul class="material__links">
+											<li>
+												<a class="link link--code" href="r-code-snippets.html#chapter-4-a">Histograms</a>
+											</li>
+											<li>
+												<a class="link link--code" href="r-code-snippets.html#chapter-4-b">Boxplots</a>
+											</li>
+											<li>
+												<a class="link link--code" href="r-code-snippets.html#chapter-4-c">Scatter Plots</a>
+											</li>
+											<li>
+												<a class="link link--code" href="r-code-snippets.html#chapter-4-d">Principal Component Analysis</a>
+											</li>
+											<li>
+												<a class="link link--code" href="r-code-snippets.html#chapter-4-e">Multidimensional Scaling</a>
+											</li>
+											<li>
+												<a class="link link--code" href="r-code-snippets.html#chapter-4-f">Parallel Coordinates, Radar, and Star Plots</a>
+											</li>
+											<li>
+												<a class="link link--code" href="r-code-snippets.html#chapter-4-g">Correlation Coefficients</a>
+											</li>
+											<li>
+												<a class="link link--code" href="r-code-snippets.html#chapter-4-h">Grubbs Test for Outlier Detection</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="material">
+									<button data-toggle="#chapter-4-python" class="material__toggle" aria-label="Toggle">Python Code Snippets</button>
+									<div id="chapter-4-python" class="material__more">
+										<ul class="material__links">
+											<li>
+												<a class="link link--code" href="python-code-snippets.html#chapter-4-a">Histograms</a>
+											</li>
+											<li>
+												<a class="link link--code" href="python-code-snippets.html#chapter-4-b">Boxplots</a>
+											</li>
+											<li>
+												<a class="link link--code" href="python-code-snippets.html#chapter-4-c">Scatter Plots</a>
+											</li>
+											<li>
+												<a class="link link--code" href="python-code-snippets.html#chapter-4-d">Principal Component Analysis</a>
+											</li>
+											<li>
+												<a class="link link--code" href="python-code-snippets.html#chapter-4-e">Multidimensional Scaling</a>
+											</li>
+											<li>
+												<a class="link link--code" href="python-code-snippets.html#chapter-4-f">Parallel Coordinates Plots</a>
+											</li>
+											<li>
+												<a class="link link--code" href="python-code-snippets.html#chapter-4-g">Correlations</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="material">
+									<button data-toggle="#chapter-4-workflows" class="material__toggle" aria-label="Toggle">KNIME Workflows</button>
+									<div id="chapter-4-workflows" class="material__more">
+										<ul class="material__links">
+											<li>
+												<a class="link link--workflow" href="https://kni.me/w/dwugN1qYM2OOjzO4" target="_blank">Simple Visualization</a>
+											</li>
+											<li>
+												<a class="link link--workflow" href="https://kni.me/w/EnmfIBCuLOFpYvc2" target="_blank">Dimensionality Reduction with PCA and t-SNE</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="mod__item mod__item--chapter">
+								<div class="content -wysiwyg">
+									<h2 id="chapter-5">5&#8194;Principles of Modelling</h2>
+									<ol class="content__structure">
+										<li>5.1&#8194;Model Classes</li>
+										<li>5.2&#8194;Fitting Criteria and Score Functions
+											<ol>
+												<li>5.2.1&#8194;Error Functions for Classification Problems</li>
+												<li>5.2.2&#8194;Measures of Interestingness</li>
+											</ol>
+										</li>
+										<li>5.3&#8194;Algorithms for Model Fitting
+											<ol>
+												<li>5.3.1&#8194;Closed Form Solutions</li>
+												<li>5.3.2&#8194;Gradient Method</li>
+												<li>5.3.3&#8194;Combinatorial Optimization</li>
+												<li>5.3.4&#8194;Random Search, Greedy Strategies, and Other Heuristics</li>
+											</ol>
+										</li>
+										<li>5.4&#8194;Types of Errors
+											<ol>
+												<li>5.4.1&#8194;Experimental Error</li>
+												<li>5.4.2&#8194;Sample Error</li>
+												<li>5.4.3&#8194;Model Error</li>
+												<li>5.4.4&#8194;Algorithmic Error</li>
+												<li>5.4.5&#8194;Machine Learning Bias and Variance</li>
+												<li>5.4.6&#8194;Learning Without Bias?</li>
+											</ol>
+										</li>
+										<li>5.5&#8194;Model Validation
+											<ol>
+												<li>5.5.1&#8194;Training and Test Data</li>
+												<li>5.5.2&#8194;Cross-Validation</li>
+												<li>5.5.3&#8194;Bootstrapping</li>
+												<li>5.5.4&#8194;Measures for Model Complexity</li>
+												<li>5.5.5&#8194;Coping with Unbalanced Data</li>
+											</ol>
+										</li>
+										<li>5.6&#8194;Model Errors and Validation in Practice
+											<ol>
+												<li>5.6.1&#8194;Scoring Models for Classification</li>
+												<li>5.6.2&#8194;Scoring Models for Numeric Predictions</li>
+											</ol>
+										</li>
+										<li>5.7&#8194;Further Reading</li>
+									</ol>
+									<p>After we have gone through the phases of project and data understanding, we are either
+										 confident that modeling will be successful or return to the project understanding
+										 phase to revise objectives (or to stop the project). </p>
+									<div id="chapter-5-abstract" class="content__more">
+										<p>After we have gone through the phases of project and data understanding, we are either
+											 confident that modeling will be successful or return to the project understanding
+											 phase to revise objectives (or to stop the project). In the former case, we have to prepare
+											 the data set for subsequent modeling. However, as some of the data preparation
+											 steps are motivated by modeling itself, we first discuss the principles of modeling.
+											 Many modeling methods will be introduced in the following chapters, but this chapter
+											 is devoted to problems and aspects that are inherent in and common to all the
+											 methods for analyzing the data.</p>
+									</div>
+									<button data-toggle="#chapter-5-abstract" class="content__toggle" aria-label="Toggle"><span class="toggle__label" data-toggle-collapse="Show less" data-toggle-expand="Read more">Read more</span></button>
+								</div>
+								<div class="material">
+									<button data-toggle="#chapter-5-r" class="material__toggle" aria-label="Toggle">R Code Snippets</button>
+									<div id="chapter-5-r" class="material__more">
+										<ul class="material__links">
+											<li>
+												<a class="link link--code" href="r-code-snippets.html#chapter-5-a">Training and Testing Data</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="material">
+									<button data-toggle="#chapter-5-python" class="material__toggle" aria-label="Toggle">Python Code Snippets</button>
+									<div id="chapter-5-python" class="material__more">
+										<ul class="material__links">
+											<li>
+												<a class="link link--code" href="python-code-snippets.html#chapter-5-a">Training and Testing Data</a>
+											</li>
+											<li>
+												<a class="link link--code" href="python-code-snippets.html#chapter-5-b">Classifier training and prediction</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="material">
+									<button data-toggle="#chapter-5-workflows" class="material__toggle" aria-label="Toggle">KNIME Workflows</button>
+									<div id="chapter-5-workflows" class="material__more">
+										<ul class="material__links">
+											<li>
+												<a class="link link--workflow" href="https://kni.me/w/-0nN9BzUOCI6vCXl" target="_blank">Training and Testing a Model (decision tree)</a>
+											</li>
+											<li>
+												<a class="link link--workflow" href="https://kni.me/w/KGDqtyTZ4FPCgXrH" target="_blank">Numeric Error Measures to Score Numeric Predictions</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="mod__item mod__item--chapter">
+								<div class="content -wysiwyg">
+									<h2 id="chapter-6">6&#8194;Data Preparation</h2>
+									<ol class="content__structure">
+										<li>6.1&#8194;Select Data
+											<ol>
+												<li>6.1.1&#8194;Feature Selection</li>
+												<li>6.1.2&#8194;Dimensionality Reduction</li>
+												<li>6.1.3&#8194;Record Selection</li>
+											</ol>
+										</li>
+										<li>6.2&#8194;Clean Data
+											<ol>
+												<li>6.2.1&#8194;Improve Data Quality</li>
+												<li>6.2.2&#8194;Missing Values</li>
+												<li>6.2.3&#8194;Remove Outliers</li>
+											</ol>
+										</li>
+										<li>6.3&#8194;Construct Data
+											<ol>
+												<li>6.3.1&#8194;Provide Operability</li>
+												<li>6.3.2&#8194;Assure Impartiality</li>
+												<li>6.3.3&#8194;Maximize Efficiency</li>
+											</ol>
+										</li>
+										<li>6.4&#8194;Complex Data Types</li>
+										<li>6.5&#8194;Data Integration
+											<ol>
+												<li>6.5.1&#8194;VerticalData Integration</li>
+												<li>6.5.2&#8194;Horizontal Data Integration</li>
+											</ol>
+										</li>
+										<li>6.6&#8194;Data Preparation in Practice
+											<ol>
+												<li>6.6.1&#8194;Removing Empty or Almost Empty Attributes and Records in a Data Set</li>
+												<li>6.6.2&#8194;Normalization and Denormalization</li>
+												<li>6.6.3&#8194;Backward Feature Elimination</li>
+											</ol>
+										</li>
+										<li>6.7&#8194;Further Reading</li>
+									</ol>
+									<p>In the data understanding phase we have explored all available data and carefully
+										 checked if they satisfy our assumptions and correspond to our expectations. We intend
+ 											 to apply various modeling techniques to extract models from the data. </p>
+									<div id="chapter-6-abstract" class="content__more">
+										<p>Although
+											 we have not yet discussed any modeling technique in greater detail (see following
+											 chapters), we have already glimpsed at some fundamental techniques and potential
+											 pitfalls in the previous chapter. Before we start modeling, we have to prepare
+											 our data set appropriately, that is, we are going to modify our data set so that the
+											 modeling techniques are best supported but least biased.</p>
+									</div>
+									<button data-toggle="#chapter-6-abstract" class="content__toggle" aria-label="Toggle"><span class="toggle__label" data-toggle-collapse="Show less" data-toggle-expand="Read more">Read more</span></button>
+								</div>
+								<div class="material">
+									<button data-toggle="#chapter-6-r" class="material__toggle" aria-label="Toggle">R Code Snippets</button>
+									<div id="chapter-6-r" class="material__more">
+										<ul class="material__links">
+											<li>
+												<a class="link link--code" href="r-code-snippets.html#chapter-6-a">Missing Values</a>
+											</li>
+											<li>
+												<a class="link link--code" href="r-code-snippets.html#chapter-6-b">Normalization and Scaling</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="material">
+									<button data-toggle="#chapter-6-python" class="material__toggle" aria-label="Toggle">Python Code Snippets</button>
+									<div id="chapter-6-python" class="material__more">
+										<ul class="material__links">
+											<li>
+												<a class="link link--code" href="python-code-snippets.html#chapter-6-a">Missing Values</a>
+											</li>
+											<li>
+												<a class="link link--code" href="python-code-snippets.html#chapter-6-b">Normalization and Scaling</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="material">
+									<button data-toggle="#chapter-6-workflows" class="material__toggle" aria-label="Toggle">KNIME Workflows</button>
+									<div id="chapter-6-workflows" class="material__more">
+										<ul class="material__links">
+											<li>
+												<a class="link link--workflow" href="https://kni.me/w/3eRugmiCNg6uSmOz" target="_blank">Dimensionality Reduction & Outlier Detection</a>
+											</li>
+											<li>
+												<a class="link link--workflow" href="https://kni.me/w/l9AcqvFQbXp3AfNS" target="_blank">How to Use Normalization in a Data Science Solution</a>
+											</li>
+											<li>
+												<a class="link link--workflow" href="https://kni.me/w/Cim28Kbg7Rt2EsE8" target="_blank">Backward Feature Elimination</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="mod__item mod__item--chapter">
+								<div class="content -wysiwyg">
+									<h2 id="chapter-7">7&#8194;Finding Patterns</h2>
+									<ol class="content__structure">
+										<li>7.1&#8194;Hierarchical Clustering
+											<ol>
+												<li>7.1.1&#8194;Overview</li>
+												<li>7.1.2&#8194;Construction</li>
+												<li>7.1.3&#8194;Variations and Issues</li>
+											</ol>
+										</li>
+										<li>7.2&#8194;Notion of (Dis-)Similarity</li>
+										<li>7.3&#8194;Prototype- and Model-Based Clustering
+											<ol>
+												<li>7.3.1&#8194;Overview</li>
+												<li>7.3.2&#8194;Construction</li>
+												<li>7.3.3&#8194;Variations and Issues</li>
+											</ol>
+										</li>
+										<li>7.4&#8194;Density-BasedClustering
+											<ol>
+												<li>7.4.1&#8194;Overview</li>
+												<li>7.4.2&#8194;Construction</li>
+												<li>7.4.3&#8194;Variations and Issues</li>
+											</ol>
+										</li>
+										<li>7.5&#8194;Self-organizing Maps
+											<ol>
+												<li>7.5.1&#8194;Overview</li>
+												<li>7.5.2&#8194;Construction</li>
+											</ol>
+										</li>
+										<li>7.6&#8194;Frequent Pattern Mining and Association Rules
+											<ol>
+												<li>7.6.1&#8194;Overview</li>
+												<li>7.6.2&#8194;Construction</li>
+												<li>7.6.3&#8194;Variations and Issues</li>
+											</ol>
+										</li>
+										<li>7.7&#8194;Deviation Analysis
+											<ol>
+												<li>7.7.1&#8194;Overview</li>
+												<li>7.7.2&#8194;Construction</li>
+												<li>7.7.3&#8194;Variations and Issues</li>
+											</ol>
+										</li>
+										<li>7.8&#8194;Finding Patterns in Practice
+											<ol>
+												<li>7.8.1&#8194;Hierarchical Clustering</li>
+												<li>7.8.2&#8194;k-Means and DBSCAN</li>
+												<li>7.8.3&#8194;Association Rule Mining</li>
+											</ol>
+										</li>
+										<li>7.9&#8194;Further Reading</li>
+									</ol>
+									<p>In this chapter we are concerned with summarizing, describing, or exploring the
+										 data set as a whole. </p>
+									<div id="chapter-7-abstract" class="content__more">
+										<p>We do not (yet) concentrate on a particular target attribute,
+											 which will be the focus of Chaps. 8 and 9. Compact and informative representations
+											 of (possibly only parts of) the data set stimulate the data understanding phase
+											 and are extremely helpful when exploring the data. While a table with mean and
+											 standard deviation for all fields also summarizes the data somehow, such a representation
+											 would miss any interaction between the variables. Investigating two fields
+											 in a scatter plot and examining their correlation coefficients could reveal linear dependencies
+											 among two variables, but what if more variables are involved, and the
+											 dependency is restricted to a certain part of the data only? We will review several
+											 techniques that try to group or organize the data intelligently, so that the individual
+											 parts are meaningful or interesting by themselves. For the purpose of getting a quick
+											 impression of the methods we will address in this section, consider a data set of car
+											 offers from an internet platform. A number of interactions and dependencies, well
+											 known to everyone who has actively searched for a car, can be found in such a data
+											 set.</p>
+									</div>
+									<button data-toggle="#chapter-7-abstract" class="content__toggle" aria-label="Toggle"><span class="toggle__label" data-toggle-collapse="Show less" data-toggle-expand="Read more">Read more</span></button>
+								</div>
+								<div class="material">
+									<button data-toggle="#chapter-7-r" class="material__toggle" aria-label="Toggle">R Code Snippets</button>
+									<div id="chapter-7-r" class="material__more">
+										<ul class="material__links">
+											<li>
+												<a class="link link--code" href="r-code-snippets.html#chapter-7-a">Hierarchical Clustering</a>
+											</li>
+											<li>
+												<a class="link link--code" href="r-code-snippets.html#chapter-7-b">Prototype-Based Clustering</a>
+											</li>
+											<li>
+												<a class="link link--code" href="r-code-snippets.html#chapter-7-c">Self Organizing Map</a>
+											</li>
+											<li>
+												<a class="link link--code" href="r-code-snippets.html#chapter-7-d">Association Rules</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="material">
+									<button data-toggle="#chapter-7-python" class="material__toggle" aria-label="Toggle">Python Code Snippets</button>
+									<div id="chapter-7-python" class="material__more">
+										<ul class="material__links">
+											<li>
+												<a class="link link--code" href="python-code-snippets.html#chapter-7-a">Hierarchical Clustering</a>
+											</li>
+											<li>
+												<a class="link link--code" href="python-code-snippets.html#chapter-7-b">K-means clustering</a>
+											</li>
+											<li>
+												<a class="link link--code" href="python-code-snippets.html#chapter-7-c">DBSCAN clustering</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="material">
+									<button data-toggle="#chapter-7-workflows" class="material__toggle" aria-label="Toggle">KNIME Workflows</button>
+									<div id="chapter-7-workflows" class="material__more">
+										<ul class="material__links">
+											<li>
+												<a class="link link--workflow" href="https://kni.me/w/rlXFxYxQmbgNgSsM" target="_blank">Hierarchical Clustering</a>
+											</li>
+											<li>
+												<a class="link link--workflow" href="https://kni.me/w/t8UVEQH1sTTkus_w" target="_blank">Clustering with k-Means</a>
+											</li>
+											<li>
+												<a class="link link--workflow" href="https://kni.me/w/WgQVjVJugr9Nu24W" target="_blank">Clustering with DBSCAN</a>
+											</li>
+											<li>
+												<a class="link link--workflow" href="https://kni.me/w/DwWr84_fhcpYbGs5" target="_blank">Market Basket Analysis: Building Association Rules</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="mod__item mod__item--chapter">
+								<div class="content -wysiwyg">
+									<h2 id="chapter-8">8&#8194;Finding Explanations</h2>
+									<ol class="content__structure">
+										<li>8.1&#8194;Decision Trees
+											<ol>
+												<li>8.1.1&#8194;Overview</li>
+												<li>8.1.2&#8194;Construction</li>
+												<li>8.1.3&#8194;Variations and Issues</li>
+											</ol>
+										</li>
+										<li>8.2&#8194;Bayes Classifiers
+											<ol>
+												<li>8.2.1&#8194;Overview</li>
+												<li>8.2.2&#8194;Construction</li>
+												<li>8.2.3&#8194;Variations and Issues</li>
+											</ol>
+										</li>
+										<li>8.3&#8194;Regression
+											<ol>
+												<li>8.3.1&#8194;Overview</li>
+												<li>8.3.2&#8194;Construction</li>
+												<li>8.3.3&#8194;Variations and Issues</li>
+												<li>8.3.4&#8194;Two Class Problems</li>
+												<li>8.3.5&#8194;Regularization for Logistic Regression</li>
+											</ol>
+										</li>
+										<li>8.4&#8194;Rule learning
+											<ol>
+												<li>8.4.1&#8194;Propositional Rules</li>
+												<li>8.4.2&#8194;Inductive Logic Programming or First-Order Rules</li>
+											</ol>
+										</li>
+										<li>8.5&#8194;Finding Explanations in Practice
+											<ol>
+												<li>8.5.1&#8194;Decision Trees</li>
+												<li>8.5.2&#8194;Naïve Bayes</li>
+												<li>8.5.3&#8194;Logistic Regression</li>
+											</ol>
+										</li>
+										<li>8.6&#8194;Further Reading</li>
+									</ol>
+									<p>In the previous chapter we discussed methods that find patterns of different shapes
+										 in data sets. All these methods needed measures of similarity in order to group
+ 											 similar objects. In this chapter we will discuss methods that address a very different
+ 											 setup: instead of finding structure in a data set, we are now focusing on methods
+ 											 that find explanations for an unknown dependency within the data. </p>
+									<div id="chapter-8-abstract" class="content__more">
+										<p>Such a search
+											 for a dependency usually focuses on a so-called target attribute, which means we
+											 are particularly interested in why one specific attribute has a certain value. In case
+											 of the target attribute being a nominal variable, we are talking about a classification
+											 problem; in case of a numerical value we are referring to a regression problem.
+											 Examples for such problems would be understanding why a customer belongs to
+											 the category of people who cancel their account (e.g., classifying her into a yes/no
+											 category) or better understanding the risk factors of customers in general.</p>
+									</div>
+									<button data-toggle="#chapter-8-abstract" class="content__toggle" aria-label="Toggle"><span class="toggle__label" data-toggle-collapse="Show less" data-toggle-expand="Read more">Read more</span></button>
+								</div>
+								<div class="material">
+									<button data-toggle="#chapter-8-r" class="material__toggle" aria-label="Toggle">R Code Snippets</button>
+									<div id="chapter-8-r" class="material__more">
+										<ul class="material__links">
+											<li>
+												<a class="link link--code" href="r-code-snippets.html#chapter-8-a">Decision tree</a>
+											</li>
+											<li>
+												<a class="link link--code" href="r-code-snippets.html#chapter-8-b">Naive Bayes Classifiers</a>
+											</li>
+											<li>
+												<a class="link link--code" href="r-code-snippets.html#chapter-8-c">Regression</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="material">
+									<button data-toggle="#chapter-8-python" class="material__toggle" aria-label="Toggle">Python Code Snippets</button>
+									<div id="chapter-8-python" class="material__more">
+										<ul class="material__links">
+											<li>
+												<a class="link link--code" href="python-code-snippets.html#chapter-8-a">Decision tree</a>
+											</li>
+											<li>
+												<a class="link link--code" href="python-code-snippets.html#chapter-8-b">Regression</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="material">
+									<button data-toggle="#chapter-8-workflows" class="material__toggle" aria-label="Toggle">KNIME Workflows</button>
+									<div id="chapter-8-workflows" class="material__more">
+										<ul class="material__links">
+											<li>
+												<a class="link link--workflow" href="https://kni.me/w/PV-3WZ-ZquINMsI_" target="_blank">Decision Tree</a>
+											</li>
+											<li>
+												<a class="link link--workflow" href="https://kni.me/w/0oyhMdWYK5w19xGj" target="_blank">Naive Bayes</a>
+											</li>
+											<li>
+												<a class="link link--workflow" href="https://kni.me/w/LWHdcrt_DFIepk0p" target="_blank">Logistic Regression</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="mod__item mod__item--chapter">
+								<div class="content -wysiwyg">
+									<h2 id="chapter-9">9&#8194;Finding Predictors</h2>
+									<ol class="content__structure">
+										<li>9.1&#8194;Nearest-Neighbor Predictors
+											<ol>
+												<li>9.1.1&#8194;Overview</li>
+												<li>9.1.2&#8194;Construction</li>
+												<li>9.1.3&#8194;Variations and Issues</li>
+											</ol>
+										</li>
+										<li>9.2&#8194;Artifical Neural Networks
+											<ol>
+												<li>9.2.1&#8194;Overview</li>
+												<li>9.2.2&#8194;Construction</li>
+												<li>9.2.3&#8194;Variations and Issues</li>
+											</ol>
+											<li>9.3&#8194;Deep Learning
+												<ol>
+													<li>9.3.1&#8194;Recurrent Neural Networks and Long-Short Term Memory Units</li>
+													<li>9.3.2&#8194;Convolutional Neural Networks</li>
+													<li>9.3.3&#8194;More Deep Learning Networks: Generative-Adversarial Networks (GANs)</li>
+												</ol>
+										</li>
+										<li>9.4&#8194;Support Vector Machines
+											<ol>
+												<li>9.4.1&#8194;Overview</li>
+												<li>9.4.2&#8194;Construction</li>
+												<li>9.4.3&#8194;Variations and Issues</li>
+											</ol>
+										</li>
+										<li>9.5&#8194;Ensemble Methods
+											<ol>
+												<li>9.5.1&#8194;Overview</li>
+												<li>9.5.2&#8194;Construction</li>
+												<li>9.5.3&#8194;Further Reading</li>
+											</ol>
+										</li>
+										<li>9.6&#8194;Finding Predictors in Practice
+											<ol>
+												<li>9.6.1&#8194;k Nearest Neighbor (kNN)</li>
+												<li>9.6.2&#8194;Artificial Neural Networks and Deep Learning</li>
+												<li>9.6.3&#8194;Support Vector Machine (SVM)</li>
+												<li>9.6.4&#8194;Random Forest and Gradient Boosted Trees</li>
+											</ol>
+										</li>
+										<li>9.7&#8194;Further Reading</li>
+									</ol>
+									<p>In this chapter we consider methods of constructing predictors for class labels or numeric
+										 target attributes. </p>
+									<div id="chapter-9-abstract" class="content__more">
+										<p>However, in contrast to Chap. 8, where we discussed methods
+											 for basically the same purpose, the methods in this chapter yield models that do not
+											 help much to explain the data or even dispense with models altogether. Nevertheless,
+											 they can be useful, namely if the main goal is good prediction accuracy rather
+											 than an intuitive and interpretable model. Especially artificial neural networks and
+											 support vector machines, which we study in Sects. 9.2 and 9.4, are known to outperform
+											 other methods with respect to accuracy in many tasks. However, due to the
+											 abstract mathematical structure of the prediction procedure, which is usually difficult
+											 to map to the application domain, the models they yield are basically “black
+											 boxes” and almost impossible to interpret in terms of the application domain. Hence
+											 they should be considered only if a comprehensible model that can easily be checked
+											 for plausibility is not required, and high accuracy is the main concern.</p>
+									</div>
+									<button data-toggle="#chapter-9-abstract" class="content__toggle" aria-label="Toggle"><span class="toggle__label" data-toggle-collapse="Show less" data-toggle-expand="Read more">Read more</span></button>
+								</div>
+								<div class="material">
+									<button data-toggle="#chapter-9-r" class="material__toggle" aria-label="Toggle">R Code Snippets</button>
+									<div id="chapter-9-r" class="material__more">
+										<ul class="material__links">
+											<li>
+												<a class="link link--code" href="r-code-snippets.html#chapter-9-a">Nearest Neighbor Classifiers</a>
+											</li>
+											<li>
+												<a class="link link--code" href="r-code-snippets.html#chapter-9-b">Neural Networks</a>
+											</li>
+											<li>
+												<a class="link link--code" href="r-code-snippets.htmlchapter-9-c">Support Vector Machines</a>
+											</li>
+											<li>
+												<a class="link link--code" href="r-code-snippets.html#chapter-9-d">Ensemble Methods</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="material">
+									<button data-toggle="#chapter-9-python" class="material__toggle" aria-label="Toggle">Python Code Snippets</button>
+									<div id="chapter-9-python" class="material__more">
+										<ul class="material__links">
+											<li>
+												<a class="link link--code" href="python-code-snippets.html#chapter-9-a">Nearest Neighbor Classifiers</a>
+											</li>
+											<li>
+												<a class="link link--code" href="python-code-snippets.html#chapter-9-b">Neural Networks</a>
+											</li>
+											<li>
+												<a class="link link--code" href="python-code-snippets.html#chapter-9-c">Support Vector Machines</a>
+											</li>
+											<li>
+												<a class="link link--code" href="python-code-snippets.html#chapter-9-d">Ensemble Methods</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+								<div class="material">
+									<button data-toggle="#chapter-9-workflows" class="material__toggle" aria-label="Toggle">KNIME Workflows</button>
+									<div id="chapter-9-workflows" class="material__more">
+										<ul class="material__links">
+											<li>
+												<a class="link link--workflow" href="https://kni.me/w/ZVkD_W8LnSh_t9Na" target="_blank">Classification of the Iris Data Using kNN</a>
+											</li>
+											<li>
+												<a class="link link--workflow" href="https://kni.me/w/ei3eX9Sj5-RFEUat" target="_blank">Classifying the Iris Data with ANN 4-3-1</a>
+											</li>
+											<li>
+												<a class="link link--workflow" href="https://kni.me/w/DTfbNITUngKQVF8v" target="_blank">SVM on the Iris Data</a>
+											</li>
+											<li>
+												<a class="link link--workflow" href="https://kni.me/w/Ueq3QR9hty8Osh2E" target="_blank">Random Forest, Gradient Boosted Trees, and Tree Ensemble</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="mod__item mod__item--chapter">
+								<div class="content -wysiwyg">
+									<h2 id="chapter-10">10&#8194;Evaluation and Deployment</h2>
+									<ol class="content__structure">
+										<li>10.1&#8194;Model Deployment
+											<ol>
+												<li>10.1.1&#8194;Interactive Applications</li>
+												<li>10.1.2&#8194;Model Scoring as a Service</li>
+												<li>10.1.3&#8194;Model Representation Standards</li>
+												<li>10.1.4&#8194;Frequent Causes for Deployment Failures</li>
+											</ol>
+										</li>
+										<li>10.2&#8194;Model Management
+											<ol>
+												<li>10.2.1&#8194;Model Updating and Retraining</li>
+												<li>10.2.2&#8194;Model Factories</li>
+											</ol>
+										</li>
+										<li>10.3&#8194;Model Deployment and Management in Practice
+											<ol>
+												<li>10.3.1&#8194;Deployment to a Dashboard</li>
+												<li>10.3.2&#8194;Deployment as REST Service</li>
+												<li>10.3.3&#8194;Integrated Deployment</li>
+											</ol>
+										</li>
+									</ol>
+									<p>We have shown in Chap. 5 how to evaluate the models and discussed how they are
+										 generated using techniques from Chaps. 7–9. The models were also interpreted to
+										 gain new insights for feature construction (or even data acquisition). What we have
+										 ignored so far is the deployment of the models into production so they can be used by
+										 other applications or non data scientists. </p>
+									<div id="chapter-10-abstract" class="content__more">
+										<p>Important here are also issues of continued
+											 monitoring and potentially even automatic updating of the models in production.</p>
+									</div>
+									<button data-toggle="#chapter-10-abstract" class="content__toggle" aria-label="Toggle"><span class="toggle__label" data-toggle-collapse="Show less" data-toggle-expand="Read more">Read more</span></button>
+								</div>
+								<div class="material">
+									<button data-toggle="#chapter-10-workflows" class="material__toggle" aria-label="Toggle">KNIME Workflows</button>
+									<div id="chapter-10-workflows" class="material__more">
+										<ul class="material__links">
+											<li>
+												<a class="link link--workflow" href="https://kni.me/w/i0MoNzrOAslnR9KV" target="_blank">Deployment to a Dashboard</a>
+											</li>
+											<li>
+												<a class="link link--workflow" href="https://kni.me/w/VJvO1Q6LxFbujKuf" target="_blank">Deployment as a REST service</a>
+											</li>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<div class="mod__item mod__item--chapter">
+								<div class="content -wysiwyg">
+									<h2 id="chapter-a">A&#8194;Statistics</h2>
+									<ol class="content__structure">
+										<li>A.1&#8194;Terms and Notation</li>
+										<li>A.2&#8194;Descriptive Statistics
+											<ol>
+												<li>A.2.1&#8194;Tabular Representations</li>
+												<li>A.2.2&#8194;Graphical Representations</li>
+												<li>A.2.3&#8194;Characteristic Measures for One-Dimensional Data</li>
+												<li>A.2.4&#8194;Characteristic Measures for Multidimensional Data</li>
+												<li>A.2.5&#8194;Principal Component Analysis</li>
+											</ol>
+										</li>
+										<li>A.3&#8194;Probability Theory
+											<ol>
+												<li>A.3.1&#8194;Probability</li>
+												<li>A.3.2&#8194;Basic Methods and Theorems</li>
+												<li>A.3.3&#8194;Random Variables</li>
+												<li>A.3.4&#8194;Characteristic Measures of Random Variables</li>
+												<li>A.3.5&#8194;Some Special Distributions</li>
+											</ol>
+										</li>
+										<li>A.4&#8194;Inferential Statistics
+											<ol>
+												<li>A.4.1&#8194;Random Samples</li>
+												<li>A.4.2&#8194;Parameter Estimation</li>
+												<li>A.4.3&#8194;Hypothesis Testing</li>
+											</ol>
+										</li>
+									</ol>
+									<p>Since classical statistics provides many data analysis methods and supports and justifies
+										 a lot of others, we provide in this appendix a brief review of some basics of
+										 statistics. We discuss descriptive statistics, inferential statistics, and needed fundamentals
+										 from probability theory. Since we strove to make this appendix as self-contained
+										 as possible, some overlap with the chapters of this book is unavoidable.
+										 However, material is not simply repeated here but presented from a slightly different
+										 point of view, emphasizing different aspects and using different examples.</p>
+								</div>
+							</div>
+							<div class="mod__item mod__item--chapter">
+								<div class="content -wysiwyg">
+									<h2 id="chapter-b">B&#8194;KNIME</h2>
+									<ol class="content__structure">
+										<li>B.1&#8194;Installation and Overview</li>
+										<li>B.2&#8194;Building Workflows</li>
+										<li>B.3&#8194;Example Workflow</li>
+									</ol>
+									<p>KNIME (pronounced [naim]) Analytics Platform is an open and opensource modular
+										 data science platform that covers all your data needs from data access to data
+										 preparation, from data visualization to the training of machine learning algorithms,
+										 and finally from testing to deployment.
+										 KNIME Analytics Platform is based on visual programming. Basic units (nodes)
+										 dedicated to a certain task are dragged and dropped onto the canvas to build a
+										 pipeline (workflow) of actions to take your data from their raw form into the final
+										 state, being this a prediction for an input vector, a summary dashboard, or a particular
+										 KPI. KNIME Server complements KNIME Analytics Platform as its enterprise
+										 IT platform, allowing for easy deployment, collaboration, scalability, automation,
+										 and application management.</p>
+								</div>
+							</div>
+						</div>
+					</section>
+
+				</main>
+				
+			</section>
+
+		</div>
+
+		<footer class="page__footer">
+			<div class="footer__body">
+				<div class="footer__item footer__item--title">
+					<h2>Guide to Intelligent Data Science<br>
+						<span>How to Intelligently Make Use of Real Data</span></h2>
+					<a class="btn" href="https://www.springer.com/gp/book/9783030455736" target="_blank">Buy now</a>
+				</div>
+				<div class="footer__item footer__item--data">
+					<ul>
+						<li>
+							<strong>Copyright</strong>
+							<p>2020</p>
+						</li>
+						<li>
+							<strong>eBook ISBN</strong>
+							<p>978-3-030-45574-3</p>
+						</li>
+						<li>
+							<strong>Publisher</strong>
+							<p>Springer International Publishing</p>
+						</li>
+						<li>
+							<strong>DOI</strong>
+							<p>10.1007/978-3-030-45574-3</p>
+						</li>
+						<li>
+							<strong>Copyright Holder</strong>
+							<p>Springer Nature Switzerland AG</p>
+						</li>
+						<li>
+							<strong>Hardcover ISBN</strong>
+							<p>978-3-030-45573-6</p>
+						</li>
+					</ul>
+				</div>
+				<div class="footer__item footer__item--nav">
+					<nav class="nav-footer" role="navigation">
+						<ul class="menu">
+							<li class="menu__item">
+								<a href="mailto:info@datascienceguide.org">Contact</a>
+							</li>
+							<li class="menu__item">
+								<a href="imprint.html">Imprint</a>
+							</li>
+							<li class="menu__item">
+								<a href="errata.html">Errata</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+		</footer>
+
+		<div class="page__offcanvas" role="navigation">
+			<div class="offcanvas__body">
+				<nav class="nav-offcanvas nav-offcanvas--primary" role="navigation">
+					<ul class="menu">
+						<li class="menu__item">
+							<a href="index.html">About the Book</a>
+						</li>
+						<li class="menu__item">
+							<a href="teaching-material.html">Teaching Material</a>
+						</li>
+						<li class="menu__item -active">
+							<a href="contents.html">Contents &amp; Examples</a>
+						</li>
+						<li class="menu__item">
+							<a href="https://www.springer.com/gp/book/9783030455736" target="_blank">Buy Book</a>
+						</li>
+					</ul>
+				</nav>
+				<nav class="nav-offcanvas nav-offcanvas--secondary" role="navigation">
+					<ul class="menu">
+						<li class="menu__item">
+							<a href="mailto:info@datascienceguide.org">Contact</a>
+						</li>
+						<li class="menu__item">
+							<a href="imprint.html">Imprint</a>
+						</li>
+						<li class="menu__item">
+							<a href="errata.html">Errata</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+
+		<script src="assets/js/lib/css-vars-ponyfill.min.js"></script>
+		<script src="assets/js/lib/babel-polyfill.min.js"></script>
+		<script src="assets/js/lib/conditionizr.min.js"></script>
+		<script src="assets/js/lib/jquery-3-5-1.min.js"></script>
+		<script src="assets/js/lib/svg4everybody.min.js"></script>
+		<script src="assets/js/scripts.min.js"></script>
+		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+		<script type="application/ld+json">
+			{
+				 "@context" 	: "http://schema.org",
+				 "@type" 		: "WebPage",
+				 "mainEntity" 	: {
+					"@type" 		: "Book",
+					"author" 		: [
+						{
+							"@type" 		: "Person",
+							"name" 			: "Michael R. Berthold"
+						},
+						{
+							"@type" 		: "Person",
+							"name" 			: "Christian Borgelt"
+						},
+						{
+							"@type"			: "Person",
+							"name" 			: "Frank Höppner"
+						},
+						{
+							"@type"			: "Person",
+							"name"			: "Frank Klawonn"
+						},
+						{
+							"@type"			: "Person",
+							"name"			: "Rosaria Silipo"
+						}
+					],
+					"bookEdition" 	: "2nd Edition",
+					"copyrightYear" : "2020",
+					"copyrightHolder" : "Springer Nature Switzerland AG",
+					"datePublished" : "2020-07-15",
+					"genre"			: "Data Science",
+					"image" 		: "https://images.springer.com/sgw/books/medium/9783030455736.jpg",
+					"inLanguage" 	: "en",
+					"name" 			: "Guide to Intelligent Data Science",
+					"numberOfPages" : "418",
+					"publisher" 	: {
+						"@type" 		: "Organization",
+						"name" 			: "Springer International Publishing"
+					},
+					"url" 			: "https://www.springer.com/book/9783030455736",
+					"workExample"	: [
+						{
+							"@type" 		: "Book",
+							"bookFormat" 	: "http://schema.org/EBook",
+							"isbn" 			: "978-3-030-45574-3",
+							"fileFormat" 	: "application/pdf",
+							"offers" 		: {
+								"@type" 		: "Offer",
+								"price" 		: "69.99",
+								"priceCurrency" : "USD",
+								"url" 			: "https://www.springer.com/book/9783030455736"
+							}
+						},
+						{
+							"@type" 		: "Book",
+							"bookFormat" 	: "http://schema.org/Hardcover",
+							"isbn" 			: "978-3-030-45573-6",
+							"offers" 		: {
+								"@type" 		: "Offer",
+								"price" 		: "89.99",
+								"priceCurrency" : "USD",
+								"url" 			: "https://www.springer.com/book/9783030455736"
+							}
+						}
+					]
+				 }
+			}
+		</script>
+
+	</body>
+</html>

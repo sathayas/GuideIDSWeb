@@ -1,12 +1,12 @@
-.mod.mod-contents {
+.mod-contents {
 	.bg--alabaster;
 	.mod__body {
 		position: relative;
-		.row--justify-center;
-		.row--align-items-start;
+		justify-content: center;
+		align-items: flex-start;
 		text-align: left;
 		@media (min-width: @screen-sm-min) {
-			.row--justify-end;
+			justify-content: flex-end;
 			text-align: left;
 		}
 	}
@@ -18,9 +18,9 @@
 			position: relative;
 			display: block;
 			width: 100%;
-			height: @line-width;
-			.dist--semi-t-margin;
-			.dist--semi-b-margin;
+			height: var(--line-w);
+			margin-top: var(--dist-semi);
+			margin-bottom: var(--dist-semi);
 			.bg--purple;
 		}
 	}
@@ -31,11 +31,6 @@
 		}
 	}
 	.content {
-		h1 {
-			@media (min-width: @screen-sm-min) {
-				font-size: 3rem;
-			}
-		}
 		h2 {
 			margin-top: 0;
 		}
@@ -81,11 +76,11 @@
 	.content__toggle {
 		display: inline-block;
 		margin-top: 0;
-		.sans--light;
+		.sans;
 		.sm;
 	}
 	.content__more {
-		height: 0;
+		// height: 0;
 		margin-top: 0;
 		overflow: hidden;
 	}
@@ -102,7 +97,7 @@
 			transform: rotate( 0deg );
 			display: block;
 			width: 1.7rem;
-			height: @line-width;
+			height: var(--line-w);
 			.bg--purple;
 			.trans--link;
 		}
@@ -163,7 +158,7 @@
 		margin-bottom: 0;
 		padding-bottom: var(--dist);
 	}
-	.-scrolling-up &, 
+	.-scrolling-up li, 
 	.-scrolled-up & {
 		@media (min-width: @screen-sm-min) {
 			top: var( --dist );
@@ -171,8 +166,8 @@
 	}
 	.mod__body {
 		.row;
-		.row--align-items-center;
-		.row--justify-between;
+		align-items: center;
+		justify-content: space-between;
 		flex: 1 0 100%;
 		max-width: 100%;
 		padding-bottom: 1rem;
